@@ -7,124 +7,114 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "patient_id", nullable = false)
-    private String patientId;
+    private Long patientId;
 
-    private String pTitle;
-    private String pFirstName;
-    private String pLastName;
-    private String pNic;
-    private String pPhone;
-    private String pEmail;
-    private String pDateOfBirth;
-    private String pPassword;
+    private String title;
+    private String firstName;
+    private String lastName;
+    private String nic;
+    private String phone;
+    private String email;
+    private String dob;
+    private String password;
 
-    public Patient(String patientId, String pTitle, String pFirstName, String pLastName, String pNic, String pPhone, String pEmail, String pDateOfBirth, String pPassword) {
-        this.patientId = patientId;
-        this.pTitle = pTitle;
-        this.pFirstName = pFirstName;
-        this.pLastName = pLastName;
-        this.pNic = pNic;
-        this.pPhone = pPhone;
-        this.pEmail = pEmail;
-        this.pDateOfBirth = pDateOfBirth;
-        this.pPassword = pPassword;
+    public Patient(){}
+
+    public Patient(String title, String firstName, String lastName, String nic, String phone, String email, String dob, String password) {
+        this.title = title;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nic = nic;
+        this.phone = phone;
+        this.email = email;
+        this.dob = dob;
+        this.password = password;
     }
 
-    public Patient(String pTitle, String pFirstName, String pLastName, String pNic, String pPhone, String pEmail, String pDateOfBirth, String pPassword) {
-        this.pTitle = pTitle;
-        this.pFirstName = pFirstName;
-        this.pLastName = pLastName;
-        this.pNic = pNic;
-        this.pPhone = pPhone;
-        this.pEmail = pEmail;
-        this.pDateOfBirth = pDateOfBirth;
-        this.pPassword = pPassword;
-    }
-
-    public String getPatientId() {
+    public Long getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(String patientId) {
+    public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
 
-    public String getpTitle() {
-        return pTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setpTitle(String pTitle) {
-        this.pTitle = pTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getpFirstName() {
-        return pFirstName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setpFirstName(String pFirstName) {
-        this.pFirstName = pFirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getpLastName() {
-        return pLastName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setpLastName(String pLastName) {
-        this.pLastName = pLastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getpNic() {
-        return pNic;
+    public String getNic() {
+        return nic;
     }
 
-    public void setpNic(String pNic) {
-        this.pNic = pNic;
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
-    public String getpPhone() {
-        return pPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setpPhone(String pPhone) {
-        this.pPhone = pPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getpEmail() {
-        return pEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setpEmail(String pEmail) {
-        this.pEmail = pEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getpDateOfBirth() {
-        return pDateOfBirth;
+    public String getDob() {
+        return dob;
     }
 
-    public void setpDateOfBirth(String pDateOfBirth) {
-        this.pDateOfBirth = pDateOfBirth;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getpPassword() {
-        return pPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setpPassword(String pPassword) {
-        this.pPassword = pPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "Patient{" +
                 "patientId='" + patientId + '\'' +
-                ", pTitle='" + pTitle + '\'' +
-                ", pFirstName='" + pFirstName + '\'' +
-                ", pLastName='" + pLastName + '\'' +
-                ", pNic='" + pNic + '\'' +
-                ", pPhone='" + pPhone + '\'' +
-                ", pEmail='" + pEmail + '\'' +
-                ", pDateOfBirth='" + pDateOfBirth + '\'' +
-                ", pPassword='" + pPassword + '\'' +
+                ", title='" + title + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", nic='" + nic + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", dob='" + dob + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
