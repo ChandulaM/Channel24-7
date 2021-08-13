@@ -8,6 +8,10 @@ import { HospitalRegistrationComponent } from './components/admin/hospital-regis
 import { HeaderComponent } from './components/admin/header/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RegistrationFormComponent } from './components/admin/hospitalsRegistration/registration-form/registration-form.component';
+import { TopnavComponent } from './components/patient/commons/topnav/topnav.component';
+import { FooterComponent } from './components/patient/commons/footer/footer.component';
+import { HomepgComponent } from './components/patient/homepg/homepg.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,16 @@ import { RegistrationFormComponent } from './components/admin/hospitalsRegistrat
     DashboardHospitalmanagerComponent,
     HospitalRegistrationComponent,
     HeaderComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    TopnavComponent,
+    FooterComponent,
+    HomepgComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
