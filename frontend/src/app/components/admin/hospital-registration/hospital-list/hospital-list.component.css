@@ -1,0 +1,15 @@
+.container {
+  border: aquamarine 2px solid;
+  margin: 1rem;
+  padding: 1.5rem;
+}
+
+.list-container {
+  border: pink 2px solid;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.card-body {
+  display: flex;
+}
