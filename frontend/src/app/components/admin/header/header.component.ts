@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faHospital, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition, faHospital } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   title?: string;
 
   @Input()
-  headerIcon?: IconDefinition;
+  icon?: IconDefinition | undefined;
 
   faHospital = faHospital;
 

@@ -1,0 +1,10 @@
+.reg-header {
+  padding: 2rem;
+  padding-left: 0rem;
+}
+
+.container {
+  border: aquamarine 2px solid;
+  margin: 1rem;
+  padding: 1.5rem;
+}
