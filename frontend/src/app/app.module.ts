@@ -12,6 +12,7 @@ import { TopnavComponent } from './components/patient/commons/topnav/topnav.comp
 import { FooterComponent } from './components/patient/commons/footer/footer.component';
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ImageSliderComponent } from './components/patient/image-slider/image-slider.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     TopnavComponent,
     FooterComponent,
     HomepgComponent,
+    ImageSliderComponent,
   ],
   imports: [
     BrowserModule,
