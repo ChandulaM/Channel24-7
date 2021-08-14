@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +18,6 @@ import { HospitalListComponent } from './components/admin/hospital-registration/
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,13 +31,14 @@ import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
     HospitalListComponent,
     RegistrationhomeComponent,
     SidenavComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
