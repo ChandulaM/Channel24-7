@@ -10,9 +10,11 @@ import { TopnavComponent } from './components/patient/commons/topnav/topnav.comp
 import { FooterComponent } from './components/patient/commons/footer/footer.component';
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ImageSliderComponent } from './components/patient/image-slider/image-slider.component';
 import { RegisterComponent } from './components/admin/hospital-registration/register/register.component';
 import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
+
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { RegistrationhomeComponent } from './components/admin/hospital-registrat
     TopnavComponent,
     FooterComponent,
     HomepgComponent,
+    ImageSliderComponent,
     RegisterComponent,
     HospitalListComponent,
     RegistrationhomeComponent,
+
   ],
   imports: [
     BrowserModule,
