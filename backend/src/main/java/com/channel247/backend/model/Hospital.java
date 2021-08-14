@@ -13,6 +13,33 @@ public class Hospital {
     private String hospitalAddress;
     private String city;
     private String status;
+    private String contactNo;
+    private String email;
+    private String hospitalRegNo;
+
+    public String getContactNo() {
+        return contactNo;
+    }
+
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHospitalRegNo() {
+        return hospitalRegNo;
+    }
+
+    public void setHospitalRegNo(String hospitalRegNo) {
+        this.hospitalRegNo = hospitalRegNo;
+    }
 
     public String getStatus() {
         return status;
@@ -52,5 +79,19 @@ public class Hospital {
 
     public void setHospitalId(Long hospitalId) {
         this.hospitalId = hospitalId;
+    }
+
+    @Override
+    public String toString() {
+        return "Hospital{" +
+                "hospitalId=" + hospitalId +
+                ", hospitalName='" + hospitalName + '\'' +
+                ", hospitalAddress='" + hospitalAddress + '\'' +
+                ", city='" + city + '\'' +
+                ", status='" + status + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                ", email='" + email + '\'' +
+                ", hospitalRegNo='" + hospitalRegNo + '\'' +
+                '}';
     }
 }

@@ -25,7 +25,7 @@ public class HospitalServices {
         this.hospitalRepo = hospitalRepo;
     }
 
-    public Hospital addNewHospital(Hospital hospital) {
+    public Hospital addOrUpdateHospital(Hospital hospital) {
         return hospitalRepo.save(hospital);
     }
 
@@ -40,5 +40,12 @@ public class HospitalServices {
     public Hospital getHospitalById(Long id){
         return hospitalRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Hospital with id " + id + " was not found."));
+    }
+
+    public Hospital removeHospital(Long id) {
+        Hospital hospitalToRemove = hospitalRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Hospital with id " + id + " was not found."));
+        hospitalToRemove.setStatus("inactive");
+        return hospitalRepo.save(hospitalToRemove);
     }
 }

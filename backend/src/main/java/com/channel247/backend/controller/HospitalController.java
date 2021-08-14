@@ -29,7 +29,7 @@ public class HospitalController {
 
     @PostMapping("/")
     public ResponseEntity<Hospital> registerHospital(@RequestBody Hospital hospital) {
-        Hospital newHospital = hospitalServices.addNewHospital(hospital);
+        Hospital newHospital = hospitalServices.addOrUpdateHospital(hospital);
         return new ResponseEntity<>(newHospital, HttpStatus.CREATED);
     }
 
@@ -37,5 +37,17 @@ public class HospitalController {
     public ResponseEntity<Hospital> getHospitalById(@PathVariable Long id) {
         Hospital hospital = hospitalServices.getHospitalById(id);
         return new ResponseEntity<>(hospital, HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Hospital> updateHospitalInfo(@RequestBody Hospital hospital) {
+        Hospital updatedHospital = hospitalServices.addOrUpdateHospital(hospital);
+        return  new ResponseEntity<>(updatedHospital, HttpStatus.OK);
+    }
+
+    @PutMapping("/remove/{id}")
+    public ResponseEntity<Hospital> removeHospital(@PathVariable Long id) {
+        Hospital updatedHospital = hospitalServices.removeHospital(id);
+        return new ResponseEntity<>(updatedHospital, HttpStatus.OK);
     }
 }
