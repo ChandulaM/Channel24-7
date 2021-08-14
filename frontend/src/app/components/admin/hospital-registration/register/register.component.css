@@ -1,10 +1,18 @@
 .reg-header {
-  padding: 2rem;
-  padding-left: 0rem;
+  padding: 0.5rem;
+  background-color: cornflowerblue;
+  font-weight: normal;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 15px 15px 0px 0px;
 }
 
 .container {
-  border: aquamarine 2px solid;
-  margin: 1rem;
-  padding: 1.5rem;
+  padding: 0.75rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 0.2rem;
+}
+
+.reg-form {
+  padding: 0.5rem;
 }

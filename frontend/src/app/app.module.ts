@@ -14,6 +14,7 @@ import { ImageSliderComponent } from './components/patient/image-slider/image-sl
 import { RegisterComponent } from './components/admin/hospital-registration/register/register.component';
 import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
+import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RegistrationhomeComponent } from './components/admin/hospital-registrat
     RegisterComponent,
     HospitalListComponent,
     RegistrationhomeComponent,
+    SidenavComponent,
 
   ],
   imports: [
