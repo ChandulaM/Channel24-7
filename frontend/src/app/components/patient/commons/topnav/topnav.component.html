@@ -1,49 +1,178 @@
 
-<!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green sticky-top" [containerInside]="false">
+        <!--Navbar-->
+        <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green sticky-top" [containerInside]="false">
 
-    <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" href="#">Channel24-7</a></mdb-navbar-brand>
-  
-    <!-- Collapsible content -->
-    <links>
-  
-      <!-- Links -->
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="home"></mdb-icon> Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user-md"></mdb-icon> Book Appointment</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="clipboard-check"></mdb-icon> Medical Checkups</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect><mdb-icon far icon="list-alt"></mdb-icon> My Appointments</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="hand-holding-usd"></mdb-icon> Claim Refund</a>
-          </li>
+            <!-- Navbar brand -->
+            <mdb-navbar-brand><a class="navbar-brand" href="#">Channel24-7</a></mdb-navbar-brand>
+          
+            <!-- Collapsible content -->
+            <links>
+          
+              <!-- Links -->
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="home"></mdb-icon> Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#bookModal" mdbWavesEffect><mdb-icon fas icon="user-md"></mdb-icon> Book Appointment</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="clipboard-check"></mdb-icon> Medical Checkups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect><mdb-icon far icon="list-alt"></mdb-icon> My Appointments</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#refundModal" mdbWavesEffect><mdb-icon fas icon="hand-holding-usd"></mdb-icon> Claim Refund</a>
+                  </li>
 
-          <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon>Sign in</a>
-          </li>
-  
-        <!-- Dropdown
-        <li class="nav-item dropdown" dropdown>
-          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <mdb-icon fas icon="user"></mdb-icon> Sing in<span class="caret"></span></a>
-          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#signinModal" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon>Sign in</a>
+                  </li>
+          
+                <!-- Dropdown
+                <li class="nav-item dropdown" dropdown>
+                  <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                    <mdb-icon fas icon="user"></mdb-icon> Sing in<span class="caret"></span></a>
+                  <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+                  </div>
+                </li> -->
+          
+              </ul>
+              <!-- Links -->
+            </links>
+            <!-- Collapsible content -->
+          
+          </mdb-navbar>
+          <!--/.Navbar-->
+
+
+
+
+
+        <!-- Modal for Sign in-->
+        <div class="modal fade" id="signinModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Sign in</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                    <!-- Default form login -->
+        <form class="text-center border border-light p-5">
+
+          <!-- Email -->
+          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+          <!-- Password -->
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+
+          <div class="d-flex justify-content-around">
+            <div>
+              <!-- Remember me -->
+              <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+            </div>
+            <div>
+              <!-- Forgot password -->
+              <a href="">Forgot password?</a>
+            </div>
           </div>
-        </li> -->
-  
-      </ul>
-      <!-- Links -->
-    </links>
-    <!-- Collapsible content -->
-  
-  </mdb-navbar>
-  <!--/.Navbar-->
+
+          <!-- Sign in button -->
+          <button mdbBtn color="info" class="my-4" type="submit">Sign in</button>
+
+          <!-- Register -->
+          <p>Not a member?
+            <a href="">Register</a>
+          </p>
+        </form>
+        <!-- Default form login -->
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- Modal for Book Appointments-->
+        <div class="modal fade" id="bookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Find Your Doctor Here </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                    <!-- Default form login -->
+        <form class="text-center border border-light p-5">
+          <!-- Email -->
+          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+          <!-- Password -->
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+          <!-- Sign in button -->
+          <button mdbBtn color="info" class="my-4" type="submit">Search</button>
+        </form>
+        <!-- Default form login -->
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+        
+        <!-- Modal for Claim refund-->
+        <div class="modal fade" id="refundModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Claim Refund</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                    <!-- Default form login -->
+        <form class="text-center border border-light p-5">
+
+          <!-- Email -->
+          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+          <!-- Password -->
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+
+          <!-- Sign in button -->
+          <button mdbBtn color="info" class="my-4" type="submit">Submit</button>
+
+        </form>
+        <!-- Default form login -->
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import { HospitalRegistrationComponent } from './components/admin/hospital-regis
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
 
 
+
 const routes: Routes = [
   {
     path: 'hospitalmanager',

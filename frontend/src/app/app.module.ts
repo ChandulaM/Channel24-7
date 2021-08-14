@@ -13,6 +13,8 @@ import { FooterComponent } from './components/patient/commons/footer/footer.comp
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ImageSliderComponent } from './components/patient/image-slider/image-slider.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ImageSliderComponent } from './components/patient/image-slider/image-sl
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
