@@ -1,9 +1,9 @@
 
-        <!--Navbar-->
-        <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green sticky-top" [containerInside]="false">
+          <!--Navbar-->
+          <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green sticky-top" [containerInside]="false">
 
             <!-- Navbar brand -->
-            <mdb-navbar-brand><a class="navbar-brand" href="#">Channel24-7</a></mdb-navbar-brand>
+            <mdb-navbar-brand><a class="navbar-brand" href="patient/home">Channel24-7</a></mdb-navbar-brand>
           
             <!-- Collapsible content -->
             <links>
@@ -63,18 +63,16 @@
               <div class="modal-body">
                     <!-- Default form login -->
         <form class="text-center border border-light p-5">
-
           <!-- Email -->
-          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" required="required">
 
           <!-- Password -->
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" required="required">
 
           <div class="d-flex justify-content-around">
-            <div>
-              <!-- Remember me -->
+            <!-- <div>
               <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
-            </div>
+            </div> -->
             <div>
               <!-- Forgot password -->
               <a href="">Forgot password?</a>
@@ -82,22 +80,78 @@
           </div>
 
           <!-- Sign in button -->
-          <button mdbBtn color="info" class="my-4" type="submit">Sign in</button>
+          <button mdbBtn color="green" class="my-4" type="submit"style="border-radius: 40px;">Sign in</button>
 
           <!-- Register -->
           <p>Not a member?
-            <a href="">Register</a>
+            <a data-bs-toggle="modal" data-bs-target="#signupModal" style="color: blue;">Register</a>
           </p>
         </form>
         <!-- Default form login -->
 
               </div>
-              <div class="modal-footer">
+              <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
+
+
+
+
+
+
+            <!-- Modal for Sign up-->
+            <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Sign up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        <!-- Default form login -->
+            <form class="text-center border border-light p-2">
+              <select class="form-select mb-1" aria-label="Default select example" id = "title">
+                <option selected>Title</option>
+                <option value="1">Mr.</option>
+                <option value="2">Mrs.</option>
+                <option value="3">Miss</option>
+                <option value="4">Ven.</option>
+              </select>
+              <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" required="required">
+              <input type="text" id="lastName" class="form-control mb-1" placeholder="Last Name" required="required">
+              
+              <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" required="required">
+              <!-- Email -->
+              <input type="email" id="defaultLoginFormEmail" class="form-control mb-1" placeholder="E-mail" required="required">
+              <input type="text" id="nic" class="form-control mb-1" placeholder="NIC" required="required">
+              <input type="date" id="firstName" class="form-control mb-1" placeholder="Date of Birth" required="required">
+              <input type="text" id="mobile" class="form-control mb-1" placeholder="Mobile Number" required="required">
+              <!-- Password -->
+              <input type="password" id="defaultLoginFormPassword" class="form-control mb-1" placeholder="Password" required="required">
+              <input type="password" id="defaultLoginFormPassword" class="form-control mb-1" placeholder="Confirm Password" required="required">
+    
+              <div class="d-flex justify-content-around">
+                <div>
+                  <!-- Remember me -->
+                  <mdb-checkbox [default]="true">Agree with out terms and conditions</mdb-checkbox>
+                </div>
+              </div>
+    
+              <!-- Sign in button -->
+              <button mdbBtn color="green" class="my-3" type="submit" style="border-radius: 40px;">Sign up</button>
+            </form>
+            <!-- Default form login -->
+    
+                  </div>
+                  <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div> -->
+                </div>
+              </div>
+            </div>
 
 
 
@@ -113,19 +167,39 @@
               <div class="modal-body">
                     <!-- Default form login -->
         <form class="text-center border border-light p-5">
-          <!-- Email -->
-          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+          
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="searchDocName" placeholder="Doctor's Name">
+            <label for="floatingInput">Doctor's Name</label>
+          </div>
 
-          <!-- Password -->
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+          <select class="mdb-select md-form" searchable="Search here..">
+            <option value="" disabled selected>Choose your country</option>
+            <option value="1"></option>
+            <option value="2">Germany</option>
+            <option value="3">France</option>
+            <option value="3">Poland</option>
+            <option value="3">Japan</option>
+          </select>
+
+          <div class="form-floating mb-3">
+            <select class="form-select" id="searchDocHos" aria-label="Floating label select example" >
+              <option selected>Any</option>
+              <option value="1">Asiri</option>
+              <option value="2">Dental</option>
+              <option value="3">Gynocologist</option>
+            </select>
+            <label for="floatingSelect">Select Hospital</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="searchDocName" placeholder="Appointment Date">
+            <label for="floatingInput">Appointment Date</label>
+          </div>
           <!-- Sign in button -->
-          <button mdbBtn color="info" class="my-4" type="submit">Search</button>
+          <button mdbBtn color="green" class="my-4" type="submit">Search</button>
         </form>
         <!-- Default form login -->
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -157,14 +231,11 @@
           <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
 
           <!-- Sign in button -->
-          <button mdbBtn color="info" class="my-4" type="submit">Submit</button>
+          <button mdbBtn color="green" class="my-4" type="submit">Submit</button>
 
         </form>
         <!-- Default form login -->
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
