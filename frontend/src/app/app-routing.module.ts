@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardHospitalmanagerComponent } from './components/hospitalmanager/dashboard-hospitalmanager/dashboard-hospitalmanager.component';
-import { HospitalRegistrationComponent } from './components/admin/hospital-registration/hospital-registration.component';
+import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
-
-
 
 const routes: Routes = [
   {
@@ -13,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'admin/registerHospital',
-    component: HospitalRegistrationComponent,
+    component: RegistrationhomeComponent,
   },
   {
     path: 'patient/home',

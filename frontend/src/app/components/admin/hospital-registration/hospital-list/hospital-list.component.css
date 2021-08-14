@@ -1,0 +1,34 @@
+.container {
+  border: aquamarine 2px solid;
+  padding: 1.5rem;
+}
+
+.list-container {
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.card-info {
+  flex: 2;
+  margin: 0.25rem;
+}
+
+.btn-info {
+  height: 2.5rem;
+  margin-top: 1rem;
+}
+
+.card {
+  height: 6rem;
+  align-content: center;
+}
+
+nav {
+  margin-top: 0.25rem;
+}

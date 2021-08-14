@@ -4,39 +4,41 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardHospitalmanagerComponent } from './components/hospitalmanager/dashboard-hospitalmanager/dashboard-hospitalmanager.component';
-import { HospitalRegistrationComponent } from './components/admin/hospital-registration/hospital-registration.component';
-import { HeaderComponent } from './components/admin/header/header/header.component';
+import { HeaderComponent } from './components/admin/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RegistrationFormComponent } from './components/admin/hospitalsRegistration/registration-form/registration-form.component';
 import { TopnavComponent } from './components/patient/commons/topnav/topnav.component';
 import { FooterComponent } from './components/patient/commons/footer/footer.component';
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ImageSliderComponent } from './components/patient/image-slider/image-slider.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { RegisterComponent } from './components/admin/hospital-registration/register/register.component';
+import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
+import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
+import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardHospitalmanagerComponent,
-    HospitalRegistrationComponent,
     HeaderComponent,
-    RegistrationFormComponent,
     TopnavComponent,
     FooterComponent,
     HomepgComponent,
     ImageSliderComponent,
+    RegisterComponent,
+    HospitalListComponent,
+    RegistrationhomeComponent,
+    SidenavComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
