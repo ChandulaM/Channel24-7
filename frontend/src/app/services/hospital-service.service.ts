@@ -14,4 +14,8 @@ export class HospitalServiceService {
   registerHospital(hospital: Hospital): Observable<Hospital> {
     return this.http.post<Hospital>(this.apiUrl, hospital);
   }
+
+  getAllHospitals(): Observable<Hospital[]> {
+    return this.http.get<Hospital[]>(this.apiUrl);
+  }
 }

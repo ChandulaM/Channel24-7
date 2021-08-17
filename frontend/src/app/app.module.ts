@@ -15,8 +15,9 @@ import { RegisterComponent } from './components/admin/hospital-registration/regi
 import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchAppoinment1Component } from './components/patient/homepgComponents/search-appoinment1.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SearchAppoinment1Component } from './components/patient/homepgComponent
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
