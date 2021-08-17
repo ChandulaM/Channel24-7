@@ -16,7 +16,7 @@ import { HospitalListComponent } from './components/admin/hospital-registration/
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { SearchAppoinment1Component } from './components/patient/homepgComponents/search-appoinment1.component';
+import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { SearchAppoinment1Component } from './components/patient/homepgComponent
     HospitalListComponent,
     RegistrationhomeComponent,
     SidenavComponent,
-    SearchAppoinment1Component,
+    HomeComponentsComponent,
   ],
   imports: [
     BrowserModule,
