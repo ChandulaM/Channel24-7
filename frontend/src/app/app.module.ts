@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardHospitalmanagerComponent } from './components/hospitalmanager/dashboard-hospitalmanager/dashboard-hospitalmanager.component';
@@ -17,7 +15,8 @@ import { RegisterComponent } from './components/admin/hospital-registration/regi
 import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { SearchAppoinment1Component } from './components/patient/homepgComponents/search-appoinment1.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +31,7 @@ import { ReactiveFormsModule} from '@angular/forms';
     HospitalListComponent,
     RegistrationhomeComponent,
     SidenavComponent,
+    SearchAppoinment1Component,
   ],
   imports: [
     BrowserModule,

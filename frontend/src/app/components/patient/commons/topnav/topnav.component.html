@@ -1,257 +1,284 @@
 
-          <!--Navbar-->
-          <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green sticky-top" [containerInside]="false">
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green sticky-top" [containerInside]="false">
 
-            <!-- Navbar brand -->
-            <mdb-navbar-brand><a class="navbar-brand" href="patient/home">Channel24-7</a></mdb-navbar-brand>
-          
-            <!-- Collapsible content -->
-            <links>
-          
-              <!-- Links -->
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="home"></mdb-icon> Home<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#bookModal" mdbWavesEffect><mdb-icon fas icon="user-md"></mdb-icon> Book Appointment</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="clipboard-check"></mdb-icon> Medical Checkups</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect><mdb-icon far icon="list-alt"></mdb-icon> My Appointments</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#refundModal" mdbWavesEffect><mdb-icon fas icon="hand-holding-usd"></mdb-icon> Claim Refund</a>
-                  </li>
+<!-- Navbar brand -->
+<mdb-navbar-brand><a class="navbar-brand" href="patient/home">Channel24-7</a></mdb-navbar-brand>
 
-                  <li class="nav-item">
-                    <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#signinModal" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon>Sign in</a>
-                  </li>
-          
-                <!-- Dropdown
-                <li class="nav-item dropdown" dropdown>
-                  <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-                    <mdb-icon fas icon="user"></mdb-icon> Sing in<span class="caret"></span></a>
-                  <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
-                  </div>
-                </li> -->
-          
-              </ul>
-              <!-- Links -->
-            </links>
-            <!-- Collapsible content -->
-          
-          </mdb-navbar>
-          <!--/.Navbar-->
+<!-- Collapsible content -->
+<links>
 
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item active">
+      <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="home"></mdb-icon> Home<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#bookModal" mdbWavesEffect><mdb-icon fas icon="user-md"></mdb-icon> Book Appointment</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="clipboard-check"></mdb-icon> Medical Checkups</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect><mdb-icon far icon="list-alt"></mdb-icon> My Appointments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#refundModal" mdbWavesEffect><mdb-icon fas icon="hand-holding-usd"></mdb-icon> Claim Refund</a>
+      </li>
 
+      <li class="nav-item">
+        <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#signinModal" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon>Sign in</a>
+      </li>
+
+    <!-- Dropdown
+    <li class="nav-item dropdown" dropdown>
+      <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        <mdb-icon fas icon="user"></mdb-icon> Sing in<span class="caret"></span></a>
+      <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+        <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+      </div>
+    </li> -->
+
+  </ul>
+  <!-- Links -->
+</links>
+<!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
 
 
 
-        <!-- Modal for Sign in-->
-        <div class="modal fade" id="signinModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Sign in</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                    <!-- Default form login -->
-        <form class="text-center border border-light p-5" [formGroup] = "exform">
-          <!-- Email -->
-          <input type="email" formControlName = "logEmail" id="defaultLoginFormEmail" class="form-control" placeholder="E-mail" required>
-          <small *ngIf = "exform.get('logEmail').invalid && exform.get('logEmail').touched" class = "text-danger">A valid email is mandatory</small>
-          <!-- Password -->
-          <input type="password" formControlName = "password" id="defaultLoginFormPassword" class="form-control mt-4" placeholder="Password" required>
-          <small *ngIf = "exform.get('password').invalid && exform.get('password').touched" class = "text-danger">Password must have atleast 6 characters</small>
-          <div class="d-flex justify-content-around">
-            <!-- <div>
-              <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
-            </div> -->
-            <div class="p-2">
-              <!-- Forgot password -->
-              <a href="">Forgot password?</a>
-            </div>
-          </div>
 
-          <!-- Sign in button -->
-          <button mdbBtn color="green" class="my-4" type="submit"style="border-radius: 40px;">Sign in</button>
 
-          <!-- Register -->
-          <p>Not a member?
-            <a data-bs-toggle="modal" data-bs-target="#signupModal" style="color: blue;">Register</a>
-          </p>
-        </form>
+<!-- Modal for Sign in-->
+<div class="modal fade" id="signinModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel">Sign in</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
         <!-- Default form login -->
+<form class="text-center border border-light p-5" [formGroup] = "exform">
+<!-- Email -->
+<div class="form-floating mb-2">
+<input type="email" formControlName = "logEmail" id="defaultLoginFormEmail" class="form-control" placeholder="E-mail" required>
+<small *ngIf = "exform.get('logEmail').invalid && exform.get('logEmail').touched" class = "text-danger">A valid email is mandatory</small>
+<label for="floatingInput">Email</label>
+</div>
 
-              </div>
-              <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div> -->
-            </div>
-          </div>
-        </div>
+<!-- Password -->
+<div class="form-floating mb-2">
+<input type="password" formControlName = "password" id="defaultLoginFormPassword" class="form-control mt-4" placeholder="Password" required>
+<small *ngIf = "exform.get('password').invalid && exform.get('password').touched" class = "text-danger">Password must have atleast 6 characters</small>
+<label for="floatingInput">Password</label>
+</div>
 
+<div class="d-flex justify-content-around">
+<!-- <div>
+  <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+</div> -->
+<div class="p-2">
+  <!-- Forgot password -->
+  <a href="">Forgot password?</a>
+</div>
+</div>
 
+<!-- Sign in button -->
+<button mdbBtn color="green" class="my-4" type="submit"style="border-radius: 40px;">Sign in</button>
 
+<!-- Register -->
+<p>Not a member?
+<a data-bs-toggle="modal" data-bs-target="#signupModal" style="color: blue;">Register</a>
+</p>
+</form>
+<!-- Default form login -->
 
-
-
-            <!-- Modal for Sign up-->
-            <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Sign up</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                       
-            <form class="text-center border border-light p-2" [formGroup] = "signUpForm">
-
-              <select class="form-select mb-1" aria-label="Default select example" id = "title" formControlName= "title"  required>
-                <option disabled selected>Title</option>
-                <option value="1">Mr.</option>
-                <option value="2">Mrs.</option>
-                <option value="3">Miss</option>
-                <option value="4">Ven.</option>
-              </select> 
-              <small *ngIf = "signUpForm.get('title').invalid && signUpForm.get('title').touched" class = "text-danger">Title is mandatory</small>
-
-
-              <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" formControlName = "firstName" required>
-              <small *ngIf = "signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched" class = "text-danger">First Name is mandatory</small>
-
-              <input type="text" id="lastName" class="form-control mb-1" placeholder="Last Name" formControlName = "lastName" required>
-              <small *ngIf = "signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched" class = "text-danger">Last Name is mandatory</small>
-              
-    
-              <input type="email" id="signUpEmail" class="form-control mb-1" placeholder="E-mail" formControlName = "signUpEmail"  required>
-              <small *ngIf = "signUpForm.get('signUpEmail').invalid && signUpForm.get('signUpEmail').touched" class = "text-danger">Your Valid Email is mandatory</small>
-
-              <input type="text" id="nic" class="form-control mb-1" placeholder="NIC" formControlName = "nic"  required>
-              <small *ngIf = "signUpForm.get('nic').invalid && signUpForm.get('nic').touched" class = "text-danger">Your NIC is mandatory</small>
-
-              <input type="date" id="dob" class="form-control mb-1" placeholder="Date of Birth" formControlName = "dob"  required>
-              <small *ngIf = "signUpForm.get('dob').invalid && signUpForm.get('dob').touched" class = "text-danger">Your Date of Birth is mandatory</small>
-
-              <input type="tel" id="mobile" class="form-control mb-1" placeholder="Mobile Number" formControlName = "mobile" required>
-              <small *ngIf = "signUpForm.get('mobile').invalid && signUpForm.get('mobile').touched" class = "text-danger">Your valid mobile number is mandatory</small>
-
-              
-              <input type="password" id="signUpPassword" class="form-control mb-1" placeholder="Password" formControlName = "signUpPassword"  required>
-              <small *ngIf = "signUpForm.get('signUpPassword').invalid && signUpForm.get('signUpPassword').touched" class = "text-danger">Password must have atleast 6 characters</small>
-
-              <input type="password" id="conSignUpPassword" class="form-control mb-1" placeholder="Confirm Password" formControlName = "conSignUpPassword" required>
-              <small *ngIf = "signUpForm.get('conSignUpPassword').invalid && signUpForm.get('conSignUpPassword').touched" class = "text-danger">Password mismatched</small>
-    
-              <div class="d-flex justify-content-around">
-                <div>
-                  
-                  <mdb-checkbox [default]="true">Agree with out terms and conditions</mdb-checkbox>
-                </div>
-              </div>
-              <button mdbBtn color="green" class="my-3" type="submit" style="border-radius: 40px;">Sign up</button>
-            </form>
-              </div>
-            </div>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  </div> -->
+</div>
+</div>
+</div>
 
 
 
 
-        <!-- Modal for Book Appointments-->
-        <div class="modal fade" id="bookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Find Your Doctor Here </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                    <!-- Default form login -->
-        <form class="text-center border border-light p-5">
+
+
+<!-- Modal for Sign up-->
+<div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Sign up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
           
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="searchDocName" placeholder="Doctor's Name">
-            <label for="floatingInput">Doctor's Name</label>
-          </div>
+<form class="text-center border border-light p-2" [formGroup] = "signUpForm">
 
-          <div class="form-floating mb-3">
-            <select class="form-select" id="searchDocSpecial" aria-label="Floating label select example" >
-              <option selected>Any</option>
-              <option value="1">Cardiologist</option>
-              <option value="2">Dental</option>
-              <option value="3">Gynocologist</option>
-            </select>
-            <label for="floatingSelect">Select Specialization</label>
-          </div>
+  <div class="form-floating mb-3">
+  <select class="form-select mb-1" aria-label="Default select example" id = "title" formControlName= "title"  required>
+    <option disabled selected>Title</option>
+    <option value="1">Mr.</option>
+    <option value="2">Mrs.</option>
+    <option value="3">Miss</option>
+    <option value="4">Ven.</option>
+  </select>
+  <label for="floatingSelect">First Name</label> 
+  <small *ngIf = "signUpForm.get('title').invalid && signUpForm.get('title').touched" class = "text-danger">Title is mandatory</small>
+  </div>
 
-          <div class="form-floating mb-3">
-            <select class="form-select" id="searchDocHos" aria-label="Floating label select example" >
-              <option selected>Any</option>
-              <option value="1">Asiri</option>
-              <option value="2">CCC</option>
-              <option value="3">Kumudu</option>
-            </select>
-            <label for="floatingSelect">Select Hospital</label>
-          </div>
+  <div class="form-floating mb-3">
+  <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" formControlName = "firstName" required>
+  <small *ngIf = "signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched" class = "text-danger">First Name is mandatory</small>
+  <label for="floatingInput">First Name</label> 
+  </div>
 
-          <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="apDate" placeholder="Appointment Date" >
-            <label for="floatingInput">Appointment Date</label>
-          </div>
-          <!-- Sign in button -->
-          <button mdbBtn color="green" class="my-4" type="submit" style="border-radius: 40px;">Search</button>
-        </form>
-        <!-- Default form login -->
+  <div class="form-floating mb-3">
+  <input type="text" id="lastName" class="form-control mb-1" placeholder="Last Name" formControlName = "lastName" required>
+  <small *ngIf = "signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched" class = "text-danger">Last Name is mandatory</small>
+  <label for="floatingInput">Last Name</label>
+</div>
 
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="form-floating mb-3">
+  <input type="email" id="signUpEmail" class="form-control mb-1" placeholder="E-mail" formControlName = "signUpEmail"  required>
+  <small *ngIf = "signUpForm.get('signUpEmail').invalid && signUpForm.get('signUpEmail').touched" class = "text-danger">Your Valid Email is mandatory</small>
+  <label for="floatingInput">Email</label>
+</div>
 
+  <div class="form-floating mb-3">
+  <input type="text" id="nic" class="form-control mb-1" placeholder="NIC" formControlName = "nic"  required>
+  <small *ngIf = "signUpForm.get('nic').invalid && signUpForm.get('nic').touched" class = "text-danger">Your NIC is mandatory</small>
+  <label for="floatingInput">NIC</label>
+</div>
 
+  <div class="form-floating mb-3">
+  <input type="date" id="dob" class="form-control mb-1" placeholder="Date of Birth" formControlName = "dob"  required>
+  <small *ngIf = "signUpForm.get('dob').invalid && signUpForm.get('dob').touched" class = "text-danger">Your Date of Birth is mandatory</small>
+  <label for="floatingInput">Date of Birth</label> 
+  </div>
 
+  <div class="form-floating mb-3">
+  <input type="phone" id="mobile" class="form-control mb-1" placeholder="Mobile Number" formControlName = "mobile" required>
+  <small *ngIf = "signUpForm.get('mobile').invalid && signUpForm.get('mobile').touched" class = "text-danger">Your valid mobile number is mandatory</small>
+  <label for="floatingInput">Mobile Number</label>
+</div>
 
+  <div class="form-floating mb-3">
+  <input type="password" id="signUpPassword" class="form-control mb-1" placeholder="Password" formControlName = "signUpPassword"  required>
+  <small *ngIf = "signUpForm.get('signUpPassword').invalid && signUpForm.get('signUpPassword').touched" class = "text-danger">Password must have atleast 6 characters</small>
+  <label for="floatingInput">Password</label>
+  </div>
 
+  <div class="form-floating mb-3">
+  <input type="password" id="conSignUpPassword" class="form-control mb-1" placeholder="Confirm Password" formControlName = "conSignUpPassword" required>
+  <small *ngIf = "signUpForm.get('conSignUpPassword').invalid && signUpForm.get('conSignUpPassword').touched" class = "text-danger">Password mismatched</small>
+  <label for="floatingInput">Confirm Password</label>
+  </div>
 
-
-        
-        <!-- Modal for Claim refund-->
-        <div class="modal fade" id="refundModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Claim Refund</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                    <!-- Default form login -->
-        <form class="text-center border border-light p-3">
-
-          <div class="form-floating mb-2">
-            <input type="text" class="form-control" id="refundRef" placeholder="Reference No." required="required">
-            <label for="floatingInput">Reference No.</label>
-          </div>
-          
-
-          <!-- Sign in button -->
-          <button mdbBtn color="green" class="my-4" type="submit" style="border-radius: 40px;">Submit</button>
-
-        </form>
-        <!-- Default form login -->
-
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="d-flex justify-content-around">
+    <div>
+      
+      <mdb-checkbox [default]="true">Agree with out terms and conditions</mdb-checkbox>
+    </div>
+  </div>
+  <button mdbBtn color="green" class="my-3" type="submit" style="border-radius: 40px;">Sign up</button>
+</form>
+  </div>
+</div>
 
 
+
+
+<!-- Modal for Book Appointments-->
+<div class="modal fade" id="bookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel">Find Your Doctor Here </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+
+<form class="text-center border border-light p-5">
+
+<div class="form-floating mb-3">
+<input type="text" class="form-control" id="searchDocName" placeholder="Doctor's Name">
+<label for="floatingInput">Doctor's Name</label>
+</div>
+
+<div class="form-floating mb-3">
+<select class="form-select" id="searchDocSpecial" aria-label="Floating label select example" >
+  <option selected>Any</option>
+  <option value="1">Cardiologist</option>
+  <option value="2">Dental</option>
+  <option value="3">Gynocologist</option>
+</select>
+<label for="floatingSelect">Select Specialization</label>
+</div>
+
+<div class="form-floating mb-3">
+<select class="form-select" id="searchDocHos" aria-label="Floating label select example" >
+  <option selected>Any</option>
+  <option value="1">Asiri</option>
+  <option value="2">CCC</option>
+  <option value="3">Kumudu</option>
+</select>
+<label for="floatingSelect">Select Hospital</label>
+</div>
+
+<div class="form-floating mb-3">
+<input type="date" class="form-control" id="apDate" placeholder="Appointment Date" >
+<label for="floatingInput">Appointment Date</label>
+</div>
+<!-- Sign in button -->
+<button mdbBtn color="green" class="my-4" type="submit" style="border-radius: 40px;">Search</button>
+</form>
+<!-- Default form login -->
+
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<!-- Modal for Claim refund-->
+<div class="modal fade" id="refundModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Claim Refund</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+          <!-- Default form login -->
+<form class="text-center border border-light p-3">
+
+<div class="form-floating mb-2">
+  <input type="text" class="form-control" id="refundRef" placeholder="Reference No." required="required">
+  <label for="floatingInput">Reference No.</label>
+</div>
+
+
+<!-- Sign in button -->
+<button mdbBtn color="green" class="my-4" type="submit" style="border-radius: 40px;">Submit</button>
+
+</form>
+<!-- Default form login -->
+
+    </div>
+  </div>
+</div>
+</div>
 
 
 
