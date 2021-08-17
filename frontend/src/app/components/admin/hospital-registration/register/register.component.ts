@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HospitalServiceService } from 'src/app/services/hospital-service.service';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +13,9 @@ export class RegisterComponent implements OnInit {
   city: string = '';
   contactNo: string = '';
   email: string = '';
+  status: string = 'active';
 
-  constructor() {}
+  constructor(private hospitalService: HospitalServiceService) {}
 
   ngOnInit(): void {}
 
@@ -27,8 +29,16 @@ export class RegisterComponent implements OnInit {
       city: this.city,
       contactNo: this.contactNo,
       email: this.email,
+      status: this.status,
     };
-
+    this.hospitalService.registerHospital(newHospital).subscribe(
+      (res) => {
+        alert('Hospital added');
+      },
+      (err) => {
+        alert('Error in adding.' + err);
+      }
+    );
     this.clearFields();
   }
 
