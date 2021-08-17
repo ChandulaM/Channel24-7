@@ -62,18 +62,18 @@
               </div>
               <div class="modal-body">
                     <!-- Default form login -->
-        <form class="text-center border border-light p-5">
+        <form class="text-center border border-light p-5" [formGroup] = "exform">
           <!-- Email -->
-          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" required="required">
-
+          <input type="email" formControlName = "logEmail" id="defaultLoginFormEmail" class="form-control" placeholder="E-mail" required>
+          <small *ngIf = "exform.get('logEmail').invalid && exform.get('logEmail').touched" class = "text-danger">A valid email is mandatory</small>
           <!-- Password -->
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" required="required">
-
+          <input type="password" formControlName = "password" id="defaultLoginFormPassword" class="form-control mt-4" placeholder="Password" required>
+          <small *ngIf = "exform.get('password').invalid && exform.get('password').touched" class = "text-danger">Password must have atleast 6 characters</small>
           <div class="d-flex justify-content-around">
             <!-- <div>
               <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
             </div> -->
-            <div>
+            <div class="p-2">
               <!-- Forgot password -->
               <a href="">Forgot password?</a>
             </div>
@@ -111,45 +111,53 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                        <!-- Default form login -->
-            <form class="text-center border border-light p-2">
-              <select class="form-select mb-1" aria-label="Default select example" id = "title">
-                <option selected>Title</option>
+                       
+            <form class="text-center border border-light p-2" [formGroup] = "signUpForm">
+
+              <select class="form-select mb-1" aria-label="Default select example" id = "title" formControlName= "title"  required>
+                <option disabled selected>Title</option>
                 <option value="1">Mr.</option>
                 <option value="2">Mrs.</option>
                 <option value="3">Miss</option>
                 <option value="4">Ven.</option>
-              </select>
-              <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" required="required">
-              <input type="text" id="lastName" class="form-control mb-1" placeholder="Last Name" required="required">
+              </select> 
+              <small *ngIf = "signUpForm.get('title').invalid && signUpForm.get('title').touched" class = "text-danger">Title is mandatory</small>
+
+
+              <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" formControlName = "firstName" required>
+              <small *ngIf = "signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched" class = "text-danger">First Name is mandatory</small>
+
+              <input type="text" id="lastName" class="form-control mb-1" placeholder="Last Name" formControlName = "lastName" required>
+              <small *ngIf = "signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched" class = "text-danger">Last Name is mandatory</small>
               
-              <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" required="required">
-              <!-- Email -->
-              <input type="email" id="defaultLoginFormEmail" class="form-control mb-1" placeholder="E-mail" required="required">
-              <input type="text" id="nic" class="form-control mb-1" placeholder="NIC" required="required">
-              <input type="date" id="firstName" class="form-control mb-1" placeholder="Date of Birth" required="required">
-              <input type="text" id="mobile" class="form-control mb-1" placeholder="Mobile Number" required="required">
-              <!-- Password -->
-              <input type="password" id="defaultLoginFormPassword" class="form-control mb-1" placeholder="Password" required="required">
-              <input type="password" id="defaultLoginFormPassword" class="form-control mb-1" placeholder="Confirm Password" required="required">
+    
+              <input type="email" id="signUpEmail" class="form-control mb-1" placeholder="E-mail" formControlName = "signUpEmail"  required>
+              <small *ngIf = "signUpForm.get('signUpEmail').invalid && signUpForm.get('signUpEmail').touched" class = "text-danger">Your Valid Email is mandatory</small>
+
+              <input type="text" id="nic" class="form-control mb-1" placeholder="NIC" formControlName = "nic"  required>
+              <small *ngIf = "signUpForm.get('nic').invalid && signUpForm.get('nic').touched" class = "text-danger">Your NIC is mandatory</small>
+
+              <input type="date" id="dob" class="form-control mb-1" placeholder="Date of Birth" formControlName = "dob"  required>
+              <small *ngIf = "signUpForm.get('dob').invalid && signUpForm.get('dob').touched" class = "text-danger">Your Date of Birth is mandatory</small>
+
+              <input type="tel" id="mobile" class="form-control mb-1" placeholder="Mobile Number" formControlName = "mobile" required>
+              <small *ngIf = "signUpForm.get('mobile').invalid && signUpForm.get('mobile').touched" class = "text-danger">Your valid mobile number is mandatory</small>
+
+              
+              <input type="password" id="signUpPassword" class="form-control mb-1" placeholder="Password" formControlName = "signUpPassword"  required>
+              <small *ngIf = "signUpForm.get('signUpPassword').invalid && signUpForm.get('signUpPassword').touched" class = "text-danger">Password must have atleast 6 characters</small>
+
+              <input type="password" id="conSignUpPassword" class="form-control mb-1" placeholder="Confirm Password" formControlName = "conSignUpPassword" required>
+              <small *ngIf = "signUpForm.get('conSignUpPassword').invalid && signUpForm.get('conSignUpPassword').touched" class = "text-danger">Password mismatched</small>
     
               <div class="d-flex justify-content-around">
                 <div>
-                  <!-- Remember me -->
+                  
                   <mdb-checkbox [default]="true">Agree with out terms and conditions</mdb-checkbox>
                 </div>
               </div>
-    
-              <!-- Sign in button -->
               <button mdbBtn color="green" class="my-3" type="submit" style="border-radius: 40px;">Sign up</button>
             </form>
-            <!-- Default form login -->
-    
-                  </div>
-                  <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  </div> -->
-                </div>
               </div>
             </div>
 
@@ -173,30 +181,32 @@
             <label for="floatingInput">Doctor's Name</label>
           </div>
 
-          <select class="mdb-select md-form" searchable="Search here..">
-            <option value="" disabled selected>Choose your country</option>
-            <option value="1"></option>
-            <option value="2">Germany</option>
-            <option value="3">France</option>
-            <option value="3">Poland</option>
-            <option value="3">Japan</option>
-          </select>
+          <div class="form-floating mb-3">
+            <select class="form-select" id="searchDocSpecial" aria-label="Floating label select example" >
+              <option selected>Any</option>
+              <option value="1">Cardiologist</option>
+              <option value="2">Dental</option>
+              <option value="3">Gynocologist</option>
+            </select>
+            <label for="floatingSelect">Select Specialization</label>
+          </div>
 
           <div class="form-floating mb-3">
             <select class="form-select" id="searchDocHos" aria-label="Floating label select example" >
               <option selected>Any</option>
               <option value="1">Asiri</option>
-              <option value="2">Dental</option>
-              <option value="3">Gynocologist</option>
+              <option value="2">CCC</option>
+              <option value="3">Kumudu</option>
             </select>
             <label for="floatingSelect">Select Hospital</label>
           </div>
+
           <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="searchDocName" placeholder="Appointment Date">
+            <input type="date" class="form-control" id="apDate" placeholder="Appointment Date" >
             <label for="floatingInput">Appointment Date</label>
           </div>
           <!-- Sign in button -->
-          <button mdbBtn color="green" class="my-4" type="submit">Search</button>
+          <button mdbBtn color="green" class="my-4" type="submit" style="border-radius: 40px;">Search</button>
         </form>
         <!-- Default form login -->
 
@@ -222,16 +232,16 @@
               </div>
               <div class="modal-body">
                     <!-- Default form login -->
-        <form class="text-center border border-light p-5">
+        <form class="text-center border border-light p-3">
 
-          <!-- Email -->
-          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-
-          <!-- Password -->
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="refundRef" placeholder="Reference No." required="required">
+            <label for="floatingInput">Reference No.</label>
+          </div>
+          
 
           <!-- Sign in button -->
-          <button mdbBtn color="green" class="my-4" type="submit">Submit</button>
+          <button mdbBtn color="green" class="my-4" type="submit" style="border-radius: 40px;">Submit</button>
 
         </form>
         <!-- Default form login -->

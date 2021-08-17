@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardHospitalmanagerComponent } from './components/hospitalmanager/dashboard-hospitalmanager/dashboard-hospitalmanager.component';
@@ -15,6 +14,7 @@ import { RegisterComponent } from './components/admin/hospital-registration/regi
 import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
+import { ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -37,6 +37,8 @@ import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
     AppRoutingModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
