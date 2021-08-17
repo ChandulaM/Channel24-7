@@ -17,6 +17,8 @@ import { RegistrationhomeComponent } from './components/admin/hospital-registrat
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { HomeComponentsComponent } from './components/patient/home-components/ho
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
