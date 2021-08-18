@@ -1,6 +1,7 @@
 package com.channel247.backend.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Hospital {
@@ -16,6 +17,14 @@ public class Hospital {
     private String contactNo;
     private String email;
     private String hospitalRegNo;
+
+    @OneToMany(mappedBy = "hospital")
+    private List<Doctor> doctors;
+
+
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
+    }
 
     public String getContactNo() {
         return contactNo;
