@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Hospital } from 'src/app/models/Hospital';
+import { HospitalServiceService } from 'src/app/services/hospital-service.service';
 
 @Component({
   selector: 'app-hospital-list',
@@ -9,7 +11,16 @@ import { faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
 export class HospitalListComponent implements OnInit {
   faSearch = faSearch;
   faEdit = faEdit;
-  constructor() {}
+  registeredHospitals: Hospital[] = [];
+  numberOfHospitals: any;
+  pageNo: number = 1;
 
-  ngOnInit(): void {}
+  constructor(private hospitalService: HospitalServiceService) {}
+
+  ngOnInit(): void {
+    this.hospitalService.getAllHospitals().subscribe((hospitals) => {
+      this.registeredHospitals = hospitals;
+      this.numberOfHospitals = hospitals.length;
+    });
+  }
 }
