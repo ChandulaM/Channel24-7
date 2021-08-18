@@ -20,6 +20,8 @@ import { HomeComponentsComponent } from './components/patient/home-components/ho
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
