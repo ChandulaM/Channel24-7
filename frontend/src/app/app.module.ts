@@ -18,6 +18,8 @@ import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SelectAppointmentComponent } from './components/patient/select-appointment/select-appointment.component';
+import { BookAppointmentComponent } from './components/patient/book-appointment/book-appointment.component';
 
 
 
@@ -37,6 +39,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegistrationhomeComponent,
     SidenavComponent,
     HomeComponentsComponent,
+    SelectAppointmentComponent,
+    BookAppointmentComponent,
   
   ],
   imports: [
