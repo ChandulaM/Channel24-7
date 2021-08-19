@@ -18,6 +18,10 @@ import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchAppoinment1Component } from './components/patient/homepgComponents/search-appoinment1.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
+import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
+import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
+import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegistrationhomeComponent,
     SidenavComponent,
     SearchAppoinment1Component,
+    HospitalmanagerComponent,
+    DoctorsComponent,
+    AdminsidebarComponent,
+    AddDoctorComponent,
   ],
   imports: [
     BrowserModule,
