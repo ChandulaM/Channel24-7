@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div class="sidebar">
+        <h3>Dashboard</h3>
+        <ul *ngFor="let item of menuItems">
+            <li><a (click)="showPage(item.path)"><i class="fas fa-home"></i>{{item.name}}</a></li>
+        </ul> 
+        <div class="social_media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+   
+</div>

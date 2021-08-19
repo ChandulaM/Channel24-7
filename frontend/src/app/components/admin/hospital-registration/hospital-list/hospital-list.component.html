@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="main-container">
   <h1 class="reg-header">Registered Hospitals</h1>
   <form class="d-flex">
     <input
@@ -29,7 +29,11 @@
           <h5>{{ hospital.hospitalName }}</h5>
           <p>{{ hospital.hospitalAddress }}, {{ hospital.city }}</p>
         </div>
-        <button type="button" class="btn btn-info">
+        <button
+          type="button"
+          class="btn btn-info"
+          (click)="onOpenModal(hospital)"
+        >
           Manage
           <fa-icon [icon]="faEdit"></fa-icon>
         </button>
@@ -39,5 +43,153 @@
       (pageChange)="pageNo = $event"
       class="float-right"
     ></pagination-controls>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="editmodal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">
+            Edit Hospital Information
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="container modal-container">
+            <div class="row mb-2">
+              <div class="col mb-2">
+                <label for="hospitalName" class="form-label"
+                  >Hospital Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="hospitalName"
+                  name="hospitalName"
+                  [(ngModel)]="hospitalToEdit.hospitalName"
+                  placeholder="Asiri Kandy"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col mb-2">
+                <label for="hospitalRegNo" class="form-label"
+                  >Hospital Registration Number</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="hospitalRegNo"
+                  name="hospitalRegNo"
+                  [(ngModel)]="hospitalToEdit.hospitalRegNo"
+                  placeholder="153456"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col mb-2">
+                <label for="hospitalAddress" class="form-label"
+                  >Hospital Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="hospitalAddress"
+                  name="hospitalAddress"
+                  [(ngModel)]="hospitalToEdit.hospitalAddress"
+                  placeholder="No.69A, Alfred Road"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col mb-2">
+                <label for="city" class="form-label">Hospital City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  name="city"
+                  [(ngModel)]="hospitalToEdit.city"
+                  placeholder="Colombo"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col mb-2">
+                <label for="phoneNum" class="form-label"
+                  >Hospital Contact Number</label
+                >
+                <input
+                  type="phone"
+                  class="form-control"
+                  id="contactNo"
+                  name="contactNo"
+                  [(ngModel)]="hospitalToEdit.contactNo"
+                  placeholder="0116969699"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col mb-2">
+                <label for="hospitalEmail" class="form-label"
+                  >Hospital Email Address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="hospitalToEdit.email"
+                  placeholder="asiri@example.com"
+                  required
+                />
+                <input
+                  type="text"
+                  [(ngModel)]="hospitalToEdit.hospitalId"
+                  hidden
+                />
+              </div>
+            </div>
+            <div class="row justify-content-around">
+              <div class="col-6">
+                <button
+                  type="button"
+                  class="btn btn-primary edit-btns"
+                  data-bs-dismiss="modal"
+                >
+                  Save Changes
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-danger edit-btns">
+                  Remove Hospital
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

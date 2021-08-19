@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch, faEdit } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSearch,
+  faEdit,
+  faCheck,
+  faTrash,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { Hospital } from 'src/app/models/Hospital';
 import { HospitalServiceService } from 'src/app/services/hospital-service.service';
 
@@ -11,9 +17,12 @@ import { HospitalServiceService } from 'src/app/services/hospital-service.servic
 export class HospitalListComponent implements OnInit {
   faSearch = faSearch;
   faEdit = faEdit;
+  faCheck = faCheck;
+  faTrash = faTrashAlt;
   registeredHospitals: Hospital[] = [];
   numberOfHospitals: any;
   pageNo: number = 1;
+  hospitalToEdit: Hospital = new Hospital();
 
   constructor(private hospitalService: HospitalServiceService) {}
 
@@ -22,5 +31,17 @@ export class HospitalListComponent implements OnInit {
       this.registeredHospitals = hospitals;
       this.numberOfHospitals = hospitals.length;
     });
+  }
+
+  onOpenModal(hospital: Hospital): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    button.setAttribute('data-bs-target', '#editmodal');
+    container?.appendChild(button);
+    button.click();
+    this.hospitalToEdit = hospital;
   }
 }
