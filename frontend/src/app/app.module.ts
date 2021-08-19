@@ -18,8 +18,10 @@ import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
-
+import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
+import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
+import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
+import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 
 
 
@@ -36,6 +38,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HospitalListComponent,
     RegistrationhomeComponent,
     SidenavComponent,
+    SearchAppoinment1Component,
+    HospitalmanagerComponent,
+    DoctorsComponent,
+    AdminsidebarComponent,
+    AddDoctorComponent,
     HomeComponentsComponent,
   
   ],
