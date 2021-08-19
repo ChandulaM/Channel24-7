@@ -15,13 +15,14 @@ import { RegisterComponent } from './components/admin/hospital-registration/regi
 import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { SearchAppoinment1Component } from './components/patient/homepgComponents/search-appoinment1.component';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-
     DoctorsComponent,
     AdminsidebarComponent,
     AddDoctorComponent,
+    HomeComponentsComponent,
   ],
   imports: [
     BrowserModule,
