@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup,Validators,FormBuilder, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Patient } from 'src/app/models/Patient';
+import { PatientSearvicesService } from 'src/app/services/patient-searvices.service';
+import Validation from './confirmed.validator';
 
 @Component({
   selector: 'app-topnav',
@@ -8,13 +12,30 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class TopnavComponent implements OnInit {
   exform: FormGroup|any;
+  form: FormGroup|any;
   signUpForm : FormGroup|any;
   message: string = '';
 
-  constructor() { 
+   patient : Patient = new Patient();
+   submitted = false;
+
+  constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder) { 
+
   }
 
- 
+  newPatient(): void{
+    this.submitted =false;
+    this.patient = new Patient();
+  }
+
+  save() {
+    this.patientService
+    .registerPatient(this.patient).subscribe((data: any) => {
+      console.log(data)
+      this.patient = new Patient();
+    }, 
+      (error: any) => console.log(error));
+  }
 
   ngOnInit(){
 
@@ -23,27 +44,64 @@ export class TopnavComponent implements OnInit {
       password :new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
 
-    this.signUpForm = new FormGroup({
-      title :new FormControl('Title',Validators.required),
-      firstName :new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-      lastName :new FormControl(null,  [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-      signUpEmail :new FormControl(null, [Validators.required,  Validators.email]),
-      nic :new FormControl(null, [Validators.required,  Validators.minLength(12)]),
-      dob :new FormControl(null, Validators.required),
-      mobile :new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(12),  Validators.pattern('^((\\+94-?)|0)?[0-9]{9}$')]),
-      signUpPassword :new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      conSignUpPassword :new FormControl(null, Validators.required),
-    });
+    this.form = this.fb.group(
+      {
+        title: ['', Validators.required],
+        fName: ['',[Validators.required,Validators.maxLength(20)]],
+        lastName: [
+          '',
+          [
+            Validators.required,
+            Validators.maxLength(20)
+          ]
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        nic: ['',[Validators.required,  Validators.minLength(10), Validators.maxLength(12)] ],
+        mobile: ['',[Validators.required,  Validators.minLength(10), Validators.maxLength(13),  Validators.pattern('^((\\+94-?)|0)?[0-9]{9}$')] ],
+        date:['', Validators.required],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(40)
+          ]
+        ],
+        confirmPassword: ['', Validators.required],
+        acceptTerms: [false, Validators.requiredTrue]
+      },
+      {
+        validators: [Validation.match('password', 'confirmPassword')]
+      }
+    );
 
   }
 
-  onSubmit(f: NgForm) {
-    if (f.valid) {
-      this.message = 'The form is VALID';
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
+
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
     }
-    if (f.invalid){
-      this.message = 'The form is INVALID';
-    }
-   }
+
+    console.log(JSON.stringify(this.form.value, null, 2));
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.form.reset();
+  }
+
+  
 
 }
+

@@ -58,7 +58,7 @@
 <div class="modal-dialog">
 <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title" id="staticBackdropLabel">Sign in</h5>
+    <h4 class="modal-title" id="staticBackdropLabel" style="color: rgb(4, 61, 21)" >Sign in</h4>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
   <div class="modal-body">
@@ -111,91 +111,215 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Modal for Sign up-->
 <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Sign up</h5>
+        <h4 class="modal-title" id="staticBackdropLabel" style="color: rgb(4, 61, 21);">Sign up</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          
-<form class="text-center border border-light p-2" [formGroup] = "signUpForm">
+        <!-- <div [hidden]="submitted" style="width: 400px;"> -->
 
-  <div class="form-floating mb-3">
-  <select class="form-select mb-1" aria-label="Default select example" id = "title" formControlName= "title"  required>
-    <option disabled selected>Title</option>
-    <option value="1">Mr.</option>
-    <option value="2">Mrs.</option>
-    <option value="3">Miss</option>
-    <option value="4">Ven.</option>
-  </select>
-  <label for="floatingSelect">First Name</label> 
-  <small *ngIf = "signUpForm.get('title').invalid && signUpForm.get('title').touched" class = "text-danger">Title is mandatory</small>
-  </div>
+    <div class="register-form">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-  <div class="form-floating mb-3">
-  <input type="text" id="firstName" class="form-control mb-1" placeholder="First Name" formControlName = "firstName" required>
-  <small *ngIf = "signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched" class = "text-danger">First Name is mandatory</small>
-  <label for="floatingInput">First Name</label> 
-  </div>
+        <div class="form-group">
+          <label>Title</label>
+          <select
+            type="text"
+            formControlName="title"
+            class="form-select"
+            [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
+          >
+          <option disabled selected>Title</option>
+          <option value="1">Mr.</option>
+          <option value="2">Mrs.</option>
+          <option value="3">Miss</option>
+          <option value="4">Ven.</option>
+        </select>
+          <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+            <div *ngIf="f.title.errors.required">Tilte is required</div>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-  <input type="text" id="lastName" class="form-control mb-1" placeholder="Last Name" formControlName = "lastName" required>
-  <small *ngIf = "signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched" class = "text-danger">Last Name is mandatory</small>
-  <label for="floatingInput">Last Name</label>
-</div>
+        <div class="form-group">
+          <label>First Name</label>
+          <input
+            type="text"
+            formControlName="fName"
+            class="form-control"
+            [ngClass]="{'is-invalid': submitted && f.fName.errors}"
+          />
+          <div *ngIf="submitted && f.fName.errors" class="invalid-feedback">
+            <div *ngIf="f.fName.errors.required">First name is required</div>
+            <div *ngIf="f.fName.errors.maxlength">
+              Last name must not exceed 20 characters
+            </div>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-  <input type="email" id="signUpEmail" class="form-control mb-1" placeholder="E-mail" formControlName = "signUpEmail"  required>
-  <small *ngIf = "signUpForm.get('signUpEmail').invalid && signUpForm.get('signUpEmail').touched" class = "text-danger">Your Valid Email is mandatory</small>
-  <label for="floatingInput">Email</label>
-</div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input
+            type="text"
+            formControlName="lastName"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+          />
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last name is required</div>
+            <div *ngIf="f.lastName.errors.maxlength">
+              Last name must not exceed 20 characters
+            </div>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-  <input type="text" id="nic" class="form-control mb-1" placeholder="NIC" formControlName = "nic"  required>
-  <small *ngIf = "signUpForm.get('nic').invalid && signUpForm.get('nic').touched" class = "text-danger">Your NIC is mandatory</small>
-  <label for="floatingInput">NIC</label>
-</div>
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="text"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email is invalid</div>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-  <input type="date" id="dob" class="form-control mb-1" placeholder="Date of Birth" formControlName = "dob"  required>
-  <small *ngIf = "signUpForm.get('dob').invalid && signUpForm.get('dob').touched" class = "text-danger">Your Date of Birth is mandatory</small>
-  <label for="floatingInput">Date of Birth</label> 
-  </div>
+        <div class="form-group">
+          <label>NIC</label>
+          <input
+            type="text"
+            formControlName="nic"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.nic.errors }"
+          />
+          <div *ngIf="submitted && f.nic.errors" class="invalid-feedback">
+            <div *ngIf="f.nic.errors.required">Nic is required</div>
+            <div *ngIf="f.nic.errors.minlength">Nic must have atleast 10 characters</div>
+            <div *ngIf="f.nic.errors.maxlength">Nic can not exeed 12 characters</div>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-  <input type="phone" id="mobile" class="form-control mb-1" placeholder="Mobile Number" formControlName = "mobile" required>
-  <small *ngIf = "signUpForm.get('mobile').invalid && signUpForm.get('mobile').touched" class = "text-danger">Your valid mobile number is mandatory</small>
-  <label for="floatingInput">Mobile Number</label>
-</div>
+        <div class="form-group">
+          <label>Mobile</label>
+          <input
+            type="text"
+            formControlName="mobile"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+          />
+          <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+            <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+            <div *ngIf="f.mobile.errors.minlength">Mobile must have atleast 10 numbers</div>
+            <div *ngIf="f.mobile.errors.maxlength">Mobile can not exeed 12 numbers</div>
+            <div *ngIf="f.mobile.errors.pattern">Enter a valid number</div>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-  <input type="password" id="signUpPassword" class="form-control mb-1" placeholder="Password" formControlName = "signUpPassword"  required>
-  <small *ngIf = "signUpForm.get('signUpPassword').invalid && signUpForm.get('signUpPassword').touched" class = "text-danger">Password must have atleast 6 characters</small>
-  <label for="floatingInput">Password</label>
-  </div>
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input
+            type="date"
+            formControlName="date"
+            class="form-control"
+            [max]="getToday()"
+            [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
+          />
+          <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+            <div *ngIf="f.date.errors.required">Date of bitrh is required</div>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-  <input type="password" id="conSignUpPassword" class="form-control mb-1" placeholder="Confirm Password" formControlName = "conSignUpPassword" required>
-  <small *ngIf = "signUpForm.get('conSignUpPassword').invalid && signUpForm.get('conSignUpPassword').touched" class = "text-danger">Password mismatched</small>
-  <label for="floatingInput">Confirm Password</label>
-  </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password?.errors }"
+          />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+            <div *ngIf="f.password.errors.maxlength">
+              Username must not exceed 40 characters
+            </div>
+          </div>
+        </div>
 
-  <div class="d-flex justify-content-around">
-    <div>
-      
-      <mdb-checkbox [default]="true">Agree with out terms and conditions</mdb-checkbox>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            formControlName="confirmPassword"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword?.errors}"
+          />
+          <div
+            *ngIf="submitted && f.confirmPassword.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.confirmPassword.errors.required">
+              Confirm Password is required
+            </div>
+            <div *ngIf="f.confirmPassword.errors.matching">
+              Confirm Password does not match
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group form-check">
+          <input
+            type="checkbox"
+            formControlName="acceptTerms"
+            class="form-check-input"
+            [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"
+          />
+          <label for="acceptTerms" class="form-check-label"
+            >I have read and agree to the Terms</label
+          >
+          <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
+            Accept Terms is required
+          </div>
+        </div>
+
+        <div class="form-group float-right">  
+          <button
+            type="button"
+            (click)="onReset()"
+            class="btn btn-warning"
+            style="border-radius: 20px;"
+          >
+            Reset
+          </button>
+          <button type="submit" class="btn btn-primary" style="border-radius: 20px;">Register</button>
+        </div>
+      </form>
     </div>
-  </div>
-  <button mdbBtn color="green" class="my-3" type="submit" style="border-radius: 40px;">Sign up</button>
-</form>
-  </div>
-</div>
-
-
-
+    <div [hidden]="!submitted">
+      <h4 style="text-align: center; color: green; font-size: small;">You submitted successfully!</h4>
+    </div> 
+      </div>
+    </div>
 
 <!-- Modal for Book Appointments-->
 <div class="modal fade" id="bookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -261,18 +385,14 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-          <!-- Default form login -->
+<!-- Default form login -->
 <form class="text-center border border-light p-3">
-
 <div class="form-floating mb-2">
   <input type="text" class="form-control" id="refundRef" placeholder="Reference No." required="required">
   <label for="floatingInput">Reference No.</label>
 </div>
-
-
 <!-- Sign in button -->
 <button mdbBtn color="green" class="my-4" type="submit" style="border-radius: 40px;">Submit</button>
-
 </form>
 <!-- Default form login -->
 
