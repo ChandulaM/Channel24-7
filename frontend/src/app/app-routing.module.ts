@@ -3,9 +3,10 @@ import { RouterModule, Routes, ExtraOptions} from '@angular/router';
 import { DashboardHospitalmanagerComponent } from './components/hospitalmanager/dashboard-hospitalmanager/dashboard-hospitalmanager.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
+import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
+import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
+import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
-
-
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -15,8 +16,27 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [
   {
+    path: "hospitalmanager",
+    redirectTo: 'hospitalmanager/dashboard',
+    pathMatch: "full"
+  },
+  {
     path: 'hospitalmanager',
-    component: DashboardHospitalmanagerComponent,
+    component: HospitalmanagerComponent,
+    children: [
+      {
+        path: "dashboard",
+        component: DashboardHospitalmanagerComponent
+      },
+      {
+        path: "doctors",
+        component: DoctorsComponent
+      },
+      {
+        path: "adddoctor",
+        component: AddDoctorComponent
+      }
+    ]
   },
   {
     path: 'admin/registerHospital',
