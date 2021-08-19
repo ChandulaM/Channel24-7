@@ -30,7 +30,7 @@ export class TopnavComponent implements OnInit {
 
   save() {
     this.patientService
-    .registerPatient(this.patient).subscribe((data: any) => {
+    .registerPatient(this.form.value).subscribe((data: any) => {
       console.log(data)
       this.patient = new Patient();
     }, 
@@ -47,7 +47,7 @@ export class TopnavComponent implements OnInit {
     this.form = this.fb.group(
       {
         title: ['', Validators.required],
-        fName: ['',[Validators.required,Validators.maxLength(20)]],
+        firstName: ['',[Validators.required,Validators.maxLength(20)]],
         lastName: [
           '',
           [
@@ -57,8 +57,8 @@ export class TopnavComponent implements OnInit {
         ],
         email: ['', [Validators.required, Validators.email]],
         nic: ['',[Validators.required,  Validators.minLength(10), Validators.maxLength(12)] ],
-        mobile: ['',[Validators.required,  Validators.minLength(10), Validators.maxLength(13),  Validators.pattern('^((\\+94-?)|0)?[0-9]{9}$')] ],
-        date:['', Validators.required],
+        phone: ['',[Validators.required,  Validators.minLength(10), Validators.maxLength(13),  Validators.pattern('^((\\+94-?)|0)?[0-9]{9}$')] ],
+        dob:['', Validators.required],
         password: [
           '',
           [
@@ -92,7 +92,7 @@ export class TopnavComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
+    this.save();
     console.log(JSON.stringify(this.form.value, null, 2));
   }
 
