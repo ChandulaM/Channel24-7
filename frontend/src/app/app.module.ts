@@ -22,6 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegistrationhomeComponent,
     SidenavComponent,
     HomeComponentsComponent,
+  
   ],
   imports: [
     BrowserModule,
