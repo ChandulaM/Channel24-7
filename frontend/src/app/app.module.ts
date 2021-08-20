@@ -30,6 +30,10 @@ import { HosmanagerListComponent } from './components/admin/hospital-manager-reg
 import { LabAssistantAcceptComponent } from './components/admin/lab-assistant-registration/lab-assistant-accept/lab-assistant-accept.component';
 import { LabAssistantListComponent } from './components/admin/lab-assistant-registration/lab-assistant-list/lab-assistant-list.component';
 import { HospitalManagerRegistrationComponent } from './components/admin/hospital-manager-registration/hospital-manager-registration.component';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
+import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
+import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,10 @@ import { HospitalManagerRegistrationComponent } from './components/admin/hospita
     HosmanagerListComponent,
     LabAssistantAcceptComponent,
     LabAssistantListComponent,
+    PatientDetailsComponent,
+    PatientCheckOutComponent,
+    PatientProfileComponent,
+    MyAppointmentsComponent
   ],
   imports: [
     BrowserModule,

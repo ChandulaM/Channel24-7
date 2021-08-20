@@ -8,9 +8,12 @@ import { BookAppointmentComponent } from './components/patient/book-appointment/
 import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
-import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { HospitalManagerRegistrationComponent } from './components/admin/hospital-manager-registration/hospital-manager-registration.component';
 import { LabAssistantRegistrationComponent } from './components/admin/lab-assistant-registration/lab-assistant-registration.component';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
+import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
+import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -65,7 +68,22 @@ const routes: Routes = [
   {
     path: 'patient/bk',
     component: BookAppointmentComponent,
-  },
+  },{
+    path: 'patient/pd',
+    component: PatientDetailsComponent,
+  }, 
+  {
+    path: 'patient/pc',
+    component: PatientCheckOutComponent,
+  }, 
+  {
+    path: 'patient/my-appointments',
+    component: MyAppointmentsComponent,
+  }, 
+  {
+    path: 'patient/my-profile',
+    component: PatientProfileComponent,
+  }, 
 ];
 
 @NgModule({
