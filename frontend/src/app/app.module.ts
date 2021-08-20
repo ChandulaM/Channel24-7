@@ -17,11 +17,14 @@ import { RegistrationhomeComponent } from './components/admin/hospital-registrat
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SelectAppointmentComponent } from './components/patient/select-appointment/select-appointment.component';
+import { BookAppointmentComponent } from './components/patient/book-appointment/book-appointment.component';
 import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
     AdminsidebarComponent,
     AddDoctorComponent,
     HomeComponentsComponent,
+    SelectAppointmentComponent,
+    BookAppointmentComponent,
     SidenavComponent,
+
   ],
   imports: [
     BrowserModule,
