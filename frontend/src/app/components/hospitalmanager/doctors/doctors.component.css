@@ -1,0 +1,10 @@
+.sub-header {
+    background-color: #efefef;
+    align-items: center;
+    padding: 10px;
+}
+
+.sub-header .item {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -14,8 +14,7 @@ import { ImageSliderComponent } from './components/patient/image-slider/image-sl
 import { RegisterComponent } from './components/admin/hospital-registration/register/register.component';
 import { HospitalListComponent } from './components/admin/hospital-registration/hospital-list/hospital-list.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
-import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SelectAppointmentComponent } from './components/patient/select-appointment/select-appointment.component';
@@ -23,8 +22,13 @@ import { BookAppointmentComponent } from './components/patient/book-appointment/
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
-
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
+import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
+import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
+import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
+import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
+import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +42,10 @@ import { PatientProfileComponent } from './components/patient/patient-profile/pa
     RegisterComponent,
     HospitalListComponent,
     RegistrationhomeComponent,
-    SidenavComponent,
+    HospitalmanagerComponent,
+    DoctorsComponent,
+    AdminsidebarComponent,
+    AddDoctorComponent,
     HomeComponentsComponent,
     SelectAppointmentComponent,
     BookAppointmentComponent,
@@ -46,7 +53,7 @@ import { PatientProfileComponent } from './components/patient/patient-profile/pa
     PatientCheckOutComponent,
     MyAppointmentsComponent,
     PatientProfileComponent,
-  
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,

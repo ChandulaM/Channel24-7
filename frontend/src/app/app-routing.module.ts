@@ -9,6 +9,11 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
+import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
+import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
+import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
+
+
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -18,8 +23,27 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [
   {
+    path: "hospitalmanager",
+    redirectTo: 'hospitalmanager/dashboard',
+    pathMatch: "full"
+  },
+  {
     path: 'hospitalmanager',
-    component: DashboardHospitalmanagerComponent,
+    component: HospitalmanagerComponent,
+    children: [
+      {
+        path: "dashboard",
+        component: DashboardHospitalmanagerComponent
+      },
+      {
+        path: "doctors",
+        component: DoctorsComponent
+      },
+      {
+        path: "adddoctor",
+        component: AddDoctorComponent
+      }
+    ]
   },
   {
     path: 'admin/registerHospital',
