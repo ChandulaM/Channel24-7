@@ -5,8 +5,10 @@ import { RegistrationhomeComponent } from './components/admin/hospital-registrat
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
 import { SelectAppointmentComponent } from './components/patient/select-appointment/select-appointment.component';
 import { BookAppointmentComponent } from './components/patient/book-appointment/book-appointment.component';
-
-
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
+import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
+import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -34,6 +36,22 @@ const routes: Routes = [
   {
     path: 'patient/bk',
     component: BookAppointmentComponent,
+  }, 
+  {
+    path: 'patient/pd',
+    component: PatientDetailsComponent,
+  }, 
+  {
+    path: 'patient/pc',
+    component: PatientCheckOutComponent,
+  }, 
+  {
+    path: 'patient/my-appointments',
+    component: MyAppointmentsComponent,
+  }, 
+  {
+    path: 'patient/my-profile',
+    component: PatientProfileComponent,
   }, 
 ];
 

@@ -20,10 +20,11 @@ import { HomeComponentsComponent } from './components/patient/home-components/ho
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SelectAppointmentComponent } from './components/patient/select-appointment/select-appointment.component';
 import { BookAppointmentComponent } from './components/patient/book-appointment/book-appointment.component';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
+import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 
-
-
-
+import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,10 @@ import { BookAppointmentComponent } from './components/patient/book-appointment/
     HomeComponentsComponent,
     SelectAppointmentComponent,
     BookAppointmentComponent,
+    PatientDetailsComponent,
+    PatientCheckOutComponent,
+    MyAppointmentsComponent,
+    PatientProfileComponent,
   
   ],
   imports: [
