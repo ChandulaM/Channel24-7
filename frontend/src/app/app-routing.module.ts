@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, ExtraOptions} from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { DashboardHospitalmanagerComponent } from './components/hospitalmanager/dashboard-hospitalmanager/dashboard-hospitalmanager.component';
 import { RegistrationhomeComponent } from './components/admin/hospital-registration/registration-home/registrationhome.component';
 import { HomepgComponent } from './components/patient/homepg/homepg.component';
@@ -9,7 +9,8 @@ import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalm
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
-
+import { HospitalManagerRegistrationComponent } from './components/admin/hospital-manager-registration/hospital-manager-registration.component';
+import { LabAssistantRegistrationComponent } from './components/admin/lab-assistant-registration/lab-assistant-registration.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -19,44 +20,52 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [
   {
-    path: "hospitalmanager",
+    path: 'hospitalmanager',
     redirectTo: 'hospitalmanager/dashboard',
-    pathMatch: "full"
+    pathMatch: 'full',
   },
   {
     path: 'hospitalmanager',
     component: HospitalmanagerComponent,
     children: [
       {
-        path: "dashboard",
-        component: DashboardHospitalmanagerComponent
+        path: 'dashboard',
+        component: DashboardHospitalmanagerComponent,
       },
       {
-        path: "doctors",
-        component: DoctorsComponent
+        path: 'doctors',
+        component: DoctorsComponent,
       },
       {
-        path: "adddoctor",
-        component: AddDoctorComponent
-      }
-    ]
+        path: 'adddoctor',
+        component: AddDoctorComponent,
+      },
+    ],
   },
   {
-    path: 'admin/registerHospital',
+    path: 'admin',
     component: RegistrationhomeComponent,
+  },
+  {
+    path: 'admin/hospital-managers',
+    component: HospitalManagerRegistrationComponent,
+  },
+  {
+    path: 'admin/lab-assistants',
+    component: LabAssistantRegistrationComponent,
   },
   {
     path: 'patient/home',
     component: HomepgComponent,
-  }, 
+  },
   {
     path: 'patient/sa',
     component: SelectAppointmentComponent,
-  }, 
+  },
   {
     path: 'patient/bk',
     component: BookAppointmentComponent,
-  }, 
+  },
 ];
 
 @NgModule({

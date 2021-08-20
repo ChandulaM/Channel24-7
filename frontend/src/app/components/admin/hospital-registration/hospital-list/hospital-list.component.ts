@@ -44,4 +44,39 @@ export class HospitalListComponent implements OnInit {
     button.click();
     this.hospitalToEdit = hospital;
   }
+
+  onSaveChanges(): void {
+    this.hospitalService.updateHospitaleDetais(this.hospitalToEdit).subscribe(
+      (res) => {
+        if (res) {
+          alert('Information Updated');
+          this.closeModal();
+        }
+      },
+      (err) => alert('Error while updating')
+    );
+  }
+
+  onRemoveHospital() {
+    const confirmation = confirm(
+      'Are you sure you want to remove this hospital?'
+    );
+    if (confirmation) {
+      this.hospitalService.removeHospital(
+        this.hospitalToEdit.hospitalId!,
+        this.hospitalToEdit
+      );
+      this.closeModal();
+    }
+  }
+
+  closeModal(): void {
+    const modalToClose = document.getElementById('editmodal');
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.style.display = 'none';
+    closeBtn.setAttribute('data-bs-dismiss', 'modal');
+    modalToClose?.appendChild(closeBtn);
+    closeBtn.click();
+  }
 }

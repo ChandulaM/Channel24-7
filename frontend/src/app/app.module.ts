@@ -24,7 +24,12 @@ import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.c
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
-
+import { LabAssistantRegistrationComponent } from './components/admin/lab-assistant-registration/lab-assistant-registration.component';
+import { HosmanagerAcceptComponent } from './components/admin/hospital-manager-registration/hosmanager-accept/hosmanager-accept.component';
+import { HosmanagerListComponent } from './components/admin/hospital-manager-registration/hosmanager-list/hosmanager-list.component';
+import { LabAssistantAcceptComponent } from './components/admin/lab-assistant-registration/lab-assistant-accept/lab-assistant-accept.component';
+import { LabAssistantListComponent } from './components/admin/lab-assistant-registration/lab-assistant-list/lab-assistant-list.component';
+import { HospitalManagerRegistrationComponent } from './components/admin/hospital-manager-registration/hospital-manager-registration.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
     SelectAppointmentComponent,
     BookAppointmentComponent,
     SidenavComponent,
-
+    LabAssistantRegistrationComponent,
+    HospitalManagerRegistrationComponent,
+    HosmanagerAcceptComponent,
+    HosmanagerListComponent,
+    LabAssistantAcceptComponent,
+    LabAssistantListComponent,
   ],
   imports: [
     BrowserModule,
