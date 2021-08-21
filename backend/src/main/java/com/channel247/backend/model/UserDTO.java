@@ -1,36 +1,14 @@
 package com.channel247.backend.model;
 
-import com.sun.istack.NotNull;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
+@Component
+public class UserDTO {
 
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(unique = true)
-    @NotNull
     private String username;
-
-    @Column(unique = true)
-    @NotNull
+    private String email;
     private String password;
-
     private String role;
-
-    @OneToOne(mappedBy = "user")
-    private HospitalManager hospitalManager;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -40,17 +18,20 @@ public class User {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-
-    public void setHospitalManager(HospitalManager hospitalManager) {
-        this.hospitalManager = hospitalManager;
     }
 
     public String getRole() {
@@ -63,9 +44,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+        return "UserDTO{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 '}';
