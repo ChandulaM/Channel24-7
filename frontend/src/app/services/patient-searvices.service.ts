@@ -16,7 +16,21 @@ export class PatientSearvicesService {
     return this.http.post<Patient>(`${this.apiUrl}/add`, patient);
   }
 
-  getPatientById(id : number): Observable<Patient> {
+  getPatientById(id : any): Observable<Patient> {
     return this.http.get<Patient>(`${this.apiUrl}/find/${id}`);
   }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update/${id}`, data);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete/${id}`);
+  }
+
+  // findByTitle(title: any): Observable<Patient[]> {
+  //   return this.http.get<Tutorial[]>(`${baseUrl}?title=${title}`);
+  // }
+
+
 }

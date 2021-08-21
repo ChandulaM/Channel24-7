@@ -1,14 +1,28 @@
 <div class="container">
   <h2 class="reg-header">Add a Hospital</h2>
   <form class="reg-form" (ngSubmit)="onSubmit()">
+    <small *ngIf="formError" class="form-text text-muted">
+      Fields marked with a
+      <span
+        ><fa-icon [icon]="faStar" size="xs" style="color: red"></fa-icon
+      ></span>
+      are required
+    </small>
     <div class="mb-3">
       <label for="hospitalName" class="form-label">Hospital Name</label>
+      &nbsp;
+      <fa-icon
+        *ngIf="!hospital.hospitalName"
+        [icon]="faStar"
+        size="xs"
+        style="color: red"
+      ></fa-icon>
       <input
         type="text"
         class="form-control"
         id="hospitalName"
-        name="hospitalName"
-        [(ngModel)]="hospitalName"
+        name="hospital.hospitalName"
+        [(ngModel)]="hospital.hospitalName"
         placeholder="Asiri Kandy"
         required
       />
@@ -16,63 +30,102 @@
     <div class="mb-3">
       <label for="hospitalRegNo" class="form-label"
         >Hospital Registration Number</label
-      >
+      >&nbsp;
+      <fa-icon
+        *ngIf="!hospital.hospitalRegNo"
+        [icon]="faStar"
+        size="xs"
+        style="color: red"
+      ></fa-icon>
       <input
         type="text"
         class="form-control"
         id="hospitalRegNo"
-        name="hospitalRegNo"
-        [(ngModel)]="hospitalRegNo"
+        name="hospital.hospitalRegNo"
+        [(ngModel)]="hospital.hospitalRegNo"
         placeholder="153456"
         required
       />
+      <small *ngIf="hospitalRegNoError" style="color: red" class="form-text">
+        Please enter a valid registration number.
+      </small>
     </div>
     <div class="mb-3">
       <label for="hospitalAddress" class="form-label">Hospital Address</label>
+      &nbsp;
+      <fa-icon
+        *ngIf="!hospital.hospitalAddress"
+        [icon]="faStar"
+        size="xs"
+        style="color: red"
+      ></fa-icon>
       <input
         type="text"
         class="form-control"
-        id="hospitalAddress"
-        name="hospitalAddress"
-        [(ngModel)]="hospitalAddress"
+        id="hospital.hospitalAddress"
+        name="hospital.hospitalAddress"
+        [(ngModel)]="hospital.hospitalAddress"
         placeholder="No.69A, Alfred Road"
         required
       />
     </div>
     <div class="mb-3">
       <label for="city" class="form-label">Hospital City</label>
+      &nbsp;
+      <fa-icon
+        *ngIf="!hospital.city"
+        [icon]="faStar"
+        size="xs"
+        style="color: red"
+      ></fa-icon>
       <input
         type="text"
         class="form-control"
         id="city"
-        name="city"
-        [(ngModel)]="city"
+        name="hospital.city"
+        [(ngModel)]="hospital.city"
         placeholder="Colombo"
         required
       />
     </div>
     <div class="mb-3">
       <label for="phoneNum" class="form-label">Hospital Contact Number</label>
+      &nbsp;
+      <fa-icon
+        *ngIf="!hospital.contactNo"
+        [icon]="faStar"
+        size="xs"
+        style="color: red"
+      ></fa-icon>
       <input
         type="phone"
         class="form-control"
         id="contactNo"
-        name="contactNo"
-        [(ngModel)]="contactNo"
+        name="hospital.contactNo"
+        [(ngModel)]="hospital.contactNo"
         placeholder="0116969699"
         required
       />
+      <small *ngIf="contactNoError" style="color: red" class="form-text">
+        Please enter a valid contact number.
+      </small>
     </div>
     <div class="mb-3">
       <label for="hospitalEmail" class="form-label"
         >Hospital Email Address</label
-      >
+      >&nbsp;
+      <fa-icon
+        *ngIf="!hospital.email"
+        [icon]="faStar"
+        size="xs"
+        style="color: red"
+      ></fa-icon>
       <input
         type="email"
         class="form-control"
         id="email"
-        name="email"
-        [(ngModel)]="email"
+        name="hospital.email"
+        [(ngModel)]="hospital.email"
         placeholder="asiri@example.com"
         required
       />

@@ -1,8 +1,12 @@
-<div class="container">
-  <ul>
-    <li>Hospital</li>
-    <li>Hospital Manager</li>
-    <li>Lab Assistant</li>
-    <li>Reports</li>
-  </ul>
+<div class="wrapper">
+  <div class="sidebar">
+    <h3>Channel24/7</h3>
+    <ul *ngFor="let item of menuItems">
+      <li>
+        <a (click)="showPage(item.path)"
+          ><fa-icon [icon]="item.icon" size="lg"></fa-icon> {{ item.name }}</a
+        >
+      </li>
+    </ul>
+  </div>
 </div>
