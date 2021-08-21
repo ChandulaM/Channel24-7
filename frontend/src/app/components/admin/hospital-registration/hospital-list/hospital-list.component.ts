@@ -27,6 +27,10 @@ export class HospitalListComponent implements OnInit {
   constructor(private hospitalService: HospitalServiceService) {}
 
   ngOnInit(): void {
+    this.getAllRegisteredHospitals();
+  }
+
+  getAllRegisteredHospitals(): void {
     this.hospitalService.getAllHospitals().subscribe((hospitals) => {
       this.registeredHospitals = hospitals;
       this.numberOfHospitals = hospitals.length;
@@ -62,9 +66,15 @@ export class HospitalListComponent implements OnInit {
       'Are you sure you want to remove this hospital?'
     );
     if (confirmation) {
-      this.hospitalService.removeHospital(
-        this.hospitalToEdit.hospitalId!,
-        this.hospitalToEdit
+      this.hospitalToEdit.status = 'inactive';
+      this.hospitalService.updateHospitaleDetais(this.hospitalToEdit).subscribe(
+        (res) => {
+          alert('Hospital removed successfully');
+          this.getAllRegisteredHospitals();
+        },
+        (err) => {
+          alert('Error while removing hospital');
+        }
       );
       this.closeModal();
     }

@@ -68,22 +68,23 @@ const routes: Routes = [
   {
     path: 'patient/bk',
     component: BookAppointmentComponent,
-  },{
+  },
+  {
     path: 'patient/pd',
     component: PatientDetailsComponent,
-  }, 
+  },
   {
     path: 'patient/pc',
     component: PatientCheckOutComponent,
-  }, 
+  },
   {
     path: 'patient/my-appointments',
     component: MyAppointmentsComponent,
-  }, 
+  },
   {
     path: 'patient/my-profile',
     component: PatientProfileComponent,
-  }, 
+  },
 ];
 
 @NgModule({
