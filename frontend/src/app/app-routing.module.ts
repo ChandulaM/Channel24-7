@@ -8,6 +8,11 @@ import { BookAppointmentComponent } from './components/patient/book-appointment/
 import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
+
+import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
+import { RegisterHospitalmanagerComponent } from './components/hospitalmanager/register-hospitalmanager/register-hospitalmanager.component';
+
+import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { HospitalManagerRegistrationComponent } from './components/admin/hospital-manager-registration/hospital-manager-registration.component';
 import { LabAssistantRegistrationComponent } from './components/admin/lab-assistant-registration/lab-assistant-registration.component';
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
@@ -22,6 +27,10 @@ const routerOptions: ExtraOptions = {
 };
 
 const routes: Routes = [
+  {
+    path: "registerhospitalmanager",
+    component: RegisterHospitalmanagerComponent
+  },
   {
     path: 'hospitalmanager',
     redirectTo: 'hospitalmanager/dashboard',
@@ -40,10 +49,14 @@ const routes: Routes = [
         component: DoctorsComponent,
       },
       {
-        path: 'adddoctor',
-        component: AddDoctorComponent,
+        path: "adddoctor",
+        component: AddDoctorComponent
       },
-    ],
+      {
+        path: "doctors/:id",
+        component: SingleDoctorComponent
+      }
+    ]
   },
   {
     path: 'admin',

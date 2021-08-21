@@ -4,52 +4,57 @@
         <p>dashboard / adddoctor</p>
     </div>
 
-    <form class="addform-container">
+
+    <form class="addform-container" #userForm="ngForm" (ngSubmit)="saveDoctor()" novalidate>
         <div class="row justify-content-center">
             <div class="col-lg-6 col-sm-8">
                 <div class="row">
                     <div class="col-lg-6 col-sm-6" style="display: flex;flex-direction: column;">
-                        <img style="width: 200px;" class="img-thumbnail" src="https://www.w3schools.com/howto/img_avatar.png">
-                        <input style="margin-top: 20px;" type="file" > 
+                        <img style="width: 200px;" class="img-thumbnail" src="{{previewImage}}">
+                        <input (change)="onChangeImage($event)" style="margin-top: 20px;" type="file" > 
                     </div>
+                    <small [class.d-none]="!isImageError" class="text-danger">Only images are support</small>
                 </div>
-                <div class="fom-group row mt-4">
+                <div class="form-group row mt-4">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="staticEmail" placeholder="email@example.com">
+                        <input type="text" required #email="ngModel" name="email" [(ngModel)]="emailText" class="form-control" id="staticEmail" placeholder="email@example.com">
                     </div>
+                    <small [class.d-none]="email.valid || email.untouched" class="text-danger">Please Enter Email</small>
                 </div>
-                <div class="fom-group row mt-4">
+                <div class="form-group row mt-4">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Phone</label>
                     <div class="col-sm-10">
-                        <input type="text"  class="form-control-sm" id="staticEmail" placeholder="7123444556">
+                        <input type="text" required #number="ngModel" class="form-control-sm" id="staticEmail" name="number" [(ngModel)]="numberText"  placeholder="7123444556">
                     </div>
+                    <small class="text-danger" [class.d-none]="number.valid || number.untouched">Please Enter Phone Number</small>
                 </div>
-                <div class="fom-group row mt-4">
+                <div class="form-group row mt-4">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text"  class="form-control" id="staticEmail" placeholder="Dr.Silva">
+                        <input type="text" required #name="ngModel" name="name" class="form-control" id="staticEmail" [(ngModel)]="nameText" placeholder="Dr.Silva">
                     </div>
+                    <small class="text-danger" [class.d-none]="name.valid || name.untouched">Please Enter Name</small>
                 </div>
                 <div class="fom-group row mt-4">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Speciality</label>
                     <div class="col-sm-10">
-                        <select class="form-select form-select mb-3" aria-label=".form-select-lg example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select required name="specialization" #specialization="ngModel"  class="form-select form-select mb-3" aria-label=".form-select-lg example" [(ngModel)]="specializationText">
+                            <option value="">Select </option>
+                            <option *ngFor="let specialization of specializations" value="{{specialization.id}}">{{specialization.name}}</option>
                           </select>
                     </div>
+                    <small [class.d-none]="specialization.valid || specialization.untouched" class="text-danger">Please select specialization</small>
                 </div>
-                <div class="fom-group row mt-4">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">About Doctor</label>
+                <div class="form-group row mt-4">
+                    <label for="staticEmail" class="col-sm-2 col-form-label" >About Doctor</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" required #description="ngModel" id="exampleFormControlTextarea1" rows="3" name="description" [(ngModel)]="descriptionText"></textarea>
                     </div>
+                    <small [class.d-none]="description.valid || description.untouched" class="text-danger">Please add description</small>
                 </div>
-                <div class="fom-group row mt-4">
-                    <button class="btn btn-info">Add</button>
+                <div class="form-group row mt-4">
+                    <button [class.disabled]="userForm.form.invalid && isImageError"  class="btn btn-info">Add</button>
                     <button class="btn btn-secondary mt-4">Cancel</button>
                 </div>
                 
