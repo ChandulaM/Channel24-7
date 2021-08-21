@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+
+h3 {
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.view-btn {
+  height: 2.5rem;
+  padding: 0.8rem;
+}
+
+.list-container {
+  padding: 0.75rem;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

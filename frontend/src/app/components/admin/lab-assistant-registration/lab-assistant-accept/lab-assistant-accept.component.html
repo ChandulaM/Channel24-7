@@ -1,1 +1,67 @@
-<p>lab-assistant-accept works!</p>
+<h3 class="mb-3">Pending Lab Assistant Requests</h3>
+<div class="list-container" id="main-container">
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="list-info ml-3">
+        <h5 class="card-title">Hospital Manager Name</h5>
+        <h6>Details</h6>
+      </div>
+      <button class="btn btn-primary view-btn" (click)="onViewModal()">
+        View
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="acceptOrRejectModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">
+            Accept/Reject Registration Request
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="container modal-container">
+            <div class="row justify-content-around">
+              <div class="col-6">
+                <button
+                  type="button"
+                  class="btn btn-success edit-btns"
+                  data-bs-dismiss="modal"
+                >
+                  Accept Request &nbsp;
+                  <fa-icon [icon]="faAccept"></fa-icon>
+                </button>
+              </div>
+              <div class="col-6">
+                <button
+                  type="button"
+                  class="btn btn-danger edit-btns"
+                  data-bs-dismiss="modal"
+                >
+                  Reject Request &nbsp;
+                  <fa-icon [icon]="faReject"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
