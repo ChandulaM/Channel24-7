@@ -21,6 +21,8 @@ public class Hospital {
     @OneToMany(mappedBy = "hospital")
     private List<Doctor> doctors;
 
+    @OneToOne(mappedBy = "hospital")
+    private HospitalManager hospitalManager;
 
     public void setDoctors(List<Doctor> doctors) {
         this.doctors = doctors;
