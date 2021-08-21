@@ -25,9 +25,13 @@ import { AdminsidebarComponent } from './components/common/adminsidebar/adminsid
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 
 import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DoctorServiceService } from './services/doctor-service.service';
-import { AngularFireStorageModule, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage'
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { RegisterHospitalmanagerComponent } from './components/hospitalmanager/register-hospitalmanager/register-hospitalmanager.component';
@@ -76,7 +80,7 @@ import { MyAppointmentsComponent } from './components/patient/my-appointments/my
     PatientDetailsComponent,
     PatientCheckOutComponent,
     PatientProfileComponent,
-    MyAppointmentsComponent
+    MyAppointmentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,9 +93,9 @@ import { MyAppointmentsComponent } from './components/patient/my-appointments/my
     NgxPaginationModule,
     NgbModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud")
+    AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
   ],
-  providers: [DoctorServiceService,SheduleServiceService],
+  providers: [DoctorServiceService, SheduleServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

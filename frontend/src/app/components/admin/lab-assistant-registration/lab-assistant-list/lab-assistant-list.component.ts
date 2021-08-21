@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { SampleServiceService } from '../../sample-service.service';
 
 @Component({
   selector: 'app-lab-assistant-list',
@@ -8,7 +9,18 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class LabAssistantListComponent implements OnInit {
   faSearch = faSearch;
-  constructor() {}
+  @Input() registeredAssistants: any;
+  numberOfRequests: any;
+  pageNo: number = 1;
 
-  ngOnInit(): void {}
+  constructor(
+    private service: SampleServiceService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.registeredAssistants = this.service.getRegistered();
+    this.cdr.detectChanges();
+    this.numberOfRequests = this.registeredAssistants.length;
+  }
 }

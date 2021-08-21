@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -86,6 +87,12 @@ public class HospitalManagerController {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/pending")
+    public ResponseEntity<List<HospitalManager>> getPendingHospitalManagers(){
+        List<HospitalManager> pendingHospitalManagers = hospitalManagerService.getPendingHospitalManagers();
+        return new ResponseEntity<>(pendingHospitalManagers, HttpStatus.OK);
     }
 
 }

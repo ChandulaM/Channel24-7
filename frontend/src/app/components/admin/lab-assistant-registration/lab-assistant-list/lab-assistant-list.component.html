@@ -11,13 +11,17 @@
 </form>
 
 <div class="list-container">
-  <div class="card mb-2">
+  <div *ngFor="let assistant of registeredAssistants" class="card mb-2">
     <div class="card-body">
       <div class="list-info ml-3">
-        <h5 class="card-title">Hospital Manager Name</h5>
-        <h6>Details</h6>
+        <h5 class="card-title">{{ assistant.name }}</h5>
+        <h6>{{ assistant.lab }}</h6>
       </div>
       <button class="btn btn-primary view-btn">Manage</button>
     </div>
   </div>
+  <pagination-controls
+    (pageChange)="pageNo = $event"
+    class="float-right"
+  ></pagination-controls>
 </div>
