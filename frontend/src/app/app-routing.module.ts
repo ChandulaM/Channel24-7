@@ -32,7 +32,7 @@ const routes: Routes = [
     component: RegisterHospitalmanagerComponent
   },
   {
-    path: "hospitalmanager",
+    path: 'hospitalmanager',
     redirectTo: 'hospitalmanager/dashboard',
     pathMatch: 'full',
   },

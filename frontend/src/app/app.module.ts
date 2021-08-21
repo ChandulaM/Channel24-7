@@ -44,7 +44,6 @@ import { PatientCheckOutComponent } from './components/patient/patient-check-out
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
