@@ -22,6 +22,14 @@ import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalm
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
+import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { DoctorServiceService } from './services/doctor-service.service';
+import { AngularFireStorageModule, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage'
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { RegisterHospitalmanagerComponent } from './components/hospitalmanager/register-hospitalmanager/register-hospitalmanager.component';
+import { SheduleServiceService } from './services/shedule-service.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +49,8 @@ import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-
     DoctorsComponent,
     AdminsidebarComponent,
     AddDoctorComponent,
+    SingleDoctorComponent,
+    RegisterHospitalmanagerComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +61,11 @@ import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
+    NgbModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud")
   ],
-  providers: [],
+  providers: [DoctorServiceService,SheduleServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
