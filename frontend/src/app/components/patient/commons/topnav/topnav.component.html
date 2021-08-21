@@ -21,7 +21,7 @@
       <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="clipboard-check"></mdb-icon> Medical Checkups</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect><mdb-icon far icon="list-alt"></mdb-icon> My Appointments</a>
+        <a class="nav-link waves-light" href="patient/my-appointments" mdbWavesEffect><mdb-icon far icon="list-alt"></mdb-icon> My Appointments</a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#refundModal" mdbWavesEffect><mdb-icon fas icon="hand-holding-usd"></mdb-icon> Claim Refund</a>
@@ -310,7 +310,7 @@
           >
             Reset
           </button>
-          <button type="submit" class="btn btn-primary float-right" style="border-radius: 20px;">Register</button>
+          <button type="submit" [disabled]="form.invalid" class="btn btn-primary float-right" style="border-radius: 20px;">Register</button>
         </div>
       </form>
     </div>
