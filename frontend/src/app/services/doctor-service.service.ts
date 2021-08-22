@@ -15,7 +15,11 @@ export class DoctorServiceService {
   constructor(private http: HttpClient) { }
 
   public getDoctors(): Observable<Doctors> {
-    return this.http.get<Doctors>(this.API + '/all')
+    return this.http.get<Doctors>(this.API + '/all');
+  }
+
+  public getAllDoctorsBySpecialization(name: string): Observable<Doctors> {
+    return this.http.get<Doctors>(this.API + '/all?filterBy='+name);
   }
 
   public saveDoctor(doctor: DoctorDTO): Observable<DoctorDTO> {

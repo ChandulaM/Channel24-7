@@ -1,5 +1,6 @@
 package com.channel247.backend.service;
 
+import com.channel247.backend.model.Hospital;
 import com.channel247.backend.model.HospitalManager;
 import com.channel247.backend.repository.HospitalManagerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class HospitalManagerService {
         return  savedHospitalManager;
     }
 
+
+    public boolean isHospitalExists(Hospital hospital) {
+        return repo.existsHospitalManagerByHospital(hospital);
+    }
+  
     public List<HospitalManager> getPendingHospitalManagers() {
         List<HospitalManager> pendingManagers = repo.findByStatus("pending");
         return pendingManagers;

@@ -47,6 +47,8 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
+import { HospitalManagerServiceService } from './services/hospital-manager-service.service';
+import { SpecializationServiceService } from './services/specialization-service.service';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -95,10 +97,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxPaginationModule,
     NgbModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
+    AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
     NgxSpinnerModule,
   ],
-  providers: [DoctorServiceService, SheduleServiceService],
-  bootstrap: [AppComponent],
+  providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -4,6 +4,9 @@ import { DoctorDTO, DoctorModel } from 'src/app/models/Doctor';
 import { finalize } from 'rxjs/operators'
 import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { DoctorServiceService } from 'src/app/services/doctor-service.service';
+import { SpecializationServiceService } from 'src/app/services/specialization-service.service';
+import { Specialization } from 'src/app/models/Specialization';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-doctor',
@@ -20,29 +23,23 @@ export class AddDoctorComponent implements OnInit {
    specializationText: string = '100';
    hospitalText: string = '102';
    descriptionText: string= '';
-   imageFile :any = null;   
+   imageFile :any = null;
+   loading: boolean = false;   
 
    isImageUploaded: boolean = true;
    isImageError: boolean = false;
 
-  specializations = [
-    {
-      id: '100',
-      name: 'Kidney'
-    },
-    {
-      id: '100',
-      name: 'Hart'
-    },
-    {
-      id: '100',
-      name: 'Skin'
-    }
-  ]
+  specializations: Array<Specialization> = [];
 
-  constructor(private storage: AngularFireStorage, private service: DoctorServiceService) { }
+  constructor(private storage: AngularFireStorage, private service: DoctorServiceService, private spelizationService: SpecializationServiceService, private router: Router ) { }
 
   ngOnInit(): void {
+
+    this.spelizationService.getAllSpecializations().subscribe(res => {
+      this.specializations = res.result;
+      //console.log(res.result[0].name)
+    })
+
   }
 
   onChangeImage(files: any) {
@@ -100,8 +97,13 @@ export class AddDoctorComponent implements OnInit {
 
   async saveDoctor() {
 
+    this.loading = true;
 
     await this.uploadImage()
+
+    if(this.imageText==null) {
+      this.imageText = "https://www.w3schools.com/howto/img_avatar.png"
+    }
 
     const doctor: DoctorDTO = {
       name:  this.nameText,
@@ -113,7 +115,10 @@ export class AddDoctorComponent implements OnInit {
     }
     console.log(doctor)
 
-    this.service.saveDoctor(doctor).subscribe()
+    this.service.saveDoctor(doctor).subscribe(res => {
+      this.loading= false
+      this.router.navigate(['/hospitalmanager/doctors']);
+    })
 
   }
 

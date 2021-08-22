@@ -22,4 +22,8 @@ public class UserService {
         return userRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("User not found with id of "+id));
     }
 
+    public boolean isUserAvailable(String username) {
+        return userRepo.existsUserByUsername(username);
+    }
+
 }

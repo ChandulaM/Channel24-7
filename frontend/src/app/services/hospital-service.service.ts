@@ -29,4 +29,9 @@ export class HospitalServiceService {
       hospital
     );
   }
+
+  getHospitals(): Observable<Hospital[]> {
+    return this.http.get<Hospital[]>(`${this.apiUrl}get-all`);
+  }
+
 }

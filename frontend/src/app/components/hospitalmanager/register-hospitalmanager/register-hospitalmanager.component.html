@@ -1,35 +1,140 @@
-<div class="row d-flex align-items-center h-100 justify-content-center">
-    <div class="col-sm-6 ">
-        <div class="card" style="margin-top: 100px;">
-            <div class="card-header">
-                <h4 class="card-title">Hospital Manager Registration</h4>
+<div class="registraion row d-flex justify-content-center mt-5">
+    <div class="col-lg-5 col-sm-10 col-md-10 col-10 d-flex justify-content-between">
+        <div class="step">
+            <span class="step-circle" [class.bg-danger]="step>1" [class.bg-info]="step==1">
+                <p [class.d-none]="step>1">1</p>
+                <p [class.d-none]="step==1">Ok</p>
+            </span>
+            <p>User Details</p>
+        </div>
+        <div class="step">
+            <span class="step-circle" [class.bg-danger]="step>2" [class.bg-info]="step==2 || step==1">
+                <p [class.d-none]="step>2">2</p>
+                <p [class.d-none]="step==2 || step==1">Ok</p>
+            </span>
+            <p>Hospital Manager Details</p>
+        </div>
+        <div class="step">
+            <span class="step-circle bg-info">
+                <p>3</p>
+            </span>
+            <p>Verification</p>
+        </div>
+    </div>
+    <div class="row row d-flex justify-content-center mt-5">
+        <div class="col-10 col-lg-5">
+
+            <!--user data-->
+
+            <div class="card p-4 user-data" [class.d-none]="!userFormData">
+                <div class="card-title">
+                    <h4>Please Enter User Details</h4>
+                </div>
+                <div class="card-body">
+                    <form #userForm="ngForm">
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input (change)="onChangeUsername()" type="text" required #usernameEvent="ngModel"  class="form-control" id="staticEmail" placeholder="Enter Username" [(ngModel)]="username" name="username">
+                            </div>
+                            <small [class.d-none]="usernameEvent.untouched || usernameEvent.valid" class="text-danger">Please Enter Username</small>
+                            <small [class.d-none]="!isUsernameAvailable || usernameEvent.untouched" class="text-danger">Username Already Exists! Please Enter Another One</small>
+                        </div>
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" required #passwordEvent="ngModel"  class="form-control" id="staticEmail" placeholder="Enter Passsword" [(ngModel)]="password" name="password">
+                            </div>
+                            <small [class.d-none]="passwordEvent.untouched || passwordEvent.valid" class="text-danger">Please Enter Valid Password</small>
+                        </div>
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Conform Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" required #confirmPasswordEvent="ngModel"  class="form-control" id="staticEmail" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword">
+                            </div>
+                            <small [class.d-none]="confirmPasswordEvent.untouched || confirmPasswordEvent.valid" class="text-danger">Please Enter Confirm Password</small>
+                            <small [class.d-none]="password===confirmPassword || confirmPasswordEvent.untouched || confirmPassword==''" class="text-danger">Please Enter Matching Password</small>
+                        </div>
+                        <div class="button-container">
+                            <button type="reset" class="btn btn-danger p-1">Cancel</button>
+                            <button (click)="next()" [class.disabled]="userForm.form.invalid || password!==confirmPassword || isUsernameAvailable" class="btn btn-primary p-1">Next</button>
+                        </div>
+                        
+                    </form>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="form-group row mt-4">
-                    <label for="staticEmail" class="col-sm-2 col-form-label" >Name</label>
-                    <div class="col-sm-10">
-                        <input  type="text" class="form-control" >
-                    </div>
+
+            <!--hospital data-->
+
+            <div class="card p-4 hospital-data" [class.d-none]="!hospitalFormData">
+                <div class="card-title">
+                    <h4>Please Enter Hospital Details</h4>
                 </div>
-                <div class="form-group row mt-4">
-                    <label for="staticEmail" class="col-sm-2 col-form-label" >Email</label>
-                    <div class="col-sm-10">
-                        <input  type="text" class="form-control" >
-                    </div>
-                </div>
-                <div class="form-group row mt-4">
-                    <label for="staticEmail" class="col-sm-2 col-form-label" >Phone Number</label>
-                    <div class="col-sm-10">
-                        <input  type="text" class="form-control" >
-                    </div>
-                </div>
-                <div class="form-group row mt-4">
-                    <label for="staticEmail" class="col-sm-2 col-form-label" >NIC</label>
-                    <div class="col-sm-10">
-                        <input  type="text" class="form-control" >
-                    </div>
+                <div class="card-body">
+                    <form #hospitalForm="ngForm">
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" required #fnameEvent="ngModel" class="form-control" id="staticText" name="fname" [(ngModel)]="fname" placeholder="Enter First Name">
+                            </div>
+                            <small [class.d-none]="fnameEvent.valid || fnameEvent.untouched" class="text-danger">Please Enter First Name</small>
+                        </div>
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Last Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" required #lnameEvent="ngModel" name="lname" [(ngModel)]="lname"  class="form-control" id="staticEmail" placeholder="Enter Second Name">
+                            </div>
+                            <small [class.d-none]="lnameEvent.valid || lnameEvent.untouched" class="text-danger">Please Enter Last Name</small>
+                        </div>
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" #emailEvent="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" id="staticEmail" placeholder="Enter Email" name="email" [(ngModel)]="email">
+                            </div>
+                            <small [class.d-none]="emailEvent.valid || emailEvent.untouched" class="text-danger">Email cannot be Empty and must be Valid</small>
+                        </div>
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Hospital</label>
+                            <div class="col-sm-10">
+                                <select (change)="onChangeHospitalSelect()" required #hospitalEvent="ngModel" class="form-select form-select mb-3" name="hospital" [(ngModel)]="hospital" aria-label=".form-select-lg example">
+                                    <option value="">Please Select Hospital</option>
+                                    <option value="{{hospital.hospitalId}}" *ngFor="let hospital of hospitalList">{{hospital.hospitalName}}</option>
+                                </select>
+                                <small [class.d-none]="hospitalEvent.valid || hospitalEvent.untouched" class="text-danger">Please Select Hospital</small>
+                                <small [class.d-none]="!isHospitalAvailable || hospitalEvent.untouched" class="text-danger">This hospital has already has manager. Please select your hospital or contact us</small>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" (click)="previous()" class="btn btn-secondary p-1">Back</button>
+                            <button type="submit" (click)="sendConfirmEmail()" [class.disabled]="hospitalForm.form.invalid || isHospitalAvailable" class="btn btn-primary p-1">Next</button>
+                        </div>   
+                    </form>
                 </div>
             </div>
+
+            
+            <!--verfication-->
+
+            <div class="card p-4 hospital-data" [class.d-none]="!verificationFormData">
+                <div class="card-title">
+                    <h4>Verify Email</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="fom-group row mt-4">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Confirm Email Code</label>
+                            <div class="col-sm-10">
+                                <input type="text"  class="form-control" id="staticEmail" name="confirmation" [(ngModel)]="confirmation">
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" (click)="previous()" class="btn btn-secondary p-1">Back</button>
+                            <button type="submit" (click)="submitForm()" class="btn btn-primary p-1">Confirm & Submit Application</button>
+                        </div>   
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
