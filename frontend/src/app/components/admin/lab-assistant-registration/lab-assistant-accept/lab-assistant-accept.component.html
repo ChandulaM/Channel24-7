@@ -1,16 +1,32 @@
 <h3 class="mb-3">Pending Lab Assistant Requests</h3>
 <div class="list-container" id="main-container">
-  <div class="card mb-2">
+  <div
+    *ngFor="
+      let request of pendingRequests
+        | paginate
+          : {
+              itemsPerPage: 5,
+              currentPage: pageNo,
+              totalItems: numberOfRequests
+            }
+    "
+    class="card mb-2"
+  >
     <div class="card-body">
       <div class="list-info ml-3">
-        <h5 class="card-title">Hospital Manager Name</h5>
-        <h6>Details</h6>
+        <h5 class="card-title">{{ request.name }}</h5>
+        <h6>{{ request.lab }}</h6>
       </div>
-      <button class="btn btn-primary view-btn" (click)="onViewModal()">
+      <button class="btn btn-primary view-btn" (click)="onViewModal(request)">
         View
       </button>
     </div>
   </div>
+
+  <pagination-controls
+    (pageChange)="pageNo = $event"
+    class="float-right"
+  ></pagination-controls>
 
   <!-- Modal -->
   <div
@@ -37,11 +53,35 @@
         </div>
         <div class="modal-body">
           <div class="container modal-container">
-            <div class="row justify-content-around">
+            <label for="hospitalName" class="form-label"
+              >Lab Assistant Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="hospitalName"
+              [(ngModel)]="selectedRequest.name"
+            />
+            <label for="email" class="form-label">Lab Assistant Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              [(ngModel)]="selectedRequest.email"
+            />
+            <label for="hospitalName" class="form-label">Registering Lab</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lab"
+              [(ngModel)]="selectedRequest.lab"
+            />
+            <div class="row justify-content-around mt-4">
               <div class="col-6">
                 <button
                   type="button"
                   class="btn btn-success edit-btns"
+                  (click)="onAccept()"
                   data-bs-dismiss="modal"
                 >
                   Accept Request &nbsp;

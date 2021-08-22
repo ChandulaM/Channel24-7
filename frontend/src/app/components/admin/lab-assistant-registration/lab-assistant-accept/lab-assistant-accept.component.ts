@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { SampleServiceService } from '../../sample-service.service';
 
 @Component({
   selector: 'app-lab-assistant-accept',
@@ -9,11 +16,24 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 export class LabAssistantAcceptComponent implements OnInit {
   faAccept = faCheck;
   faReject = faTimes;
-  constructor() {}
+  pendingRequests: any;
+  numberOfRequests: number = 2;
+  pageNo: number = 1;
+  selectedRequest!: any;
 
-  ngOnInit(): void {}
+  @Output() dataChange: EventEmitter<any> = new EventEmitter<any>();
 
-  onViewModal(): void {
+  constructor(
+    private sample: SampleServiceService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.pendingRequests = this.sample.getPending();
+    this.selectedRequest = this.pendingRequests[0];
+  }
+
+  onViewModal(request: any): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -22,5 +42,12 @@ export class LabAssistantAcceptComponent implements OnInit {
     button.setAttribute('data-bs-target', '#acceptOrRejectModal');
     container?.appendChild(button);
     button.click();
+    this.selectedRequest = request;
+  }
+
+  onAccept() {
+    this.sample.acceptRequest(this.selectedRequest.id);
+    this.pendingRequests = this.sample.getPending();
+    this.dataChange.emit(this.sample.getRegistered());
   }
 }

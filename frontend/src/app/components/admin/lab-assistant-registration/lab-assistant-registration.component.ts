@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faFlask } from '@fortawesome/free-solid-svg-icons';
+import { SampleServiceService } from '../sample-service.service';
 
 @Component({
   selector: 'app-lab-assistant-registration',
@@ -8,7 +9,15 @@ import { faFlask } from '@fortawesome/free-solid-svg-icons';
 })
 export class LabAssistantRegistrationComponent implements OnInit {
   faFlask = faFlask;
-  constructor() {}
+  registered: any;
 
-  ngOnInit(): void {}
+  constructor(private service: SampleServiceService) {}
+
+  ngOnInit(): void {
+    this.registered = this.service.getRegistered();
+  }
+
+  onAccept(event: any) {
+    this.registered = event;
+  }
 }

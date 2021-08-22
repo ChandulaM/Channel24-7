@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HospitalManagerService {
 
@@ -29,8 +31,19 @@ public class HospitalManagerService {
         return  savedHospitalManager;
     }
 
+
     public boolean isHospitalExists(Hospital hospital) {
         return repo.existsHospitalManagerByHospital(hospital);
+    }
+  
+    public List<HospitalManager> getPendingHospitalManagers() {
+        List<HospitalManager> pendingManagers = repo.findByStatus("pending");
+        return pendingManagers;
+    }
+
+    public List<HospitalManager> getRegisteredHospitalManagers() {
+        List<HospitalManager> registeredManagers = repo.findByStatus("active");
+        return registeredManagers;
     }
 
 }

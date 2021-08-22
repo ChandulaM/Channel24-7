@@ -13,11 +13,11 @@ h3 {
 
 .view-btn {
   height: 2.5rem;
-  padding: 0.8rem;
+  margin-top: 1rem;
 }
 
 .list-container {
-  padding: 0.75rem;
+  padding: 1rem;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -32,6 +32,7 @@ h3 {
 .list-container {
   padding: 1rem;
   margin-top: 0.5rem;
+  padding-bottom: 3rem;
 }
 
 .card-body {

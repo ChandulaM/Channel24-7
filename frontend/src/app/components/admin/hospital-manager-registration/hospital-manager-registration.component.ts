@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch, faUserNurse } from '@fortawesome/free-solid-svg-icons';
+import { HospitalManagerService } from 'src/app/services/hospital-manager.service';
 
 @Component({
   selector: 'app-hospital-manager-registration',
@@ -9,8 +10,25 @@ import { faSearch, faUserNurse } from '@fortawesome/free-solid-svg-icons';
 export class HospitalManagerRegistrationComponent implements OnInit {
   managerIcon = faUserNurse;
   faSearch = faSearch;
+  registered: any;
 
-  constructor() {}
+  constructor(private managerService: HospitalManagerService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.managerService.getRegisteredManagers().subscribe(
+      (data) => {
+        this.registered = data;
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  onAccept() {
+    this.managerService.getRegisteredManagers().subscribe(
+      (data) => {
+        this.registered = data;
+      },
+      (err) => console.log(err)
+    );
+  }
 }

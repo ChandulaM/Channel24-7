@@ -4,11 +4,13 @@
   <div class="row">
     <div class="col-6 mt-2 p-3">
       <h3 class="mb-3">Pending Hospital Manager Requests</h3>
-      <app-hosmanager-accept></app-hosmanager-accept>
+      <app-hosmanager-accept (dataChange)="onAccept()"></app-hosmanager-accept>
     </div>
     <div class="col-6 mt-2 p-3 border-start border-2">
       <h3 class="mb-3">Registered Hospital Managers</h3>
-      <app-hosmanager-list></app-hosmanager-list>
+      <app-hosmanager-list
+        [registeredManagers]="registered"
+      ></app-hosmanager-list>
     </div>
   </div>
 </div>

@@ -15,7 +15,7 @@ public class HospitalManager  {
 
     private String lname;
 
-    @Column(columnDefinition = "varchar(255) default 'inactive'")
+    @Column(columnDefinition = "varchar(255) default 'pending'")
     private  String status;
 
     @OneToOne(cascade = CascadeType.ALL)

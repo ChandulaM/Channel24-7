@@ -25,9 +25,13 @@ import { AdminsidebarComponent } from './components/common/adminsidebar/adminsid
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
 
 import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DoctorServiceService } from './services/doctor-service.service';
-import { AngularFireStorageModule, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage'
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { RegisterHospitalmanagerComponent } from './components/hospitalmanager/register-hospitalmanager/register-hospitalmanager.component';
@@ -45,6 +49,8 @@ import { PatientProfileComponent } from './components/patient/patient-profile/pa
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { HospitalManagerServiceService } from './services/hospital-manager-service.service';
 import { SpecializationServiceService } from './services/specialization-service.service';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -78,7 +84,7 @@ import { SpecializationServiceService } from './services/specialization-service.
     PatientDetailsComponent,
     PatientCheckOutComponent,
     PatientProfileComponent,
-    MyAppointmentsComponent
+    MyAppointmentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,8 +98,9 @@ import { SpecializationServiceService } from './services/specialization-service.
     NgbModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
+    NgxSpinnerModule,
   ],
   providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

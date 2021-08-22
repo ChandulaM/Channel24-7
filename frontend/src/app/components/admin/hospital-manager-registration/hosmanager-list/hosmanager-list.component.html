@@ -11,16 +11,32 @@
 </form>
 
 <div class="list-container">
-  <div class="card mb-2">
+  <h6 *ngIf="isLoading" style="text-align: center"></h6>
+  <div
+    *ngFor="
+      let manager of registeredManagers
+        | paginate
+          : {
+              itemsPerPage: 5,
+              currentPage: pageNo,
+              totalItems: registeredManagers
+            }
+    "
+    class="card mb-2"
+  >
     <div class="card-body">
       <div class="list-info ml-3">
-        <h5 class="card-title">Hospital Manager Name</h5>
-        <h6>Details</h6>
+        <h5 class="card-title">{{ manager.fname }} {{ manager.lname }}</h5>
+        <h6>{{ manager.hospital.hospitalName }}</h6>
       </div>
       <button class="btn btn-primary view-btn">Manage</button>
     </div>
   </div>
 </div>
+<pagination-controls
+  (pageChange)="pageNo = $event"
+  class="float-right"
+></pagination-controls>
 
 <!-- Modal -->
 <div

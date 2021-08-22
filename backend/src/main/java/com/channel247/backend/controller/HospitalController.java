@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RestController
 @RequestMapping("/api/hospitals")
 public class HospitalController {
 
@@ -26,6 +26,12 @@ public class HospitalController {
     ){
         List<Hospital> hospitalList = hospitalServices.getAllHospitals(pageNo, pageSize);
         return new ResponseEntity<>(hospitalList, HttpStatus.OK);
+    }
+
+    @GetMapping("/registered")
+    public ResponseEntity<List<Hospital>> getAllRegisteredHospitals() {
+        List<Hospital> registeredHospitals = hospitalServices.getAllRegisteredHospitals();
+        return new ResponseEntity<>(registeredHospitals, HttpStatus.OK);
     }
 
     @PostMapping("/")
