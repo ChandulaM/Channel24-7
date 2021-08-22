@@ -1,5 +1,6 @@
 package com.channel247.backend.service;
 
+import com.channel247.backend.model.Hospital;
 import com.channel247.backend.model.HospitalManager;
 import com.channel247.backend.repository.HospitalManagerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class HospitalManagerService {
     public HospitalManager saveHospitalManager(HospitalManager hospitalManager) {
         HospitalManager savedHospitalManager = repo.save(hospitalManager);
         return  savedHospitalManager;
+    }
+
+    public boolean isHospitalExists(Hospital hospital) {
+        return repo.existsHospitalManagerByHospital(hospital);
     }
 
 }
