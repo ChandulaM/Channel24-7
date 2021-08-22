@@ -48,6 +48,8 @@ import { PatientCheckOutComponent } from './components/patient/patient-check-out
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +96,7 @@ import { MyAppointmentsComponent } from './components/patient/my-appointments/my
     NgbModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
+    NgxSpinnerModule,
   ],
   providers: [DoctorServiceService, SheduleServiceService],
   bootstrap: [AppComponent],

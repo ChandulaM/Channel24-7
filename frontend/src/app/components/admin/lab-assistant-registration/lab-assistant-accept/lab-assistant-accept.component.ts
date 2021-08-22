@@ -30,7 +30,7 @@ export class LabAssistantAcceptComponent implements OnInit {
 
   ngOnInit(): void {
     this.pendingRequests = this.sample.getPending();
-    this.cdr.detectChanges();
+    this.selectedRequest = this.pendingRequests[0];
   }
 
   onViewModal(request: any): void {

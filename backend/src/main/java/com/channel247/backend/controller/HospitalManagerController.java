@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,6 +94,18 @@ public class HospitalManagerController {
     public ResponseEntity<List<HospitalManager>> getPendingHospitalManagers(){
         List<HospitalManager> pendingHospitalManagers = hospitalManagerService.getPendingHospitalManagers();
         return new ResponseEntity<>(pendingHospitalManagers, HttpStatus.OK);
+    }
+
+    @GetMapping("/registered")
+    public ResponseEntity<List<HospitalManager>> getRegisteredHospitalManagers() {
+        List<HospitalManager> registeredManagers = hospitalManagerService.getRegisteredHospitalManagers();
+        return new ResponseEntity<>(registeredManagers, HttpStatus.OK);
+    }
+
+    @PutMapping("/accept")
+    public ResponseEntity<HospitalManager> acceptRegistration(@RequestBody HospitalManager hospitalManager) {
+        HospitalManager updatedManager = hospitalManagerService.saveHospitalManager(hospitalManager);
+        return new ResponseEntity<>(updatedManager, HttpStatus.OK);
     }
 
 }

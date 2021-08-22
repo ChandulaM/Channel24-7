@@ -1,15 +1,36 @@
 <div class="list-container" id="main-container">
-  <div class="card mb-2">
+  <h6 *ngIf="isLoading" style="text-align: center">Loading requests...</h6>
+  <div
+    *ngFor="
+      let pendingManager of pendingManagers
+        | paginate
+          : {
+              itemsPerPage: 5,
+              currentPage: pageNo,
+              totalItems: numberOfRequests
+            }
+    "
+    class="card mb-2"
+  >
     <div class="card-body">
       <div class="list-info ml-3">
-        <h5 class="card-title">Hospital Manager Name</h5>
-        <h6>Details</h6>
+        <h5 class="card-title">
+          {{ pendingManager.fname }} {{ pendingManager.lname }}
+        </h5>
+        <h6>{{ pendingManager.hospital.hospitalName }}</h6>
       </div>
-      <button class="btn btn-primary view-btn" (click)="onViewModal()">
+      <button
+        class="btn btn-primary view-btn"
+        (click)="onViewModal(pendingManager)"
+      >
         View
       </button>
     </div>
   </div>
+  <pagination-controls
+    (pageChange)="pageNo = $event"
+    class="float-right"
+  ></pagination-controls>
 
   <!-- Modal -->
   <div
@@ -29,6 +50,7 @@
           </h5>
           <button
             type="button"
+            id="modalCloseBtn"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
@@ -36,12 +58,43 @@
         </div>
         <div class="modal-body">
           <div class="container modal-container">
-            <div class="row justify-content-around">
+            <label for="managerName">Hospital Manager Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="managerName"
+              name="managerName"
+              value="{{ selectedManager.fname }} {{ selectedManager.lname }}"
+              disabled
+            />
+            <label for="managerHospital" class="mt-4"
+              >Registering For Hospital</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="managerHospital"
+              name="managerHospital"
+              value="{{ selectedManager.hospital.hospitalName }}"
+              disabled
+            />
+            <label for="managerHospital" class="mt-4"
+              >Registering Hospital Registration No</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="managerHospitalReg"
+              name="managerHospitalReg"
+              value="{{ selectedManager.hospital.hospitalRegNo }}"
+              disabled
+            />
+            <div class="row justify-content-around mt-5">
               <div class="col-6">
                 <button
                   type="button"
                   class="btn btn-success edit-btns"
-                  data-bs-dismiss="modal"
+                  (click)="onAccept()"
                 >
                   Accept Request &nbsp;
                   <fa-icon [icon]="faAccept"></fa-icon>
@@ -51,7 +104,7 @@
                 <button
                   type="button"
                   class="btn btn-danger edit-btns"
-                  data-bs-dismiss="modal"
+                  (click)="onReject()"
                 >
                   Reject Request &nbsp;
                   <fa-icon [icon]="faReject"></fa-icon>

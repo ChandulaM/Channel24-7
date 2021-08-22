@@ -31,8 +31,13 @@ public class HospitalManagerService {
     }
 
     public List<HospitalManager> getPendingHospitalManagers() {
-        List<HospitalManager> pendingManagers = repo.findByStatus("inactive");
+        List<HospitalManager> pendingManagers = repo.findByStatus("pending");
         return pendingManagers;
+    }
+
+    public List<HospitalManager> getRegisteredHospitalManagers() {
+        List<HospitalManager> registeredManagers = repo.findByStatus("active");
+        return registeredManagers;
     }
 
 }
