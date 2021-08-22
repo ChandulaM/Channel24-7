@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 import { HospitalManagerServiceService } from 'src/app/services/hospital-manager-service.service';
 import { Router } from '@angular/router';
+import { HospitalServiceService } from 'src/app/services/hospital-service.service';
+import { Hospital } from 'src/app/models/Hospital';
 
 @Component({
   selector: 'app-register-hospitalmanager',
@@ -26,29 +28,20 @@ export class RegisterHospitalmanagerComponent implements OnInit {
   sendingCode: number = 1000;
   confirmation: string = '';
   confrimationError: boolean = false;
-  
-  hospitalList = [
-    {
-      id: 1,
-      name: 'Asiri'
-    },
-    {
-      id: 2,
-      name: 'Suwasetha'
-    },
-    {
-      id: 3,
-      name: 'Nawamini'
-    },
-    {
-      id: 4,
-      name: 'Lakeside Adventist Hospital'
-    }
-  ]
+  isHospitalAvailable: boolean = false;
+  isUsernameAvailable: boolean = false;
 
-  constructor(private service:HospitalManagerServiceService, private router: Router) { }
+  hospitalList: Array<Hospital> = []; 
+
+  constructor(private service:HospitalManagerServiceService, private router: Router, private hospitalService: HospitalServiceService) { }
 
   ngOnInit(): void {
+
+    this.hospitalService.getHospitals().subscribe(res => {
+      console.log(res)
+      this.hospitalList = res
+    })
+
   }
 
 
@@ -148,6 +141,20 @@ export class RegisterHospitalmanagerComponent implements OnInit {
         })    
     }
 
+  }
+
+  onChangeUsername() {
+    this.service.checkUsernameAvailability(this.username).subscribe(res => {
+      console.log(res)
+      this.isUsernameAvailable = res.result;
+    })
+  }
+
+  onChangeHospitalSelect() {
+    this.service.checkHospitalAvailability(parseInt(this.hospital)).subscribe(res => {
+      console.log(res)
+      this.isHospitalAvailable = res.result;
+    });
   }
 
 }

@@ -42,4 +42,20 @@ public class UserController {
         }
     }
 
+    @GetMapping("/check")
+    public ResponseEntity<Map<String, Object>> checkIsUsernameAvailable(@RequestParam String username) {
+        try{
+
+            boolean result = userService.isUserAvailable(username);
+            Map<String, Object> response = new HashMap<>();
+            response.put("result", result);
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

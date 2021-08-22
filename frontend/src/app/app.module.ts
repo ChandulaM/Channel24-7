@@ -44,6 +44,7 @@ import { PatientCheckOutComponent } from './components/patient/patient-check-out
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { HospitalManagerServiceService } from './services/hospital-manager-service.service';
+import { SpecializationServiceService } from './services/specialization-service.service';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,7 @@ import { HospitalManagerServiceService } from './services/hospital-manager-servi
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
   ],
-  providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService],
+  providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

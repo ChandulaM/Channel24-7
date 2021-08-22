@@ -22,4 +22,12 @@ export class HospitalManagerServiceService {
     return this.http.post<HospitalManagerDTO>(this.hospitalManagerApi+'/save', hospitalManager);
   }
 
+  checkHospitalAvailability(id: number): Observable<any> {
+    return this.http.get<any>(this.hospitalManagerApi+'/check?id='+id);
+  }
+
+  checkUsernameAvailability(username: string): Observable<any> {
+    return this.http.get<any>(this.userAPI+'/check?username='+username);
+  }
+
 }

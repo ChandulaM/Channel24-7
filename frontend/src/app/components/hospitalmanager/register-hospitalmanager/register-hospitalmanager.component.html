@@ -35,9 +35,10 @@
                         <div class="fom-group row mt-4">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
                             <div class="col-sm-10">
-                                <input type="text" required #usernameEvent="ngModel"  class="form-control" id="staticEmail" placeholder="Enter Username" [(ngModel)]="username" name="username">
+                                <input (change)="onChangeUsername()" type="text" required #usernameEvent="ngModel"  class="form-control" id="staticEmail" placeholder="Enter Username" [(ngModel)]="username" name="username">
                             </div>
                             <small [class.d-none]="usernameEvent.untouched || usernameEvent.valid" class="text-danger">Please Enter Username</small>
+                            <small [class.d-none]="!isUsernameAvailable || usernameEvent.untouched" class="text-danger">Username Already Exists! Please Enter Another One</small>
                         </div>
                         <div class="fom-group row mt-4">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
@@ -56,7 +57,7 @@
                         </div>
                         <div class="button-container">
                             <button type="reset" class="btn btn-danger p-1">Cancel</button>
-                            <button (click)="next()" [class.disabled]="userForm.form.invalid || password!==confirmPassword" class="btn btn-primary p-1">Next</button>
+                            <button (click)="next()" [class.disabled]="userForm.form.invalid || password!==confirmPassword || isUsernameAvailable" class="btn btn-primary p-1">Next</button>
                         </div>
                         
                     </form>
@@ -95,16 +96,17 @@
                         <div class="fom-group row mt-4">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Hospital</label>
                             <div class="col-sm-10">
-                                <select required #hospitalEvent="ngModel" class="form-select form-select mb-3" name="hospital" [(ngModel)]="hospital" aria-label=".form-select-lg example">
+                                <select (change)="onChangeHospitalSelect()" required #hospitalEvent="ngModel" class="form-select form-select mb-3" name="hospital" [(ngModel)]="hospital" aria-label=".form-select-lg example">
                                     <option value="">Please Select Hospital</option>
-                                    <option value="{{hospital.id}}" *ngFor="let hospital of hospitalList">{{hospital.name}}</option>
+                                    <option value="{{hospital.hospitalId}}" *ngFor="let hospital of hospitalList">{{hospital.hospitalName}}</option>
                                 </select>
                                 <small [class.d-none]="hospitalEvent.valid || hospitalEvent.untouched" class="text-danger">Please Select Hospital</small>
+                                <small [class.d-none]="!isHospitalAvailable || hospitalEvent.untouched" class="text-danger">This hospital has already has manager. Please select your hospital or contact us</small>
                             </div>
                         </div>
                         <div class="button-container">
                             <button type="submit" (click)="previous()" class="btn btn-secondary p-1">Back</button>
-                            <button type="submit" (click)="sendConfirmEmail()" class="btn btn-primary p-1">Next</button>
+                            <button type="submit" (click)="sendConfirmEmail()" [class.disabled]="hospitalForm.form.invalid || isHospitalAvailable" class="btn btn-primary p-1">Next</button>
                         </div>   
                     </form>
                 </div>
