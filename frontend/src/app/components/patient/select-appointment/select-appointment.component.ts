@@ -1,0 +1,46 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-select-appointment',
+  templateUrl: './select-appointment.component.html',
+  styleUrls: ['./select-appointment.component.css']
+})
+export class SelectAppointmentComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  // employees: Observable<Employee[]>;
+
+  // constructor(private employeeService: EmployeeService,
+  //   private router: Router) {}
+
+  // ngOnInit() {
+  //   this.reloadData();
+  // }
+
+  // reloadData() {
+  //   this.employees = this.employeeService.getEmployeesList();
+  // }
+
+  // deleteEmployee(id: number) {
+  //   this.employeeService.deleteEmployee(id)
+  //     .subscribe(
+  //       data => {
+  //         console.log(data);
+  //         this.reloadData();
+  //       },
+  //       error => console.log(error));
+  // }
+
+  // employeeDetails(id: number){
+  //   this.router.navigate(['details', id]);
+  // }
+
+  // updateEmployee(id: number){
+  //   this.router.navigate(['update', id]);
+  // }
+
+}

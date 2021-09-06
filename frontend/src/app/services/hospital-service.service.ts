@@ -16,6 +16,22 @@ export class HospitalServiceService {
   }
 
   getAllHospitals(): Observable<Hospital[]> {
-    return this.http.get<Hospital[]>(this.apiUrl);
+    return this.http.get<Hospital[]>(`${this.apiUrl}registered`);
   }
+
+  updateHospitaleDetais(hospital: Hospital): Observable<Hospital> {
+    return this.http.put<Hospital>(`${this.apiUrl}update`, hospital);
+  }
+
+  removeHospital(hospitalId: number, hospital: Hospital): Observable<Hospital> {
+    return this.http.put<Hospital>(
+      `${this.apiUrl}remove/${hospitalId}`,
+      hospital
+    );
+  }
+
+  getHospitals(): Observable<Hospital[]> {
+    return this.http.get<Hospital[]>(`${this.apiUrl}get-all`);
+  }
+
 }
