@@ -1,0 +1,71 @@
+<form class="d-flex mb-2">
+  <input
+    class="form-control me-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <button class="btn btn-outline-success" type="submit">
+    <fa-icon [icon]="faSearch"></fa-icon>
+  </button>
+</form>
+
+<div class="list-container">
+  <h6 *ngIf="isLoading" style="text-align: center"></h6>
+  <div
+    *ngFor="
+      let manager of registeredManagers
+        | paginate
+          : {
+              itemsPerPage: 5,
+              currentPage: pageNo,
+              totalItems: registeredManagers
+            }
+    "
+    class="card mb-2"
+  >
+    <div class="card-body">
+      <div class="list-info ml-3">
+        <h5 class="card-title">{{ manager.fname }} {{ manager.lname }}</h5>
+        <h6>{{ manager.hospital.hospitalName }}</h6>
+      </div>
+      <button class="btn btn-primary view-btn">Manage</button>
+    </div>
+  </div>
+</div>
+<pagination-controls
+  (pageChange)="pageNo = $event"
+  class="float-right"
+></pagination-controls>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -72,6 +72,12 @@
           <div class="container modal-container">
             <div class="row mb-2">
               <div class="col mb-2">
+                <input
+                  type="number"
+                  hidden
+                  name="hospitalId"
+                  [(ngModel)]="hospitalToEdit.hospitalId"
+                />
                 <label for="hospitalName" class="form-label"
                   >Hospital Name</label
                 >
@@ -174,14 +180,18 @@
                 <button
                   type="button"
                   class="btn btn-primary edit-btns"
-                  data-bs-dismiss="modal"
+                  (click)="onSaveChanges()"
                 >
                   Save Changes
                   <fa-icon [icon]="faCheck"></fa-icon>
                 </button>
               </div>
               <div class="col-6">
-                <button type="button" class="btn btn-danger edit-btns">
+                <button
+                  type="button"
+                  class="btn btn-danger edit-btns"
+                  (click)="onRemoveHospital()"
+                >
                   Remove Hospital
                   <fa-icon [icon]="faTrash"></fa-icon>
                 </button>

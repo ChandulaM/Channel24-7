@@ -1,0 +1,10 @@
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.view-btn {
+  height: 2.5rem;
+  margin-top: 1rem;
+}

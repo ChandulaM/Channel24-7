@@ -37,6 +37,10 @@ public class HospitalServices {
         else return new ArrayList<>();
     }
 
+    public List<Hospital> getAllRegisteredHospitals() {
+        return hospitalRepo.findHospitalByStatusOrderByHospitalName("active");
+    }
+
     public Hospital getHospitalById(Long id){
         return hospitalRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Hospital with id " + id + " was not found."));

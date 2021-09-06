@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faStarOfLife } from '@fortawesome/free-solid-svg-icons';
+import { Hospital } from 'src/app/models/Hospital';
 import { HospitalServiceService } from 'src/app/services/hospital-service.service';
 
 @Component({
@@ -7,49 +9,110 @@ import { HospitalServiceService } from 'src/app/services/hospital-service.servic
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  hospitalName: string = '';
-  hospitalRegNo: string = '';
-  hospitalAddress: string = '';
-  city: string = '';
-  contactNo: string = '';
-  email: string = '';
-  status: string = 'active';
+  hospital: Hospital = new Hospital();
+  faStar = faStarOfLife;
+  contactNoError: boolean = false;
+  hospitalRegNoError: boolean = false;
+  formError: boolean = false;
 
   constructor(private hospitalService: HospitalServiceService) {}
 
   ngOnInit(): void {}
 
   onSubmit(): void {
-    this.validateFields();
+    this.formError = false;
+    this.hospitalRegNoError = false;
+    this.contactNoError = false;
+    if (this.validateFields()) {
+      this.hospital.status = 'active';
 
-    const newHospital = {
-      hospitalName: this.hospitalName,
-      hospitalAddress: this.hospitalAddress,
-      hospitalRegNo: this.hospitalRegNo,
-      city: this.city,
-      contactNo: this.contactNo,
-      email: this.email,
-      status: this.status,
-    };
-    this.hospitalService.registerHospital(newHospital).subscribe(
-      (res) => {
-        alert('Hospital added');
-      },
-      (err) => {
-        alert('Error in adding.' + err);
+      this.hospitalService.registerHospital(this.hospital).subscribe(
+        (res) => {
+          alert('Hospital added');
+        },
+        (err) => {
+          alert('Error in adding.' + err);
+        }
+      );
+      this.clearFields();
+    } else {
+      if (this.hospitalRegNoError || this.contactNoError) {
+        this.formError = false;
+      } else {
+        this.formError = true;
       }
-    );
-    this.clearFields();
+    }
   }
 
-  validateFields(): void {}
+  validateFields(): boolean {
+    return (
+      this.validateEmail() &&
+      this.validateAddress() &&
+      this.validateCity() &&
+      this.validateContactNo() &&
+      this.validateName() &&
+      this.validateHospitalRegNo()
+    );
+  }
+
+  validateName(): boolean {
+    if (!this.hospital.hospitalName) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateAddress(): boolean {
+    if (!this.hospital.hospitalAddress) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateCity(): boolean {
+    if (!this.hospital.city) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateContactNo(): boolean {
+    if (!this.hospital.contactNo) {
+      return false;
+    } else if (this.hospital.contactNo.length != 10) {
+      this.contactNoError = true;
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateEmail(): boolean {
+    if (!this.hospital.email) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateHospitalRegNo(): boolean {
+    if (!this.hospital.hospitalRegNo) {
+      return false;
+    } else if (this.hospital.hospitalRegNo.length != 6) {
+      this.hospitalRegNoError = true;
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   clearFields(): void {
-    this.hospitalName = '';
-    this.hospitalRegNo = '';
-    this.hospitalAddress = '';
-    this.city = '';
-    this.contactNo = '';
-    this.email = '';
+    this.hospital.hospitalName = '';
+    this.hospital.hospitalRegNo = '';
+    this.hospital.hospitalAddress = '';
+    this.hospital.city = '';
+    this.hospital.contactNo = '';
+    this.hospital.email = '';
   }
 }

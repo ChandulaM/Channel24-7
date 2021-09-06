@@ -17,10 +17,25 @@ import { RegistrationhomeComponent } from './components/admin/hospital-registrat
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SelectAppointmentComponent } from './components/patient/select-appointment/select-appointment.component';
+import { BookAppointmentComponent } from './components/patient/book-appointment/book-appointment.component';
 import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalmanager/hospitalmanager.component';
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
+
+import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DoctorServiceService } from './services/doctor-service.service';
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { RegisterHospitalmanagerComponent } from './components/hospitalmanager/register-hospitalmanager/register-hospitalmanager.component';
+import { SheduleServiceService } from './services/shedule-service.service';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
 import { LoginComponent } from './components/labassistant/login/login.component';
 import { NevbarComponent } from './components/labassistant/common/nevbar/nevbar.component';
@@ -37,6 +52,20 @@ import { ReportdemandComponent } from './components/labassistant/reportdemand/re
 import { UpdatelabtestComponent } from './components/labassistant/updatelabtest/updatelabtest.component';
 import { UploadresultComponent } from './components/labassistant/uploadresult/uploadresult.component';
 import { UploadresultenquryComponent } from './components/labassistant/uploadresultenqury/uploadresultenqury.component';
+import { LabAssistantRegistrationComponent } from './components/admin/lab-assistant-registration/lab-assistant-registration.component';
+import { HosmanagerAcceptComponent } from './components/admin/hospital-manager-registration/hosmanager-accept/hosmanager-accept.component';
+import { HosmanagerListComponent } from './components/admin/hospital-manager-registration/hosmanager-list/hosmanager-list.component';
+import { LabAssistantAcceptComponent } from './components/admin/lab-assistant-registration/lab-assistant-accept/lab-assistant-accept.component';
+import { LabAssistantListComponent } from './components/admin/lab-assistant-registration/lab-assistant-list/lab-assistant-list.component';
+import { HospitalManagerRegistrationComponent } from './components/admin/hospital-manager-registration/hospital-manager-registration.component';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
+import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
+import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
+import { HospitalManagerServiceService } from './services/hospital-manager-service.service';
+import { SpecializationServiceService } from './services/specialization-service.service';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -50,11 +79,16 @@ import { UploadresultenquryComponent } from './components/labassistant/uploadres
     RegisterComponent,
     HospitalListComponent,
     RegistrationhomeComponent,
+    SidenavComponent,
     HospitalmanagerComponent,
     DoctorsComponent,
     AdminsidebarComponent,
     AddDoctorComponent,
+    SingleDoctorComponent,
+    RegisterHospitalmanagerComponent,
     HomeComponentsComponent,
+    SelectAppointmentComponent,
+    BookAppointmentComponent,
     SidenavComponent,
     LoginComponent,
     NevbarComponent,
@@ -71,6 +105,16 @@ import { UploadresultenquryComponent } from './components/labassistant/uploadres
     UpdatelabtestComponent,
     UploadresultComponent,
     UploadresultenquryComponent,
+    LabAssistantRegistrationComponent,
+    HospitalManagerRegistrationComponent,
+    HosmanagerAcceptComponent,
+    HosmanagerListComponent,
+    LabAssistantAcceptComponent,
+    LabAssistantListComponent,
+    PatientDetailsComponent,
+    PatientCheckOutComponent,
+    PatientProfileComponent,
+    MyAppointmentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,8 +125,12 @@ import { UploadresultenquryComponent } from './components/labassistant/uploadres
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
+    NgbModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
+    NgxSpinnerModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

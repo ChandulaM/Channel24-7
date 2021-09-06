@@ -27,6 +27,10 @@ export class HospitalListComponent implements OnInit {
   constructor(private hospitalService: HospitalServiceService) {}
 
   ngOnInit(): void {
+    this.getAllRegisteredHospitals();
+  }
+
+  getAllRegisteredHospitals(): void {
     this.hospitalService.getAllHospitals().subscribe((hospitals) => {
       this.registeredHospitals = hospitals;
       this.numberOfHospitals = hospitals.length;
@@ -43,5 +47,46 @@ export class HospitalListComponent implements OnInit {
     container?.appendChild(button);
     button.click();
     this.hospitalToEdit = hospital;
+  }
+
+  onSaveChanges(): void {
+    this.hospitalService.updateHospitaleDetais(this.hospitalToEdit).subscribe(
+      (res) => {
+        if (res) {
+          alert('Information Updated');
+          this.closeModal();
+        }
+      },
+      (err) => alert('Error while updating')
+    );
+  }
+
+  onRemoveHospital() {
+    const confirmation = confirm(
+      'Are you sure you want to remove this hospital?'
+    );
+    if (confirmation) {
+      this.hospitalToEdit.status = 'inactive';
+      this.hospitalService.updateHospitaleDetais(this.hospitalToEdit).subscribe(
+        (res) => {
+          alert('Hospital removed successfully');
+          this.getAllRegisteredHospitals();
+        },
+        (err) => {
+          alert('Error while removing hospital');
+        }
+      );
+      this.closeModal();
+    }
+  }
+
+  closeModal(): void {
+    const modalToClose = document.getElementById('editmodal');
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.style.display = 'none';
+    closeBtn.setAttribute('data-bs-dismiss', 'modal');
+    modalToClose?.appendChild(closeBtn);
+    closeBtn.click();
   }
 }
