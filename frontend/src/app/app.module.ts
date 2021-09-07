@@ -37,6 +37,21 @@ import { environment } from 'src/environments/environment';
 import { RegisterHospitalmanagerComponent } from './components/hospitalmanager/register-hospitalmanager/register-hospitalmanager.component';
 import { SheduleServiceService } from './services/shedule-service.service';
 import { SidenavComponent } from './components/admin/sidenav/sidenav.component';
+import { LoginComponent } from './components/labassistant/login/login.component';
+import { NevbarComponent } from './components/labassistant/common/nevbar/nevbar.component';
+import { SignupComponent } from './components/labassistant/signup/signup.component';
+import { DashboardComponent } from './components/labassistant/dashboard/dashboard.component';
+import { MaindhashboardComponent } from './components/labassistant/maindhashboard/maindhashboard.component';
+import { AddlabtestComponent } from './components/labassistant/addlabtest/addlabtest.component';
+import { ManageappoinemtnsComponent } from './components/labassistant/manageappoinemtns/manageappoinemtns.component';
+import { ManageresultsComponent } from './components/labassistant/manageresults/manageresults.component';
+import { ManagetestsComponent } from './components/labassistant/managetests/managetests.component';
+import { ReportdashboardComponent } from './components/labassistant/reportdashboard/reportdashboard.component';
+import { ReportdeliveryComponent } from './components/labassistant/reportdelivery/reportdelivery.component';
+import { ReportdemandComponent } from './components/labassistant/reportdemand/reportdemand.component';
+import { UpdatelabtestComponent } from './components/labassistant/updatelabtest/updatelabtest.component';
+import { UploadresultComponent } from './components/labassistant/uploadresult/uploadresult.component';
+import { UploadresultenquryComponent } from './components/labassistant/uploadresultenqury/uploadresultenqury.component';
 import { LabAssistantRegistrationComponent } from './components/admin/lab-assistant-registration/lab-assistant-registration.component';
 import { HosmanagerAcceptComponent } from './components/admin/hospital-manager-registration/hosmanager-accept/hosmanager-accept.component';
 import { HosmanagerListComponent } from './components/admin/hospital-manager-registration/hosmanager-list/hosmanager-list.component';
@@ -75,6 +90,21 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SelectAppointmentComponent,
     BookAppointmentComponent,
     SidenavComponent,
+    LoginComponent,
+    NevbarComponent,
+    SignupComponent,
+    DashboardComponent,
+    MaindhashboardComponent,
+    AddlabtestComponent,
+    ManageappoinemtnsComponent,
+    ManageresultsComponent,
+    ManagetestsComponent,
+    ReportdashboardComponent,
+    ReportdeliveryComponent,
+    ReportdemandComponent,
+    UpdatelabtestComponent,
+    UploadresultComponent,
+    UploadresultenquryComponent,
     LabAssistantRegistrationComponent,
     HospitalManagerRegistrationComponent,
     HosmanagerAcceptComponent,

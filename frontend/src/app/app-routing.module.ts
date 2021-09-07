@@ -13,6 +13,19 @@ import { SingleDoctorComponent } from './components/hospitalmanager/single-docto
 import { RegisterHospitalmanagerComponent } from './components/hospitalmanager/register-hospitalmanager/register-hospitalmanager.component';
 
 import { HomeComponentsComponent } from './components/patient/home-components/home-components.component';
+import { LoginComponent } from './components/labassistant/login/login.component';
+import { SignupComponent } from './components/labassistant/signup/signup.component';
+import { DashboardComponent } from './components/labassistant/dashboard/dashboard.component';
+import { MaindhashboardComponent } from './components/labassistant/maindhashboard/maindhashboard.component';
+import { AddlabtestComponent } from './components/labassistant/addlabtest/addlabtest.component';
+import { ManageappoinemtnsComponent } from './components/labassistant/manageappoinemtns/manageappoinemtns.component';
+import { ManageresultsComponent } from './components/labassistant/manageresults/manageresults.component';
+import { ManagetestsComponent } from './components/labassistant/managetests/managetests.component';
+import { ReportdashboardComponent } from './components/labassistant/reportdashboard/reportdashboard.component';
+import { ReportdeliveryComponent } from './components/labassistant/reportdelivery/reportdelivery.component';
+import { UpdatelabtestComponent } from './components/labassistant/updatelabtest/updatelabtest.component';
+import { UploadresultComponent } from './components/labassistant/uploadresult/uploadresult.component';
+import { UploadresultenquryComponent } from './components/labassistant/uploadresultenqury/uploadresultenqury.component';
 import { HospitalManagerRegistrationComponent } from './components/admin/hospital-manager-registration/hospital-manager-registration.component';
 import { LabAssistantRegistrationComponent } from './components/admin/lab-assistant-registration/lab-assistant-registration.component';
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
@@ -73,6 +86,58 @@ const routes: Routes = [
   {
     path: 'patient/home',
     component: HomepgComponent,
+  }, 
+  {
+    path: 'labassistant/login',
+    component: LoginComponent,
+  }, 
+  {
+    path: 'labassistant/signup',
+    component: SignupComponent,
+  }, 
+  {
+    path: 'labassistant/dashboard',
+    component: MaindhashboardComponent,
+  },
+  {
+    path: 'labassistant/addlabtest',
+    component: AddlabtestComponent,
+  },
+  {
+    path: 'labassistant/manageappoinemtns',
+    component: ManageappoinemtnsComponent,
+  },
+  {
+    path: 'labassistant/manageresults',
+    component: ManageresultsComponent,
+  },
+  {
+    path: 'labassistant/managetests',
+    component: ManagetestsComponent,
+  },
+  {
+    path: 'labassistant/reporthome',
+    component: ReportdashboardComponent,
+  },
+  {
+    path: 'labassistant/reportdelivery',
+    component: ReportdeliveryComponent,
+  },
+  {
+    path: 'labassistant/reportdemand',
+    component: ReportdeliveryComponent,
+  },
+  {
+    path: 'labassistant/updatelabtest',
+    component: UpdatelabtestComponent,
+  },
+  {
+    path: 'labassistant/uploadresult',
+    component: UploadresultComponent,
+  },
+  {
+    path: 'labassistant/uploadresulten',
+    component: UploadresultenquryComponent,
   },
   {
     path: 'patient/sa',
