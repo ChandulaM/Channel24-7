@@ -12,4 +12,7 @@ export class PatientCheckOutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  pay(){
+    
+  }
 }

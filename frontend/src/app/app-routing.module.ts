@@ -32,6 +32,8 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
+import { HomePgLoggedComponent } from './components/patient/home-pg-logged/home-pg-logged.component';
+import { SearchDocsComponent } from './components/patient/search-docs/search-docs.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -140,11 +142,11 @@ const routes: Routes = [
     component: UploadresultenquryComponent,
   },
   {
-    path: 'patient/sa',
+    path: 'patient/select-doctor',
     component: SelectAppointmentComponent,
   },
   {
-    path: 'patient/bk',
+    path: 'patient/time-slots',
     component: BookAppointmentComponent,
   },
   {
@@ -152,7 +154,7 @@ const routes: Routes = [
     component: PatientDetailsComponent,
   },
   {
-    path: 'patient/pc',
+    path: 'patient/checkout',
     component: PatientCheckOutComponent,
   },
   {
@@ -162,7 +164,15 @@ const routes: Routes = [
   {
     path: 'patient/my-profile',
     component: PatientProfileComponent,
-  },
+  }, 
+  {
+    path: 'patient/my',
+    component: HomePgLoggedComponent,
+  }, 
+  {
+    path: 'patient/search',
+    component: SearchDocsComponent,
+  }, 
 ];
 
 @NgModule({

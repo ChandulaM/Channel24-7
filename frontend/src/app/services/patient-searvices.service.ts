@@ -20,8 +20,12 @@ export class PatientSearvicesService {
     return this.http.get<Patient>(`${this.apiUrl}/find/${id}`);
   }
 
-  update(id: any, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/update/${id}`, data);
+  update(data: Patient): Observable<Patient> {
+    return this.http.put(`${this.apiUrl}/update`, data);
+  }
+
+  login(email : String, pass : string): Observable<any>{
+    return this.http.post(`${this.apiUrl}/login?email=${email}&pass=${pass}`, {});
   }
 
   delete(id: any): Observable<any> {

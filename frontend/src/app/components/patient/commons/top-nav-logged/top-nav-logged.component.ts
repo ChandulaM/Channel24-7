@@ -6,11 +6,11 @@ import { PatientSearvicesService } from 'src/app/services/patient-searvices.serv
 import Validation from './confirmed.validator';
 
 @Component({
-  selector: 'app-topnav',
-  templateUrl: './topnav.component.html',
-  styleUrls: ['./topnav.component.css']
+  selector: 'app-top-nav-logged',
+  templateUrl: './top-nav-logged.component.html',
+  styleUrls: ['./top-nav-logged.component.css']
 })
-export class TopnavComponent implements OnInit {
+export class TopNavLoggedComponent implements OnInit {
   exform: FormGroup|any;
   form: FormGroup|any;
   signUpForm : FormGroup|any;
@@ -43,13 +43,15 @@ export class TopnavComponent implements OnInit {
   login(){
     setTimeout(()=>{
     this.loggedIn = true;
-    this.router.navigate(['patient/my']);   
+    
+    this.router.navigate(['patient/home']);   
     },1500);
   }
 
   logOut(){
     setTimeout(()=>{
     this.loggedIn = false;
+   
     this.router.navigate(['patient/home']); 
     },1500);
   }
@@ -142,5 +144,5 @@ export class TopnavComponent implements OnInit {
 
   
 
-}
 
+}

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/models/Patient';
 import { PatientSearvicesService } from 'src/app/services/patient-searvices.service';
 import Validation from '../commons/topnav/confirmed.validator';
@@ -14,12 +14,17 @@ export class PatientProfileComponent implements OnInit {
   formResetPassword: FormGroup|any;
   form: FormGroup|any;
   message: string = '';
+  updateStat = false;
+  id: number = 3;
 
    patient : Patient = new Patient();
    submitted = false;
    submitted2 = false;
 
-  constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder) { 
+   @Input()
+  pat: Patient = new Patient;
+
+  constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder, private route : ActivatedRoute) { 
 
   }
 
@@ -65,6 +70,26 @@ export class PatientProfileComponent implements OnInit {
         dob:['', Validators.required],
       },
     );
+
+      this.patientService.getPatientById(this.id).subscribe((data:any)=>{
+        this.patient = data;
+        this.pat = data;
+        console.log(data);
+      },error => console.log(error));
+
+     
+
+     setTimeout(()=>{
+       this.form.setValue({
+         title: this.patient.title,
+         firstName: this.patient.firstName,
+         lastName: this.patient.lastName,
+         email: this.patient.email,
+         nic: this.patient.nic,
+         phone: this.patient.phone,
+         dob:this.patient.dob,
+      });
+     },500);
   }
 
 
@@ -75,17 +100,22 @@ export class PatientProfileComponent implements OnInit {
     return this.form.controls;
   }
 
+  
 
 
   onSubmit(): void {
     this.submitted = true;
+    this.patientService.update(this.patient).subscribe(data =>{
+      this.updateStat = true;
+      console.log(data,"aaa");
+    },error => console.log(error))
 
     if (this.form.invalid) {
       return;
     }
-    // this.save();
     console.log(JSON.stringify(this.form.value, null, 2));
   }
+
   onSubmitPass(): void {
     this.submitted2 = true;
 

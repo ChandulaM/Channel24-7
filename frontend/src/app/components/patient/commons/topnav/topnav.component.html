@@ -11,11 +11,11 @@
   <!-- Links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item active">
-      <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="home"></mdb-icon> Home<span class="sr-only">(current)</span></a>
+      <a class="nav-link waves-light" href="patient/home" mdbWavesEffect><mdb-icon fas icon="home"></mdb-icon> Home<span class="sr-only">(current)</span></a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-link waves-light"  mdbWavesEffect><mdb-icon fas icon="user-md"></mdb-icon> Book Appointment</a>
+      <a class="nav-link waves-light" href="patient/search" mdbWavesEffect><mdb-icon fas icon="user-md"></mdb-icon> Book Appointment</a>
     </li>
     <li class="nav-item">
       <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="clipboard-check"></mdb-icon> Medical Checkups</a>
@@ -30,16 +30,6 @@
       <li class="nav-item">
         <a class="nav-link waves-light" data-bs-toggle="modal" data-bs-target="#signinModal" mdbWavesEffect><mdb-icon fas icon="user"></mdb-icon>Sign in</a>
       </li>
-
-    <!-- Dropdown
-    <li class="nav-item dropdown" dropdown>
-      <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-        <mdb-icon fas icon="user"></mdb-icon> Sing in<span class="caret"></span></a>
-      <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
-      </div>
-    </li> -->
 
   </ul>
   <!-- Links -->
@@ -63,7 +53,7 @@
   </div>
   <div class="modal-body">
         <!-- Default form login -->
-<form class="text-center border border-light p-5" [formGroup] = "exform">
+<form class="text-center border border-light p-5" [formGroup] = "exform" (ngSubmit)="loginSubmit()" >
 <!-- Email -->
 <div class="form-floating mb-2">
 <input type="email" formControlName = "logEmail" id="defaultLoginFormEmail" class="form-control" placeholder="E-mail" required>
@@ -89,7 +79,7 @@
 </div>
 
 <!-- Sign in button -->
-<button mdbBtn color="green" class="my-4" type="submit"style="border-radius: 40px;">Sign in</button>
+<button mdbBtn color="green"  data-bs-dismiss="modal" class="my-4" [disabled] = "exform.invalid" type="submit"style="border-radius: 40px;">Sign in</button>
 
 <!-- Register -->
 <p>Not a member?

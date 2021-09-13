@@ -62,10 +62,14 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
+import { TopNavLoggedComponent } from './components/patient/commons/top-nav-logged/top-nav-logged.component';
+import { HomePgLoggedComponent } from './components/patient/home-pg-logged/home-pg-logged.component';
+import { SearchDocsComponent } from './components/patient/search-docs/search-docs.component';
 import { HospitalManagerServiceService } from './services/hospital-manager-service.service';
 import { SpecializationServiceService } from './services/specialization-service.service';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -115,6 +119,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PatientCheckOutComponent,
     PatientProfileComponent,
     MyAppointmentsComponent,
+	TopNavLoggedComponent,
+    HomePgLoggedComponent,
+    SearchDocsComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,6 +132,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
+    CommonModule,
     NgbModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
