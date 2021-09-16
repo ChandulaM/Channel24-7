@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+h3 {
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+label {
+  font-family: "Lato", sans-serif;
+}
+
+.filter-container {
+  background-color: #efefef;
+  padding: 2rem;
+}
+
+.graph-container {
+  background-color: #efefef;
+  padding: 2rem;
+  margin-top: 0.75rem;
+}
+
+.doctor-disabled-fields {
+  height: 2.4rem;
+}

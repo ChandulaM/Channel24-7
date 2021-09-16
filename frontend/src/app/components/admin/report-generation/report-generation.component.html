@@ -1,0 +1,86 @@
+<app-header title="Report Generation" [icon]="faReport"></app-header>
+<app-sidenav></app-sidenav>
+<div class="container">
+  <div class="row ml-2 mt-2 p-2">
+    <div class="filter-container">
+      <div class="row pt-2">
+        <div class="col colspan-2">
+          <h3>Filter Doctor Specializations By Hospital</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-2">
+          <label for="city-select">Select City</label>
+          <select class="form-select" aria-label="Select City">
+            <option selected hidden>City...</option>
+            <option *ngFor="let location of locations">{{ location }}</option>
+          </select>
+        </div>
+        <div class="col p-2">
+          <label for="noOfDoctors"
+            >Total number of doctors registered in the system</label
+          >
+          <input
+            class="doctor-disabled-fields"
+            type="number"
+            name="totalDoctors"
+            disabled
+            [ngModel]="totalDoctors"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-2">
+          <label for="typeahead-basic">Search for a hospital:</label>
+          <input
+            id="typeahead-basic"
+            type="text"
+            class="form-control"
+            [(ngModel)]="selectedHospital"
+            [ngbTypeahead]="search"
+          />
+        </div>
+        <div class="col p-2">
+          <label for="noOfSelectedDoctors"
+            >Total number of doctors in selected hospital</label
+          ><br />
+          <input
+            class="doctor-disabled-fields"
+            type="number"
+            name="selectedDoctors"
+            disabled
+            [ngModel]="selectedDoctors"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="graph-container">
+      <div class="row">
+        <div class="col col-8">
+          <div
+            style="
+              display: block;
+              width: 600px;
+              height: 300px;
+              background-color: whitesmoke;
+              padding: 0.5rem;
+            "
+          >
+            <canvas
+              baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [legend]="pieChartLegend"
+            >
+            </canvas>
+          </div>
+        </div>
+        <div class="col">List of doctors</div>
+      </div>
+    </div>
+  </div>
+</div>

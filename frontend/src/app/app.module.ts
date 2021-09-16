@@ -66,6 +66,9 @@ import { HospitalManagerServiceService } from './services/hospital-manager-servi
 import { SpecializationServiceService } from './services/specialization-service.service';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -115,6 +118,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PatientCheckOutComponent,
     PatientProfileComponent,
     MyAppointmentsComponent,
+    ReportGenerationComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,10 +131,17 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxPaginationModule,
     NgbModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
+    AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
     NgxSpinnerModule,
+    NgxTypeaheadModule,
+    ChartsModule,
   ],
-  providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
-  bootstrap: [AppComponent]
+  providers: [
+    DoctorServiceService,
+    SheduleServiceService,
+    HospitalManagerServiceService,
+    SpecializationServiceService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
