@@ -7,6 +7,8 @@ import com.channel247.backend.model.Specialization;
 import com.channel247.backend.service.DoctorService;
 import com.channel247.backend.service.HospitalServices;
 import com.channel247.backend.service.SpecizationService;
+import org.json.HTTP;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -16,10 +18,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.print.Doc;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -100,6 +99,54 @@ public class DoctorController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+
+    @GetMapping("/admin-reports")
+    public ResponseEntity<Map<String,Object>> generateReportsForAdmin(@RequestParam Long hospitalId) {
+        List<Doctor> doctorsInHospital = service.getDoctorsInHospital(hospitalId);
+        int totalDoctorsInSystem = service.getTotalNumberOfRegisteredDoctors();
+        List<JSONObject> specializationList = new ArrayList<>();
+
+
+        doctorsInHospital.forEach(doctor -> {
+            JSONObject doctorSpecial = new JSONObject();
+            if (specializationList.isEmpty()) {
+                doctorSpecial.put("specialization", doctor.getSpecialization().getName());
+                doctorSpecial.put("count", 1);
+                specializationList.add(doctorSpecial);
+            } else {
+                boolean specializationPresent = specializationList.stream()
+                        .anyMatch(o -> o.get("specialization") == doctor.getSpecialization().getName());
+                if(specializationPresent) {
+                    System.out.println("matched");
+                    specializationList.forEach(special -> {
+                        if (special.get("specialization") == doctor.getSpecialization().getName()) {
+                            int count = special.getInt("count") + 1;
+                            special.put("count", count);
+                        }
+                    });
+                } else {
+                    JSONObject newSpecial = new JSONObject();
+                    newSpecial.put("specialization", doctor.getSpecialization().getName());
+                    newSpecial.put("count", 1);
+                    specializationList.add(newSpecial);
+                }
+            }
+        });
+        List<String> listToSend = new ArrayList<>();
+
+        if (!specializationList.isEmpty()) {
+            specializationList.forEach(item -> {
+                var listItem = item.toString();
+                listToSend.add(listItem);
+            });
+        }
+        Map<String, Object> response = new HashMap<>();
+        response.put("hospitalDoctors", doctorsInHospital.size());
+        response.put("specializations", listToSend);
+        response.put("totalDoctors", totalDoctorsInSystem);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
