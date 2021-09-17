@@ -107,7 +107,6 @@ public class DoctorController {
         int totalDoctorsInSystem = service.getTotalNumberOfRegisteredDoctors();
         List<JSONObject> specializationList = new ArrayList<>();
 
-
         doctorsInHospital.forEach(doctor -> {
             JSONObject doctorSpecial = new JSONObject();
             if (specializationList.isEmpty()) {
@@ -118,7 +117,6 @@ public class DoctorController {
                 boolean specializationPresent = specializationList.stream()
                         .anyMatch(o -> o.get("specialization") == doctor.getSpecialization().getName());
                 if(specializationPresent) {
-                    System.out.println("matched");
                     specializationList.forEach(special -> {
                         if (special.get("specialization") == doctor.getSpecialization().getName()) {
                             int count = special.getInt("count") + 1;

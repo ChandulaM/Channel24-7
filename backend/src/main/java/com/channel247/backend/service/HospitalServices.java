@@ -52,4 +52,12 @@ public class HospitalServices {
         hospitalToRemove.setStatus("inactive");
         return hospitalRepo.save(hospitalToRemove);
     }
+
+    public List<String> getHospitalLocations() {
+        return hospitalRepo.findHospitalCities();
+    }
+
+    public List<Hospital> getHospitalsByCity(String city) {
+        return hospitalRepo.findHospitalsByCityAndStatus(city, "active");
+    }
 }
