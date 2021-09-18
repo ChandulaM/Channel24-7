@@ -71,7 +71,14 @@ import { HospitalManagerServiceService } from './services/hospital-manager-servi
 import { SpecializationServiceService } from './services/specialization-service.service';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+
 import { CommonModule } from '@angular/common';
+
+import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
+import { ChartsModule } from 'ng2-charts';
+import { ListDoctorsComponent } from './components/admin/report-generation/list-doctors/list-doctors.component';
+
 
 @NgModule({
   declarations: [
@@ -121,9 +128,14 @@ import { CommonModule } from '@angular/common';
     PatientCheckOutComponent,
     PatientProfileComponent,
     MyAppointmentsComponent,
+<<<<<<<<< Temporary merge branch 1
+    ReportGenerationComponent,
+    ListDoctorsComponent,
+=========
 	TopNavLoggedComponent,
     HomePgLoggedComponent,
     SearchDocsComponent,
+>>>>>>>>> Temporary merge branch 2
   ],
   imports: [
     BrowserModule,
@@ -137,11 +149,21 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     NgbModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
+    AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
     NgxSpinnerModule,
-    
+<<<<<<<<< Temporary merge branch 1
+    NgxTypeaheadModule,
+    ChartsModule,
+=========
+
+>>>>>>>>> Temporary merge branch 2
   ],
-  providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
-  bootstrap: [AppComponent]
+  providers: [
+    DoctorServiceService,
+    SheduleServiceService,
+    HospitalManagerServiceService,
+    SpecializationServiceService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
