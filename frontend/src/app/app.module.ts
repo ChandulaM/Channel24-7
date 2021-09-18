@@ -69,6 +69,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { ChartsModule } from 'ng2-charts';
+import { ListDoctorsComponent } from './components/admin/report-generation/list-doctors/list-doctors.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { ChartsModule } from 'ng2-charts';
     PatientProfileComponent,
     MyAppointmentsComponent,
     ReportGenerationComponent,
+    ListDoctorsComponent,
   ],
   imports: [
     BrowserModule,

@@ -140,7 +140,7 @@ public class DoctorController {
             });
         }
         Map<String, Object> response = new HashMap<>();
-        response.put("hospitalDoctors", doctorsInHospital.size());
+        response.put("hospitalDoctors", doctorsInHospital);
         response.put("specializations", listToSend);
         response.put("totalDoctors", totalDoctorsInSystem);
 

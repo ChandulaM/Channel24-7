@@ -56,7 +56,7 @@
             type="number"
             name="selectedDoctors"
             disabled
-            [ngModel]="selectedDoctors"
+            [ngModel]="numberOfSelectedDoctors"
           />
         </div>
       </div>
@@ -64,7 +64,7 @@
 
     <div class="graph-container">
       <div class="row">
-        <div class="col col-8">
+        <div class="col col-7">
           <div
             style="
               display: block;
@@ -74,6 +74,12 @@
               padding: 0.5rem;
             "
           >
+            <p *ngIf="!hospitalSelected">
+              Select a city and hospital to display the data
+            </p>
+            <p *ngIf="numberOfSelectedDoctors == 0 && hospitalSelected">
+              No doctors in the selected hospital
+            </p>
             <canvas
               baseChart
               [data]="pieChartData"
@@ -87,7 +93,9 @@
             </canvas>
           </div>
         </div>
-        <div class="col">List of doctors</div>
+        <div class="col col-5">
+          <app-list-doctors [doctorList]="selectedDoctors"></app-list-doctors>
+        </div>
       </div>
     </div>
   </div>
