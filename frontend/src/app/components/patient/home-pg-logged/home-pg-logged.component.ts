@@ -10,6 +10,8 @@ export class HomePgLoggedComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("sddsdsdsdsdsdsd")
+    console.log(history.state.patientId);
   }
 
 }

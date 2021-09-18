@@ -23,6 +23,8 @@ import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalm
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
+import {CookieService} from 'angular2-cookie/services/cookies.service';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -137,6 +139,7 @@ import { CommonModule } from '@angular/common';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
     NgxSpinnerModule,
+    
   ],
   providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
   bootstrap: [AppComponent]

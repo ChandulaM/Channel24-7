@@ -52,16 +52,16 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
   <div class="modal-body">
-        <!-- Default form login -->
+
 <form class="text-center border border-light p-5" [formGroup] = "exform" (ngSubmit)="loginSubmit()" >
-<!-- Email -->
+
 <div class="form-floating mb-2">
-<input type="email" formControlName = "logEmail" id="defaultLoginFormEmail" class="form-control" placeholder="E-mail" required>
-<small *ngIf = "exform.get('logEmail').invalid && exform.get('logEmail').touched" class = "text-danger">A valid email is mandatory</small>
+<input type="email" formControlName = "email" id="defaultLoginFormEmail" class="form-control" placeholder="E-mail" required>
+<small *ngIf = "exform.get('email').invalid && exform.get('email').touched" class = "text-danger">A valid email is mandatory</small>
 <label for="floatingInput">Email</label>
 </div>
 
-<!-- Password -->
+
 <div class="form-floating mb-2">
 <input type="password" formControlName = "password" id="defaultLoginFormPassword" class="form-control mt-4" placeholder="Password" required>
 <small *ngIf = "exform.get('password').invalid && exform.get('password').touched" class = "text-danger">Password must have atleast 6 characters</small>
@@ -69,24 +69,19 @@
 </div>
 
 <div class="d-flex justify-content-around">
-<!-- <div>
-  <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
-</div> -->
+
 <div class="p-2">
   <!-- Forgot password -->
   <a href="">Forgot password?</a>
 </div>
 </div>
 
-<!-- Sign in button -->
 <button mdbBtn color="green"  data-bs-dismiss="modal" class="my-4" [disabled] = "exform.invalid" type="submit"style="border-radius: 40px;">Sign in</button>
 
-<!-- Register -->
 <p>Not a member?
 <a data-bs-toggle="modal" data-bs-target="#signupModal" style="color: blue;">Register</a>
 </p>
 </form>
-<!-- Default form login -->
 
   </div>
   <!-- <div class="modal-footer">
@@ -95,20 +90,6 @@
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

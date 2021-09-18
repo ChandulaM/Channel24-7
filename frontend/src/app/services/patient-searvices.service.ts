@@ -8,7 +8,7 @@ import { Patient } from '../models/Patient';
 })
 export class PatientSearvicesService {
 
-  private apiUrl : string = "http://localhost:8081/api/patients/"
+  private apiUrl : string = "http://localhost:8081/api/patients"
 
   constructor(private http : HttpClient) { }
 
@@ -24,9 +24,14 @@ export class PatientSearvicesService {
     return this.http.put(`${this.apiUrl}/update`, data);
   }
 
-  login(email : String, pass : string): Observable<any>{
-    return this.http.post(`${this.apiUrl}/login?email=${email}&pass=${pass}`, {});
+  login(patient: Patient): Observable<Patient> {
+    return this.http.post<Patient>(`${this.apiUrl}/login`, patient);
   }
+
+
+  // login(email : String, pass : string): Observable<any>{
+  //   return this.http.post(`${this.apiUrl}/login?email=${email}&pass=${pass}`, {});
+  // }
 
   delete(id: any): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete/${id}`);
