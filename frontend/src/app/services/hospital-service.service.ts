@@ -34,4 +34,17 @@ export class HospitalServiceService {
     return this.http.get<Hospital[]>(`${this.apiUrl}get-all`);
   }
 
+  getDoctorSpecializationReport(hospitalId: Number): Observable<any> {
+    return this.http.get(
+      `http://localhost:8081/api/doctor/admin-reports/?hospitalId=${hospitalId}`
+    );
+  }
+
+  getHospitalLocations(): Observable<any> {
+    return this.http.get(`${this.apiUrl}locations`);
+  }
+
+  getHospitalsInCity(city: String): Observable<Hospital[]> {
+    return this.http.get<Hospital[]>(`${this.apiUrl}?city=${city}`);
+  }
 }

@@ -70,6 +70,10 @@ import { SpecializationServiceService } from './services/specialization-service.
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CommonModule } from '@angular/common';
+import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
+import { ChartsModule } from 'ng2-charts';
+import { ListDoctorsComponent } from './components/admin/report-generation/list-doctors/list-doctors.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +126,8 @@ import { CommonModule } from '@angular/common';
 	TopNavLoggedComponent,
     HomePgLoggedComponent,
     SearchDocsComponent,
+    ReportGenerationComponent,
+    ListDoctorsComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,10 +141,17 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     NgbModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
+    AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
     NgxSpinnerModule,
+    NgxTypeaheadModule,
+    ChartsModule,
   ],
-  providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
-  bootstrap: [AppComponent]
+  providers: [
+    DoctorServiceService,
+    SheduleServiceService,
+    HospitalManagerServiceService,
+    SpecializationServiceService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

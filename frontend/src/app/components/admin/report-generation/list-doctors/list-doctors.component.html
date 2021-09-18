@@ -1,0 +1,124 @@
+<div class="list-container p-2" id="list-container">
+  <h5 id="title">List of Doctors in Hospital</h5>
+  <h6
+    id="opt-header"
+    *ngIf="isDoctorListEmpty"
+    style="text-align: center; margin-top: 2rem"
+  >
+    Select a hospital to display doctors
+  </h6>
+  <div
+    *ngFor="
+      let doctor of doctorList
+        | paginate
+          : {
+              itemsPerPage: 4,
+              currentPage: pageNo,
+              totalItems: numberOfDoctors
+            }
+    "
+    class="card mb-2"
+  >
+    <div class="card-body">
+      <div class="row">
+        <div class="col col-8">
+          <div class="row">
+            <h5 class="card-title">{{ doctor.name }}</h5>
+          </div>
+          <div class="row">
+            <h6>{{ doctor.specialization.name }}</h6>
+          </div>
+        </div>
+        <div class="col col-4">
+          <button
+            class="btn btn-primary view-btn"
+            (click)="onSelectDoctor(doctor)"
+          >
+            View
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<pagination-controls
+  *ngIf="!isDoctorListEmpty"
+  (pageChange)="pageNo = $event"
+  class="float-right"
+></pagination-controls>
+
+<!-- Modal -->
+
+<div
+  class="modal fade"
+  id="singleDoctorModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Viewing Profile of Dr. {{ selectedDoctor.name }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="img-container">
+          <img
+            src="{{ selectedDoctor.image }}"
+            style="width: 150px; height: 150px; border: 1px black solid"
+            class="rounded"
+          />
+        </div>
+        <label for="managerName" style="margin-top: 1rem">Doctor Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="doctorName"
+          name="doctorName"
+          value="{{ selectedDoctor.name }}"
+          disabled
+        />
+        <br />
+        <label for="doctorNumber">Doctor Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="doctorNumber"
+          name="doctorNumber"
+          value="{{ selectedDoctor.number }}"
+          disabled
+        />
+        <br />
+        <label for="doctorSpecial">Doctor Specialization</label>
+        <input
+          type="text"
+          class="form-control"
+          id="doctorSpecial"
+          name="doctorSpecial"
+          value="{{ selectedDoctor.specialization.name }}"
+          disabled
+        />
+      </div>
+      <br />
+      <div class="modal-footer">
+        <button
+          style="width: 40%"
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+        >
+          Ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
