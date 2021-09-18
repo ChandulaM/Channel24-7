@@ -32,8 +32,12 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
+
 import { HomePgLoggedComponent } from './components/patient/home-pg-logged/home-pg-logged.component';
 import { SearchDocsComponent } from './components/patient/search-docs/search-docs.component';
+
+import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
+
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -43,8 +47,8 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [
   {
-    path: "registerhospitalmanager",
-    component: RegisterHospitalmanagerComponent
+    path: 'registerhospitalmanager',
+    component: RegisterHospitalmanagerComponent,
   },
   {
     path: 'hospitalmanager',
@@ -64,14 +68,14 @@ const routes: Routes = [
         component: DoctorsComponent,
       },
       {
-        path: "adddoctor",
-        component: AddDoctorComponent
+        path: 'adddoctor',
+        component: AddDoctorComponent,
       },
       {
-        path: "doctors/:id",
-        component: SingleDoctorComponent
-      }
-    ]
+        path: 'doctors/:id',
+        component: SingleDoctorComponent,
+      },
+    ],
   },
   {
     path: 'admin',
@@ -86,17 +90,21 @@ const routes: Routes = [
     component: LabAssistantRegistrationComponent,
   },
   {
+    path: 'admin/reports',
+    component: ReportGenerationComponent,
+  },
+  {
     path: 'patient/home',
     component: HomepgComponent,
-  }, 
+  },
   {
     path: 'labassistant/login',
     component: LoginComponent,
-  }, 
+  },
   {
     path: 'labassistant/signup',
     component: SignupComponent,
-  }, 
+  },
   {
     path: 'labassistant/dashboard',
     component: MaindhashboardComponent,
