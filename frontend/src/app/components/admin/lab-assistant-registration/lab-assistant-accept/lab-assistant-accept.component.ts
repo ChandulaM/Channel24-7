@@ -17,7 +17,7 @@ export class LabAssistantAcceptComponent implements OnInit {
   faAccept = faCheck;
   faReject = faTimes;
   pendingRequests: any;
-  numberOfRequests: number = 2;
+  numberOfRequests: any;
   pageNo: number = 1;
   selectedRequest!: any;
 
@@ -30,6 +30,7 @@ export class LabAssistantAcceptComponent implements OnInit {
 
   ngOnInit(): void {
     this.pendingRequests = this.sample.getPending();
+    this.numberOfRequests = this.pendingRequests.length;
     this.selectedRequest = this.pendingRequests[0];
   }
 
