@@ -19,6 +19,8 @@ export class HospitalManagerService {
   }
 
   acceptOrRejectManagerRequest(hospitalManager: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/accept`, hospitalManager);
+    return this.http.put<any>(`${this.apiUrl}/accept`, hospitalManager, {
+      observe: 'response',
+    });
   }
 }
