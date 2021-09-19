@@ -37,7 +37,7 @@ export class SidenavComponent implements OnInit {
     {
       name: 'Reports',
       icon: this.reportIcon,
-      path: 'admin/reports',
+      path: 'admin',
     },
   ];
 

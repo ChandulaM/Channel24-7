@@ -1,14 +1,19 @@
 package com.channel247.backend.controller;
 
+import com.channel247.backend.model.LabAssistant;
+import com.channel247.backend.model.Login;
 import com.channel247.backend.model.Patient;
+import com.channel247.backend.repository.PatientRepo;
 import com.channel247.backend.service.PatientService;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4200/")
 @RestController
 @RequestMapping("/api/patients")
 public class PatientController {
@@ -32,7 +37,7 @@ public class PatientController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient){
+    public ResponseEntity<?> addPatient(@RequestBody Patient patient){
         Patient newPatient = patientService.addPatient(patient);
         return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
     }
@@ -47,6 +52,15 @@ public class PatientController {
     public ResponseEntity<?> deletePatient(@PathVariable("id") Long id){
         patientService.deletePatient(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login (@RequestBody Patient patient){
+        Patient newPatient = patientService.login(patient);
+        if(newPatient == null){
+            return new ResponseEntity<>("Invalid credintials", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(newPatient, HttpStatus.OK);
     }
 
 

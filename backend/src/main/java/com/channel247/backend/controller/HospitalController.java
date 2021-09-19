@@ -57,17 +57,4 @@ public class HospitalController {
         Hospital updatedHospital = hospitalServices.removeHospital(id);
         return new ResponseEntity<>(updatedHospital, HttpStatus.OK);
     }
-
-    @GetMapping("/locations")
-    public ResponseEntity<List<String>> getHospitalLocations() {
-        List<String> locations = hospitalServices.getHospitalLocations();
-        return new ResponseEntity<>(locations, HttpStatus.OK);
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<List<Hospital>> getHospitalsByCity(@RequestParam String city) {
-        List<Hospital> hospitalsInCity = hospitalServices.getHospitalsByCity(city);
-        return new ResponseEntity<>(hospitalsInCity, HttpStatus.OK);
-    }
-
 }

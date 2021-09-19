@@ -2,16 +2,17 @@ package com.channel247.backend.service;
 
 import com.channel247.backend.exceptions.ResourceNotFoundException;
 import com.channel247.backend.model.Doctor;
-import com.channel247.backend.model.Hospital;
 import com.channel247.backend.model.Specialization;
 import com.channel247.backend.repository.DoctorRepo;
-import com.channel247.backend.repository.HospitalRepo;
+import com.channel247.backend.repository.SpecializationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.print.Doc;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,9 +20,6 @@ public class DoctorService {
 
     @Autowired
     DoctorRepo repo;
-
-    @Autowired
-    HospitalRepo hospitalRepo;
 
 
     public Doctor saveOrUpdateDoctor(Doctor doctor) {
@@ -57,17 +55,6 @@ public class DoctorService {
         repo.delete(doctor);
 
     }
-
-    public int getTotalNumberOfRegisteredDoctors() {
-        return repo.findAll().size();
-    }
-
-    public List<Doctor> getDoctorsInHospital(Long hospitalId) {
-        Hospital hospital = hospitalRepo.findById(hospitalId)
-                .orElseThrow(() -> new ResourceNotFoundException("Hospital ID: " + hospitalId + " not valid."));
-        return repo.findDoctorsByHospital(hospital);
-    }
-
 
 
 }

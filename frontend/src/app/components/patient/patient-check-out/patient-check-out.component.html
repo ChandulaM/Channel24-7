@@ -1,40 +1,36 @@
-<app-topnav></app-topnav>
+<app-top-nav-logged></app-top-nav-logged>
 
 <div class="card-deck my-3" style="margin-right: auto; margin-left: auto;">
     <div class="card" style="background: rgba(76, 175, 80, 0.7)">
       <div class="card-body" >
-        <h4>Doctor's Details</h4>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
+        <h3 style="color: aliceblue;border-style:dotted">Doctor's Details</h3>
+        <h4 >Name : A.C.N Perera</h4>
+        <h4>Specialization : Dentist</h4>
+        <h4>Hospital : Asiri-Colombo</h4>
         <br>
-        <h4>Apponitment Details</h4>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
+        <h3 style="color: aliceblue;border-style:dotted">Appointment Details</h3>
+        <h4 >Date : 2021-08-23</h4>
+        <h4>Time : 06:30AM</h4>
+        <h4>Active Patients : 12</h4>
       </div>
     </div>
     <div class="card">
         <h4>Payment Details</h4>
         <table style="border: 1px;">
             <tr>
-                <td>Doctor fee</td><td>Rs.2000</td>
+                <td>Doctor fee</td><td>Rs.2100</td>
             </tr>
             <tr>
-                <td>Doctor fee</td><td>Rs.2000</td>
+                <td>Hospital fee</td><td>Rs.400</td>
             </tr>
             <tr>
-                <td>Doctor fee</td><td>Rs.2000</td>
+                <td>Online Service fee</td><td>Rs.0</td>
             </tr>
             <tr>
-                <td>Toatal Payment</td><td>Rs.6000</td>
+                <td style="font-size:larger; color: brown;">Toatal Payment</td><td style="font-size:larger; color: brown;">Rs.2500</td>
             </tr>
             <tr>
-                <td></td><td><button style="border-radius: 20px;color: aliceblue; font-size: smaller; background-color: rgb(216, 19, 101);">PAY AT HOSPITAL</button></td>
+                <td></td><td><button (click) = "pay()" style="border-radius: 20px;color: aliceblue; font-size: smaller; background-color: rgb(216, 19, 101);">PAY AT HOSPITAL</button></td>
             </tr>
             
         </table>

@@ -38,4 +38,8 @@ public class PatientService {
     public void deletePatient(Long id){
          patientRepo.deletePatientByPatientId(id);
     }
+
+    public Patient login(Patient patient) {
+        return patientRepo.findByEmail(patient.getEmail());
+    }
 }

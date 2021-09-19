@@ -1,21 +1,28 @@
-
-<app-topnav></app-topnav>
+<app-top-nav-logged></app-top-nav-logged>
 <div class="container my-3" style="max-height: 110px; background-color: green; border-radius: 20px;">
     <h5 style="text-align: center; color: aliceblue;">Filter By</h5>
     <table class="d-flex justify-content-around">
       <tr>
-      <td style="padding-bottom: 18px;"> <input type="text" id="docNm" onkeyup="myFunction()" placeholder="Doctor name"></td>
+      <td style="padding-bottom: 18px;"> <input type="text" id="docNm" [(ngModel)] = "docName" (ngModelChange) = "searchName()" placeholder="Doctor name"></td>
       <td> 
-        <select class="form-select form-select-sm mb-3" id="docSpe" onkeyup="myFunction()">
+        <select class="form-select form-select-sm mb-3" id="docSpe" >
           <option selected disabled> Doctor Specialization</option>
-          <option >Cardiologist</option>
-          <option >Sergion</option>
+          <option selected >Dentist</option>
+          <option value="Cardiologist">Cardiologist</option>
+          <option value="3">ENT</option>
+          <option value="3">Gynocologist</option>
+          <option value="3">Surgeon</option>
         </select></td>
         <td> 
-          <select class="form-select form-select-sm mb-3" id="docSpe" onkeyup="myFunction()">
+          <select class="form-select form-select-sm mb-3" id="docSpe">
             <option selected disabled> Doctor Hospital</option>
-            <option >Cardiologist</option>
-            <option >Sergion</option>
+            <option value="Asiri-Colombo">Asiri-Colombo</option>
+            <option value="Asiri-Kandy">Asiri-Kandy</option>
+            <option value="Asiri-Kurunagala">Asiri-Kurunagala</option>
+            <option value="Kumudu-Matale">CCC-Kandy</option>
+            <option value="Kumudu-Matale3">Kumudu-Matale</option>
+            <option value="KMC-Colombo">KMC-Colombo</option>
+            <option value="KDP-Mountlavania">KDP-Mountlavania</option>
           </select></td>
         </tr>
     </table>
@@ -28,22 +35,25 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
+            <th>Doctor's Name</th>
+            <th>Specialization</th>
+            <th>Hospital</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- <tr *ngFor="let employee of employees | async">
-            <td>{{patient.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.emailId}}</td>
-            <td><button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-                <button (click)="updateEmployee(employee.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
-                <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+        <tbody style="font-size: medium;">
+           <tr *ngFor="let doctor of doctors">
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.specialization}}</td>
+            <td>{{doctor.hospital}}</td>
+            <td><button class="btn btn-success" (click) = "callBook()" style="border-radius: 20px;">Select</button>
             </td>
-          </tr> -->
+          </tr>
+
+         <!-- <tr>
+           <td>A.M. Kumar</td> 
+           <td>A.M. Kumar</td>
+         </tr> -->
         </tbody>
       </table>
     </div>

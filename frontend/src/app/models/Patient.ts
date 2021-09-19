@@ -8,4 +8,5 @@ export class Patient {
     email? : string;
     dob? : string;
     password? : string;
+    appointments?: string[];
 }

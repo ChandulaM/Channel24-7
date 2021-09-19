@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators,FormBuilder, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import axios from 'axios';
 import { Patient } from 'src/app/models/Patient';
 import { PatientSearvicesService } from 'src/app/services/patient-searvices.service';
 import Validation from './confirmed.validator';
 
 @Component({
-  selector: 'app-topnav',
-  templateUrl: './topnav.component.html',
-  styleUrls: ['./topnav.component.css']
+  selector: 'app-top-nav-logged',
+  templateUrl: './top-nav-logged.component.html',
+  styleUrls: ['./top-nav-logged.component.css']
 })
-export class TopnavComponent implements OnInit {
+export class TopNavLoggedComponent implements OnInit {
   exform: FormGroup|any;
   form: FormGroup|any;
   signUpForm : FormGroup|any;
@@ -24,7 +23,7 @@ export class TopnavComponent implements OnInit {
    loggedIn = false;
 
   constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder) { 
-    
+
   }
 
   newPatient(): void{
@@ -41,33 +40,36 @@ export class TopnavComponent implements OnInit {
       (error: any) => console.log(error));
   }
 
-  // login(){
-  //   setTimeout(()=>{
-  //   this.loggedIn = true;
-  //   this.router.navigate(['patient/my']);   
-  //   },1500);
-  // }
+  login(){
+    setTimeout(()=>{
+    this.loggedIn = true;
+    
+    this.router.navigate(['patient/home']);   
+    },1500);
+  }
 
   logOut(){
     setTimeout(()=>{
     this.loggedIn = false;
+   
     this.router.navigate(['patient/home']); 
     },1500);
   }
 
-  login() {
-    this.patientService
-    .login(this.exform.value).subscribe((val: any) => {
-      console.log(val);
-      this.router.navigate(['patient/my'], {"state": val});
-    }, 
-      (error: any) => console.log(error));
-  }
+  // login() {
+  //   this.patientService
+  //   .login("asd@gmail.com","123123").subscribe((data: any) => {
+  //     console.log(data)
+  //     this.LoggedInPatient = data;
+  //     this.router.navigate(['patient/home',this.LoggedInPatient]);
+  //   }, 
+  //     (error: any) => console.log(error));
+  // }
 
   ngOnInit(){
 
     this.exform = new FormGroup({
-      email : new FormControl(null, [Validators.required, Validators.email]),
+      logEmail : new FormControl(null, [Validators.required, Validators.email]),
       password :new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
 
@@ -132,6 +134,7 @@ export class TopnavComponent implements OnInit {
       return;
     }
     this.login();
+   
   }
 
   onReset(): void {
@@ -141,5 +144,5 @@ export class TopnavComponent implements OnInit {
 
   
 
-}
 
+}
