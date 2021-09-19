@@ -1,8 +1,8 @@
-<app-topnav></app-topnav>
+<app-top-nav-logged></app-top-nav-logged>
 <div class="card-deck my-3" style="margin-right: auto; margin-left: auto;">
     <div class="card" style="background: rgba(76, 175, 80, 0.7)">
-      <div class="card-body" >
-        <h4>Welcome</h4>
+      <div class="card-body" *ngIf = "pat">
+        <h4>Welcome {{pat.firstName}}</h4>
         <h6>Doctor's Details</h6>
         <h6>Doctor's Details</h6>
         <h6>Doctor's Details</h6>
@@ -72,14 +72,6 @@
                 </div>
               </div>
               <div class="form-group ">  
-                <button
-                  type="button"
-                  (click)="onReset2()"
-                  class="btn btn-warning"
-                  style="border-radius: 20px;"
-                >
-                  Reset
-                </button>
                 <button type="submit" [disabled]="formResetPassword.invalid"  class="btn btn-primary float-right" style="border-radius: 20px;">Update</button>
               </div>
         </form>
@@ -204,22 +196,15 @@
                   </div>
           
                   <div class="form-group ">  
-                    <button
-                      type="button"
-                      (click)="onReset()"
-                      class="btn btn-warning"
-                      style="border-radius: 20px;"
-                    >
-                      Reset
-                    </button>
                     <button type="submit" [disabled]="form.invalid" class="btn btn-primary float-right" style="border-radius: 20px;">Update</button>
                   </div>
        
             </form>
           </div>
-          <div [hidden]="!submitted">
+          <div [hidden]="!updateStat">
             <h4 style="text-align: center; color: green; font-size:large;">Update successfully!</h4>
           </div> 
+         
             </div>
           </div>
           

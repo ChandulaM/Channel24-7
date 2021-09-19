@@ -93,22 +93,21 @@ public class HospitalManagerController {
 
     @GetMapping("/check")
     public ResponseEntity<Map<String, Object>> checkHospitalIsAvailable(@RequestParam Long id) {
-        try {
+        try{
 
             Hospital hospital = hospitalServices.getHospitalById(id);
 
             boolean result = hospitalManagerService.isHospitalExists(hospital);
 
-            Map<String, Object> response = new HashMap<>();
+            Map<String,Object> response = new HashMap<>();
             response.put("result", result);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
 
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
 
     @GetMapping("/pending")
     public ResponseEntity<List<HospitalManager>> getPendingHospitalManagers(){
