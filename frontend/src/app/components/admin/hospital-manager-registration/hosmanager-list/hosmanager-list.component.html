@@ -2,10 +2,17 @@
   <input
     class="form-control me-2"
     type="search"
+    name="searchQuery"
     placeholder="Search"
     aria-label="Search"
+    [(ngModel)]="searchQuery"
+    (input)="searchForManager()"
   />
-  <button class="btn btn-outline-success" type="submit">
+  <button
+    class="btn btn-outline-success"
+    type="submit"
+    (click)="searchForManager()"
+  >
     <fa-icon [icon]="faSearch"></fa-icon>
   </button>
 </form>

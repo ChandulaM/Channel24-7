@@ -16,6 +16,8 @@ export class HosmanagerListComponent implements OnInit {
   pageNo: number = 1;
   isLoading: boolean = false;
   selectedManager: any;
+  managerArrayCopy: any[] = [];
+  searchQuery: string = '';
 
   constructor(private managerService: HospitalManagerService) {}
 
@@ -26,6 +28,7 @@ export class HosmanagerListComponent implements OnInit {
       this.numberOfManagers = data.length;
       this.isLoading = false;
       this.selectedManager = data[0];
+      this.managerArrayCopy = Object.assign([], this.registeredManagers);
     });
   }
 
@@ -66,5 +69,19 @@ export class HosmanagerListComponent implements OnInit {
         manager.user_id == this.selectedManager.user_id
     );
     this.registeredManagers.splice(index, 1);
+  }
+
+  searchForManager() {
+    if (this.searchQuery == '') {
+      this.registeredManagers = this.managerArrayCopy;
+    } else {
+      const searchQuery = this.searchQuery.toLowerCase();
+      this.registeredManagers = this.managerArrayCopy.filter(
+        (manager: any) =>
+          manager.fname.toLowerCase().includes(searchQuery) ||
+          manager.lname.toLowerCase().includes(searchQuery) ||
+          manager.hospital.hospitalName.toLowerCase().includes(searchQuery)
+      );
+    }
   }
 }
