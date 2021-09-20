@@ -18,6 +18,6 @@ export class LabAssistantRegistrationComponent implements OnInit {
   }
 
   onAccept(event: any) {
-    this.registered = event;
+    this.registered = Object.assign([], event);
   }
 }

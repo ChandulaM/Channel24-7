@@ -26,7 +26,8 @@
           : {
               itemsPerPage: 5,
               currentPage: pageNo,
-              totalItems: registeredManagers
+              totalItems: registeredManagers,
+              id: 'managerList'
             }
     "
     class="card mb-2"
@@ -47,6 +48,7 @@
 </div>
 <pagination-controls
   (pageChange)="pageNo = $event"
+  id="managerList"
   class="float-right"
 ></pagination-controls>
 

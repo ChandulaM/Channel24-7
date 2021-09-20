@@ -20,12 +20,13 @@
 <div class="list-container" id="list-container">
   <div
     *ngFor="
-      let assistant of registeredAssistants
+      let assistant of _registeredAssistants
         | paginate
           : {
               itemsPerPage: 4,
               currentPage: pageNo,
-              totalItems: numberOfAssistants
+              totalItems: numberOfAssistants,
+              id: 'labList'
             }
     "
     class="card mb-2"
@@ -45,6 +46,7 @@
   </div>
   <pagination-controls
     (pageChange)="pageNo = $event"
+    id="labList"
     class="float-right"
   ></pagination-controls>
 </div>

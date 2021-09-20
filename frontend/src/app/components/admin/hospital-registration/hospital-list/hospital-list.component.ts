@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   faSearch,
   faEdit,
@@ -19,10 +19,12 @@ export class HospitalListComponent implements OnInit {
   faEdit = faEdit;
   faCheck = faCheck;
   faTrash = faTrashAlt;
-  registeredHospitals: Hospital[] = [];
+  @Input() registeredHospitals: Hospital[] = [];
+  hospitalArrCopy: Hospital[] = [];
   numberOfHospitals: any;
   pageNo: number = 1;
   hospitalToEdit: Hospital = new Hospital();
+  searchQuery: string = '';
 
   constructor(private hospitalService: HospitalServiceService) {}
 
@@ -30,10 +32,24 @@ export class HospitalListComponent implements OnInit {
     this.getAllRegisteredHospitals();
   }
 
+  searchHospital() {
+    if (this.searchQuery == '') {
+      this.registeredHospitals = this.hospitalArrCopy;
+    } else {
+      const searchQuery = this.searchQuery.toLowerCase();
+      this.registeredHospitals = this.hospitalArrCopy.filter(
+        (hospital: any) =>
+          hospital.hospitalName.toLowerCase().includes(searchQuery) ||
+          hospital.city.toLowerCase().includes(searchQuery)
+      );
+    }
+  }
+
   getAllRegisteredHospitals(): void {
     this.hospitalService.getAllHospitals().subscribe((hospitals) => {
       this.registeredHospitals = hospitals;
       this.numberOfHospitals = hospitals.length;
+      Object.assign(this.hospitalArrCopy, this.registeredHospitals);
     });
   }
 

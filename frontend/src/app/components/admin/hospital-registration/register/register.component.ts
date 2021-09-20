@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faStarOfLife } from '@fortawesome/free-solid-svg-icons';
 import { Hospital } from 'src/app/models/Hospital';
 import { HospitalServiceService } from 'src/app/services/hospital-service.service';
@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
   hospitalRegNoError: boolean = false;
   formError: boolean = false;
 
+  @Output() hospitalRegistered: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(private hospitalService: HospitalServiceService) {}
 
   ngOnInit(): void {}
@@ -29,6 +31,7 @@ export class RegisterComponent implements OnInit {
       this.hospitalService.registerHospital(this.hospital).subscribe(
         (res) => {
           alert('Hospital added');
+          this.hospitalRegistered.emit();
         },
         (err) => {
           alert('Error in adding.' + err);
@@ -51,6 +54,7 @@ export class RegisterComponent implements OnInit {
       this.validateCity() &&
       this.validateContactNo() &&
       this.validateName() &&
+      this.validateFee() &&
       this.validateHospitalRegNo()
     );
   }
@@ -96,6 +100,13 @@ export class RegisterComponent implements OnInit {
       return true;
     }
   }
+  validateFee(): boolean {
+    if (!this.hospital.hospitalFee) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   validateHospitalRegNo(): boolean {
     if (!this.hospital.hospitalRegNo) {
       return false;
@@ -114,5 +125,6 @@ export class RegisterComponent implements OnInit {
     this.hospital.city = '';
     this.hospital.contactNo = '';
     this.hospital.email = '';
+    this.hospital.hospitalFee = 0;
   }
 }

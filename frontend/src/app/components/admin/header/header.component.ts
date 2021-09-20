@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IconDefinition, faHospital } from '@fortawesome/free-solid-svg-icons';
+import {
+  IconDefinition,
+  faHospital,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +19,22 @@ export class HeaderComponent implements OnInit {
 
   faHospital = faHospital;
 
+  faUser = faUser;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  checkForScroll() {
+    const header = document.getElementById('header');
+    const sticky = header?.offsetTop;
+
+    window.onscroll = () => {
+      if (window.pageYOffset > sticky!) {
+        header!.classList.add('sticky');
+      } else {
+        header!.classList.remove('sticky');
+      }
+    };
+  }
 }

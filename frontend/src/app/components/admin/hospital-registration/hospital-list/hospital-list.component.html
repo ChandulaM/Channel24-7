@@ -3,11 +3,18 @@
   <form class="d-flex">
     <input
       class="form-control me-2"
+      name="searchQuery"
+      [(ngModel)]="searchQuery"
       type="search"
       placeholder="Search"
       aria-label="Search"
+      (input)="searchHospital()"
     />
-    <button class="btn btn-outline-success" type="submit">
+    <button
+      class="btn btn-outline-success"
+      type="submit"
+      (click)="searchHospital()"
+    >
       <fa-icon [icon]="faSearch"></fa-icon>
     </button>
   </form>
@@ -104,6 +111,22 @@
                   name="hospitalRegNo"
                   [(ngModel)]="hospitalToEdit.hospitalRegNo"
                   placeholder="153456"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col mb-2">
+                <label for="hospitalFees" class="form-label"
+                  >Hospital Charges/Fee (Rs.)</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="hospitalFees"
+                  name="hospitalFees"
+                  [(ngModel)]="hospitalToEdit.hospitalFee"
+                  placeholder="Rs. 500"
                   required
                 />
               </div>
