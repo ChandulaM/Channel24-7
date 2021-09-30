@@ -33,6 +33,7 @@ import { PatientCheckOutComponent } from './components/patient/patient-check-out
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -87,6 +88,10 @@ const routes: Routes = [
   {
     path: 'admin/reports',
     component: ReportGenerationComponent,
+  },
+  {
+    path: 'admin/login',
+    component: AdminLoginComponent,
   },
   {
     path: 'patient/home',

@@ -70,6 +70,7 @@ import { ReportGenerationComponent } from './components/admin/report-generation/
 import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { ChartsModule } from 'ng2-charts';
 import { ListDoctorsComponent } from './components/admin/report-generation/list-doctors/list-doctors.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { ListDoctorsComponent } from './components/admin/report-generation/list-
     MyAppointmentsComponent,
     ReportGenerationComponent,
     ListDoctorsComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
