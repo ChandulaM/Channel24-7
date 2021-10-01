@@ -69,6 +69,7 @@ import { HospitalManagerServiceService } from './services/hospital-manager-servi
 import { SpecializationServiceService } from './services/specialization-service.service';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ChartsModule } from 'ng2-charts';
 import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { ChartsModule } from 'ng2-charts';
@@ -156,6 +157,7 @@ import { SearchAapointmentsComponent } from './components/patient/search-aapoint
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
     NgxSpinnerModule,
+   ChartsModule
     NgxTypeaheadModule,
     ChartsModule,
     NgxWebstorageModule,

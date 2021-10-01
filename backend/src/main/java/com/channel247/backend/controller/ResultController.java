@@ -19,6 +19,12 @@ public class ResultController {
         return true;
     }
 
+    @PostMapping("/delete")
+    public boolean delete(int id){
+        resultRepository.deleteById(id);
+        return true;
+    }
+
     @GetMapping("/all")
     public List<Result> getAllResults(){
         return resultRepository.findAll();

@@ -1,80 +1,81 @@
 <div class="wrapper">
-    <app-dashboard></app-dashboard>
-    <div class="main_content">
-      <div class="header">
-        <ul class="nav justify-content-end" style="margin-top: 20px;">
-  
-        </ul>
+  <app-dashboard></app-dashboard>
+  <div class="main_content">
+    <div class="header">
+      <ul class="nav justify-content-end" style="margin-top: 20px;">
+      </ul>
+    </div>
+    <div class="info" style="margin-left: 250px;">
+      <div style="display: flex; flex-direction: row;justify-content: space-around;">
+        <div
+          style="background-color: rgb(211, 211, 211);flex: 1;margin:20px; height: 120px;border-radius: 10px;padding:20px">
+          <div>1</div>
+          <div style="display: flex;flex-direction: row;justify-content: space-between;margin-top: 30px;">
+            <div>1</div>
+            <div>2sss</div>
+          </div>
+        </div>
+        <div
+          style="background-color: rgb(211, 211, 211);flex: 1;margin:20px; height: 120px;border-radius: 10px;padding:20px">
+          <div>1</div>
+          <div style="display: flex;flex-direction: row;justify-content: space-between;margin-top: 30px;">
+            <div>1</div>
+            <div>2sss</div>
+          </div>
+        </div>
+        <div
+          style="background-color: rgb(211, 211, 211);flex: 1;margin:20px; height: 120px;border-radius: 10px;padding:20px">
+          <div>1</div>
+          <div style="display: flex;flex-direction: row;justify-content: space-between;margin-top: 30px;">
+            <div>1</div>
+            <div>2sss</div>
+          </div>
+
+        </div>
       </div>
-      <div class="info" style="margin-left: 250px;">
-        <div style="display: flex; flex-direction: row;justify-content: space-around;">
-          <div
-            style="background-color: rgb(211, 211, 211);flex: 1;margin:20px; height: 120px;border-radius: 10px;padding:20px">
-            <div>1</div>
-            <div style="display: flex;flex-direction: row;justify-content: space-between;margin-top: 30px;">
-              <div>1</div>
-              <div>2sss</div>
-            </div>
-          </div>
-          <div
-            style="background-color: rgb(211, 211, 211);flex: 1;margin:20px; height: 120px;border-radius: 10px;padding:20px">
-            <div>1</div>
-            <div style="display: flex;flex-direction: row;justify-content: space-between;margin-top: 30px;">
-              <div>1</div>
-              <div>2sss</div>
-            </div>
-          </div>
-          <div
-            style="background-color: rgb(211, 211, 211);flex: 1;margin:20px; height: 120px;border-radius: 10px;padding:20px">
-            <div>1</div>
-            <div style="display: flex;flex-direction: row;justify-content: space-between;margin-top: 30px;">
-              <div>1</div>
-              <div>2sss</div>
-            </div>
-  
-          </div>
-        </div>
-        <div style="padding: 20px;">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Reference Number</th>
-                <th scope="col">Test Name</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Update</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let result of results">
-                    <td>
-                      {{ result.refNumber }}
-                    </td>
-                    <td>
-                      {{ result.refNumber }}
-      
-                    </td>
-                    <td>
-                      {{ result.refNumber }}
-      
-                    </td>
-                    <td>
-                      {{ result.refNumber }}
-      
-                    </td>
-                    <td style="display: none;">
-                        {{ result.id }}
-                      </td>
-                    <td>
-                      <button type="button" class="btn btn-primary">Update </button>
-                      <button type="button" class="btn btn-danger" (click)="delete($event)">Delete</button>
-                    </td>
-                  </tr>
-            </tbody>
-          </table>
-  
-        </div>
+      <div style="padding: 20px;">
+        <div style="padding: 50;"><input type="text" placeholder="Reference Number" (change)="search($event)"/></div>
+        <button style="background-color: grey;color: white;">Search</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Reference Number</th>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of results">
+              <td>
+                {{ result.refNumber }}
+              </td>
+              <td>
+                {{ result.patientName }}
+
+              </td>
+              <td>
+                {{ result.date }}
+
+              </td>
+              <td>
+                {{ result.time }}
+
+              </td>
+              <td style="display: none;">
+                {{ result.id }}
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="update($event)">Update </button>
+                <button type="button" class="btn btn-success" style="margin-left: 5px;margin-right: 5px;" (click)="sendEmail('result.email')">Notify </button>
+                <button type="button" class="btn btn-danger" (click)="delete($event)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
-  
+</div>
