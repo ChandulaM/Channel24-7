@@ -7,7 +7,8 @@
           : {
               itemsPerPage: 5,
               currentPage: pageNo,
-              totalItems: numberOfRequests
+              totalItems: numberOfRequests,
+              id: 'labAccept'
             }
     "
     class="card mb-2"
@@ -25,6 +26,7 @@
 
   <pagination-controls
     (pageChange)="pageNo = $event"
+    id="labAccept"
     class="float-right"
   ></pagination-controls>
 

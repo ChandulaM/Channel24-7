@@ -2,15 +2,22 @@
   <input
     class="form-control me-2"
     type="search"
+    name="searchQuery"
     placeholder="Search"
     aria-label="Search"
+    [(ngModel)]="searchQuery"
+    (input)="searchForManager()"
   />
-  <button class="btn btn-outline-success" type="submit">
+  <button
+    class="btn btn-outline-success"
+    type="submit"
+    (click)="searchForManager()"
+  >
     <fa-icon [icon]="faSearch"></fa-icon>
   </button>
 </form>
 
-<div class="list-container">
+<div class="list-container" id="list-container">
   <h6 *ngIf="isLoading" style="text-align: center"></h6>
   <div
     *ngFor="
@@ -19,7 +26,8 @@
           : {
               itemsPerPage: 5,
               currentPage: pageNo,
-              totalItems: registeredManagers
+              totalItems: registeredManagers,
+              id: 'managerList'
             }
     "
     class="card mb-2"
@@ -29,19 +37,25 @@
         <h5 class="card-title">{{ manager.fname }} {{ manager.lname }}</h5>
         <h6>{{ manager.hospital.hospitalName }}</h6>
       </div>
-      <button class="btn btn-primary view-btn">Manage</button>
+      <button
+        class="btn btn-primary view-btn"
+        (click)="onSelectManager(manager)"
+      >
+        Manage
+      </button>
     </div>
   </div>
 </div>
 <pagination-controls
   (pageChange)="pageNo = $event"
+  id="managerList"
   class="float-right"
 ></pagination-controls>
 
 <!-- Modal -->
 <div
   class="modal fade"
-  id="staticBackdrop"
+  id="viewManagerModal"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -51,7 +65,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Viewing Profile of {{ selectedManager.fname }}
+          {{ selectedManager.lname }}
+        </h5>
         <button
           type="button"
           class="btn-close"
@@ -59,12 +76,39 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">...</div>
+      <div class="modal-body">
+        <label for="managerName" style="margin-top: 1rem">Manager Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="doctorName"
+          name="doctorName"
+          value="{{ selectedManager.fname }} {{ selectedManager.lname }}"
+          disabled
+        />
+        <br />
+        <label for="managerHospital" style="margin-top: 1rem"
+          >Registered Hospital</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="doctorName"
+          name="doctorName"
+          value="{{ selectedManager.hospital.hospitalName }}"
+          disabled
+        />
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+        <button
+          type="button"
+          id="removeManagerBtn"
+          (click)="removeHospitalManager()"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+        >
+          Remove Hospital Manager <fa-icon [icon]="faTimes"></fa-icon>
         </button>
-        <button type="button" class="btn btn-primary">Understood</button>
       </div>
     </div>
   </div>

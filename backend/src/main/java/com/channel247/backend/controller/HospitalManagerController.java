@@ -109,6 +109,7 @@ public class HospitalManagerController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping("/pending")
     public ResponseEntity<List<HospitalManager>> getPendingHospitalManagers(){
         List<HospitalManager> pendingHospitalManagers = hospitalManagerService.getPendingHospitalManagers();

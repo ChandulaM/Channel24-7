@@ -4,10 +4,12 @@
   <!--<app-sidenav></app-sidenav>-->
   <div class="row">
     <div class="col">
-      <app-register></app-register>
+      <app-register (hospitalRegistered)="reloadHospitals()"></app-register>
     </div>
     <div class="col">
-      <app-hospital-list></app-hospital-list>
+      <app-hospital-list
+        [registeredHospitals]="registeredHospitals"
+      ></app-hospital-list>
     </div>
   </div>
 </div>

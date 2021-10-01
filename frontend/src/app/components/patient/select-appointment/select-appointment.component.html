@@ -1,22 +1,32 @@
-
 <app-topnav></app-topnav>
 <div class="container my-3" style="max-height: 110px; background-color: green; border-radius: 20px;">
     <h5 style="text-align: center; color: aliceblue;">Filter By</h5>
     <table class="d-flex justify-content-around">
-      <tr>
-      <td style="padding-bottom: 18px;"> <input type="text" id="docNm" onkeyup="myFunction()" placeholder="Doctor name"></td>
+      <tr style="text-align: center; color: aliceblue;">
+      <td style="padding-bottom: 18px;"> <p>Doctor Last Name</p> <input type="text" id="docNm" [(ngModel)] = "docName" (ngModelChange) = "searchName()" placeholder="Doctor name"></td>
       <td> 
-        <select class="form-select form-select-sm mb-3" id="docSpe" onkeyup="myFunction()">
-          <option selected disabled> Doctor Specialization</option>
-          <option >Cardiologist</option>
-          <option >Sergion</option>
+        <p>Specialization</p>
+        <select class="form-select form-select-sm mb-3" id="docSpe" [(ngModel)] = "docSpe" (ngModelChange) = "searchSpe()" >
+          <option selected> All</option>
+          <option value="Dentist">Dentist</option>
+          <option value="Cardiologist">Cardiologist</option>
+          <option value="ENT">ENT</option>
+          <option value="Gynocologist">Gynocologist</option>
+          <option value="Surgeon">Surgeon</option>
         </select></td>
         <td> 
-          <select class="form-select form-select-sm mb-3" id="docSpe" onkeyup="myFunction()">
-            <option selected disabled> Doctor Hospital</option>
-            <option >Cardiologist</option>
-            <option >Sergion</option>
+          <p>Hospital</p>
+          <select class="form-select form-select-sm mb-3" id="docSpe" [(ngModel)] = "docHos" (ngModelChange) = "searchHos()" >
+            <option selecteds >All</option>
+            <option value="Asiri-Colombo">Asiri-Colombo</option>
+            <option value="Asiri-Kandy">Asiri-Kandy</option>
+            <option value="Asiri-Kurunagala">Asiri-Kurunagala</option>
+            <option value="CCC-Kandy">CCC-Kandy</option>
+            <option value="Kumudu-Matale">Kumudu-Matale</option>
+            <option value="KMC-Colombo">KMC-Colombo</option>
+            <option value="KDP-Mountlavania">KDP-Mountlavania</option>
           </select></td>
+          <td><button class = "btn btn-primary btn-sm" style="border-radius: 20px; margin-top: 28px;" (click)="refresh()">Reset</button></td>
         </tr>
     </table>
 </div>
@@ -24,26 +34,29 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="text-align: center;">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
+            <th>Doctor's Name</th>
+            <th>Specialization</th>
+            <th>Hospital</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- <tr *ngFor="let employee of employees | async">
-            <td>{{patient.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.emailId}}</td>
-            <td><button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-                <button (click)="updateEmployee(employee.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
-                <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+        <tbody style="font-size: medium;">
+           <tr *ngFor="let doctor of doctors">
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.specialization}}</td>
+            <td>{{doctor.hospital}}</td>
+            <td><button class="btn btn-success btn-sm" (click) = "callBook(doctor.id)" style="border-radius: 20px;">Select</button>
             </td>
-          </tr> -->
+          </tr>
+
+         <!-- <tr>
+           <td>A.M. Kumar</td> 
+           <td>A.M. Kumar</td>
+         </tr> -->
         </tbody>
       </table>
     </div>

@@ -111,6 +111,25 @@
       </small>
     </div>
     <div class="mb-3">
+      <label for="hospitalFee" class="form-label">Hospital Charge/Fee</label
+      >&nbsp;
+      <fa-icon
+        *ngIf="!hospital.hospitalFee"
+        [icon]="faStar"
+        size="xs"
+        style="color: red"
+      ></fa-icon>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="hospital.hospitalFee"
+        [(ngModel)]="hospital.hospitalFee"
+        placeholder="Rs. 500"
+        required
+      />
+    </div>
+    <div class="mb-3">
       <label for="hospitalEmail" class="form-label"
         >Hospital Email Address</label
       >&nbsp;

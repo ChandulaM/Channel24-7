@@ -32,6 +32,14 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
+import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { EnterPatientDetailsComponent } from './components/patient/enter-patient-details/enter-patient-details.component';
+import { HomePgLoggedComponent } from './components/patient/home-pg-logged/home-pg-logged.component';
+import { LabBookingComponent } from './components/patient/lab-booking/lab-booking.component';
+import { LabCheckoutComponent } from './components/patient/lab-checkout/lab-checkout.component';
+import { PatientDetailsForAppointmentComponent } from './components/patient/patient-details-for-appointment/patient-details-for-appointment.component';
+import { SearchDocsComponent } from './components/patient/search-docs/search-docs.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -41,8 +49,8 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [
   {
-    path: "registerhospitalmanager",
-    component: RegisterHospitalmanagerComponent
+    path: 'registerhospitalmanager',
+    component: RegisterHospitalmanagerComponent,
   },
   {
     path: 'hospitalmanager',
@@ -62,14 +70,14 @@ const routes: Routes = [
         component: DoctorsComponent,
       },
       {
-        path: "adddoctor",
-        component: AddDoctorComponent
+        path: 'adddoctor',
+        component: AddDoctorComponent,
       },
       {
-        path: "doctors/:id",
-        component: SingleDoctorComponent
-      }
-    ]
+        path: 'doctors/:id',
+        component: SingleDoctorComponent,
+      },
+    ],
   },
   {
     path: 'admin',
@@ -84,17 +92,25 @@ const routes: Routes = [
     component: LabAssistantRegistrationComponent,
   },
   {
+    path: 'admin/reports',
+    component: ReportGenerationComponent,
+  },
+  {
+    path: 'admin/login',
+    component: AdminLoginComponent,
+  },
+  {
     path: 'patient/home',
     component: HomepgComponent,
-  }, 
+  },
   {
     path: 'labassistant/login',
     component: LoginComponent,
-  }, 
+  },
   {
     path: 'labassistant/signup',
     component: SignupComponent,
-  }, 
+  },
   {
     path: 'labassistant/dashboard',
     component: MaindhashboardComponent,
@@ -140,11 +156,11 @@ const routes: Routes = [
     component: UploadresultenquryComponent,
   },
   {
-    path: 'patient/sa',
+    path: 'patient/select-doctor',
     component: SelectAppointmentComponent,
   },
   {
-    path: 'patient/bk',
+    path: 'patient/time-slots',
     component: BookAppointmentComponent,
   },
   {
@@ -152,8 +168,12 @@ const routes: Routes = [
     component: PatientDetailsComponent,
   },
   {
-    path: 'patient/pc',
+    path: 'patient/checkout',
     component: PatientCheckOutComponent,
+  },
+  {
+    path: 'patient/lab-checkout',
+    component: LabCheckoutComponent,
   },
   {
     path: 'patient/my-appointments',
@@ -162,6 +182,26 @@ const routes: Routes = [
   {
     path: 'patient/my-profile',
     component: PatientProfileComponent,
+  },
+  {
+    path: 'patient/my',
+    component: HomePgLoggedComponent,
+  },
+  {
+    path: 'patient/search',
+    component: SearchDocsComponent,
+  },
+  {
+    path: 'patient/book-labs',
+    component: LabBookingComponent,
+  },
+  {
+    path: 'patient/enter-details',
+    component: EnterPatientDetailsComponent,
+  },
+  {
+    path: 'patient/enter-details-for-appointment',
+    component: PatientDetailsForAppointmentComponent,
   },
 ];
 

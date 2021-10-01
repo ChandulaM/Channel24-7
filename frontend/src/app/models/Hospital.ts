@@ -7,4 +7,5 @@ export class Hospital {
   contactNo?: string;
   email?: string;
   hospitalRegNo?: string;
+  hospitalFee?: number
 }

@@ -17,6 +17,7 @@ public class Hospital {
     private String contactNo;
     private String email;
     private String hospitalRegNo;
+    private float hospitalFee;
 
     @OneToMany(mappedBy = "hospital")
     private List<Doctor> doctors;
@@ -104,5 +105,13 @@ public class Hospital {
                 ", email='" + email + '\'' +
                 ", hospitalRegNo='" + hospitalRegNo + '\'' +
                 '}';
+    }
+
+    public float getHospitalFee() {
+        return hospitalFee;
+    }
+
+    public void setHospitalFee(float hospitalFee) {
+        this.hospitalFee = hospitalFee;
     }
 }

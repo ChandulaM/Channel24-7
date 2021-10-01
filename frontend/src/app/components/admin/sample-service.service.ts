@@ -24,6 +24,36 @@ export class SampleServiceService {
       email: 'bobbybob@gmail.com',
       lab: "Bobby's Booby Labs",
     },
+    {
+      id: 4,
+      name: 'Ralph Suzanne',
+      email: 'ralphSuz@gmail.com',
+      lab: 'MetLab Labs',
+    },
+    {
+      id: 10,
+      name: 'Avonlea Shannah',
+      email: 'avalon@gmail.com',
+      lab: 'Durdans Laboratories Kandy',
+    },
+    {
+      id: 11,
+      name: 'Apple Juice',
+      email: 'applejuicegud@gmail.com',
+      lab: 'Beriberi Research Center',
+    },
+    {
+      id: 12,
+      name: 'Kegan Eden',
+      email: 'keganisawesome@gmail.com',
+      lab: 'Goodwill Medilab',
+    },
+    {
+      id: 69,
+      name: 'Roydon Makayla',
+      email: 'makymakayla@gmail.com',
+      lab: 'Wayamba Lab Center',
+    },
   ];
 
   pendingLabAssistants = [

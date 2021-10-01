@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6%;
+}
+#page-logo {
+  font-family: "Ubuntu", sans-serif;
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+}
+.main-content {
+  display: flex;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.img-holder {
+  flex: 4;
+  padding: 5%;
+}
+.login {
+  flex: 3;
+  padding: 5%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  border-left: 3px lavender solid;
+  align-items: center;
+  justify-content: center;
+}
+#login-header {
+  font-family: "Comfortaa", cursive;
+  font-size: 26px;
+  font-weight: 900;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  justify-content: center;
+}
+#username {
+  border-radius: 8px;
+  padding: 0.75rem;
+  width: 100%;
+  border: darkgray 1px solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+#password {
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-top: 2rem;
+  width: 100%;
+  border: darkgray 1px solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-size: 18;
+}
+.webkit input[type="password"] {
+  font: large Verdana, sans-serif;
+  letter-spacing: 1px;
+}
+#login-btn {
+  border-radius: 16px;
+  padding: 0.75rem;
+  margin-top: 2rem;
+  width: 100%;
+  border: darkgray 1px solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: "Comfortaa", cursive;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.error-text {
+  font-size: 14px;
+  color: crimson;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}

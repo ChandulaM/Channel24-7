@@ -2,26 +2,126 @@
   <input
     class="form-control me-2"
     type="search"
+    name="searchQuery"
     placeholder="Search"
     aria-label="Search"
+    [(ngModel)]="searchQuery"
+    (input)="searchForAssistant()"
   />
-  <button class="btn btn-outline-success" type="submit">
+  <button
+    class="btn btn-outline-success"
+    type="submit"
+    (click)="searchForAssistant()"
+  >
     <fa-icon [icon]="faSearch"></fa-icon>
   </button>
 </form>
 
-<div class="list-container">
-  <div *ngFor="let assistant of registeredAssistants" class="card mb-2">
+<div class="list-container" id="list-container">
+  <div
+    *ngFor="
+      let assistant of _registeredAssistants
+        | paginate
+          : {
+              itemsPerPage: 4,
+              currentPage: pageNo,
+              totalItems: numberOfAssistants,
+              id: 'labList'
+            }
+    "
+    class="card mb-2"
+  >
     <div class="card-body">
       <div class="list-info ml-3">
         <h5 class="card-title">{{ assistant.name }}</h5>
         <h6>{{ assistant.lab }}</h6>
       </div>
-      <button class="btn btn-primary view-btn">Manage</button>
+      <button
+        class="btn btn-primary view-btn"
+        (click)="onSelectAssistant(assistant)"
+      >
+        Manage
+      </button>
     </div>
   </div>
   <pagination-controls
     (pageChange)="pageNo = $event"
+    id="labList"
     class="float-right"
   ></pagination-controls>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="viewAssistantModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Viewing Profile of {{ selectedAssistant.name }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <label for="assistantName" style="margin-top: 1rem"
+          >Assistant Name</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="assistantName"
+          name="assistnatName"
+          value="{{ selectedAssistant.name }}"
+          disabled
+        />
+        <br />
+        <label for="assistantHospital" style="margin-top: 1rem"
+          >Registered Lab</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="doctorName"
+          name="doctorName"
+          value="{{ selectedAssistant.lab }}"
+          disabled
+        />
+        <br />
+        <label for="assistantLab" style="margin-top: 1rem"
+          >Registered Lab</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="assistantLab"
+          name="assistantLab"
+          value="{{ selectedAssistant.email }}"
+          disabled
+        />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="removeManagerBtn"
+          (click)="removeAssistant()"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+        >
+          Remove Lab Assistant <fa-icon [icon]="faTimes"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
