@@ -26,4 +26,8 @@ public class UserService {
         return userRepo.existsUserByUsername(username);
     }
 
+    public User findUserByUsernameAndPassword(String username, String password) {
+        return userRepo.findUserByUsernameAndPassword(username, password);
+    }
+
 }

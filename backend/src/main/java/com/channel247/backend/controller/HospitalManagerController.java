@@ -91,23 +91,25 @@ public class HospitalManagerController {
     }
 
 
+
     @GetMapping("/check")
     public ResponseEntity<Map<String, Object>> checkHospitalIsAvailable(@RequestParam Long id) {
-        try{
+        try {
 
             Hospital hospital = hospitalServices.getHospitalById(id);
 
             boolean result = hospitalManagerService.isHospitalExists(hospital);
 
-            Map<String,Object> response = new HashMap<>();
+            Map<String, Object> response = new HashMap<>();
             response.put("result", result);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
     @GetMapping("/pending")
     public ResponseEntity<List<HospitalManager>> getPendingHospitalManagers(){
@@ -127,4 +129,25 @@ public class HospitalManagerController {
         return new ResponseEntity<>(updatedManager, HttpStatus.OK);
     }
 
+    @GetMapping("/user")
+    public  ResponseEntity<Map<String, Object>> getHospitalManagerByUserId(@RequestParam Long id) {
+        try {
+
+            User user = userService.getUserById(id);
+            HashMap<String, Object> response = new HashMap<>();
+
+            if(user==null) {
+                response.put("results", null);
+            }else {
+                HospitalManager hospitalManager = hospitalManagerService.getHospitalManagerByUser(user);
+                response.put("results", hospitalManager);
+            }
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -18,6 +18,8 @@ public class Shedule {
     @ManyToOne
     private Doctor doctor;
 
+    private Boolean status;
+
     public Doctor getDoctor() {
         return doctor;
     }
@@ -42,12 +44,21 @@ public class Shedule {
         this.sheduleTime = sheduleTime;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Shedule{" +
                 "shedule_id=" + shedule_id +
                 ", sheduleTime=" + sheduleTime +
                 ", doctor=" + doctor +
+                ", status=" + status +
                 '}';
     }
 }

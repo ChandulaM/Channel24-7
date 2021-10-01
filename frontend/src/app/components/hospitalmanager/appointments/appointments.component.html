@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="page-title">
+        <h3>Appointments</h3>
+        <p>appointments / viewall</p>
+    </div>
+    <div class="row sub-header">
+        <div class="col-sm-4 item">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fas fa-search"></i></span>
+                </div>
+                <input type="text" placeholder="Type in doctor name, phone, etc to search..." class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#Appointment Id</th>
+                    <th>Appointment Date</th>
+                    <th>Payment</th>
+                    <th>Doctor Id</th>
+                    <th>Patient Id</th>
+                    <th>Status</th>
+                    <th>View</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Reset</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of appointmets">
+                    <td>{{item.appointment_id}}</td>
+                    <td>{{item.appointment_date.split('T')[0]}}</td>
+                    <td>{{item.payment}}</td>
+                    <td>{{item.doctor.doc_id}}</td>
+                    <td>{{item.patient.patientId}}</td>
+                    <td>
+                        <select class="select" value="{{item.status}}">
+                            <option value="{{item.status}}" selected>{{item.status}}</option>
+                            <option *ngFor="let s of statuses" value="{{s}}">{{s}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button (click)="viewAppointmentPage(item)" class="btn btn-primary btn-sm">View</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info btn-sm">Update</button>
+                    </td>
+                    <td>
+                        <button (click)="deleteAppointment(item)" class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-dark btn-sm">Reset</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-container">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+</div>

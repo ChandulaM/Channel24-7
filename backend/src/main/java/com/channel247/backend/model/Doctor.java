@@ -26,6 +26,9 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     private List<Shedule> shedule;
 
+    @OneToMany(mappedBy = "doctor")
+    private  List<DoctorAppointment> doctorAppointmentList;
+
     public Long getDoc_id() {
         return doc_id;
     }

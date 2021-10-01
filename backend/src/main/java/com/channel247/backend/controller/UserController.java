@@ -42,6 +42,31 @@ public class UserController {
         }
     }
 
+    @GetMapping("/login")
+    public ResponseEntity<Map<String, Object>> findUserByUsernameAndPassword(
+            @RequestParam String username,
+            @RequestParam String password
+    ) {
+        try {
+
+            User user = userService.findUserByUsernameAndPassword(username, password);
+
+            Map<String, Object> response = new HashMap<>();
+
+            if(user==null) {
+                response.put("results", null);
+            }else {
+                response.put("results", user);
+            }
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/check")
     public ResponseEntity<Map<String, Object>> checkIsUsernameAvailable(@RequestParam String username) {
         try{

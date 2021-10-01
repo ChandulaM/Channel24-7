@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+    <div class="page-title">
+        <h3>Appointment Id: #{{appointment.appointment_id}}</h3>
+        <p>appointment / view</p>
+    </div>
+
+    <div class="card" id="appointment">
+        <div class="card-body">
+            <div class="patient-section">
+                <h5>Patient</h5>
+                <div class="row">
+                    <div class="col-3"><img width="60" height="60" src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" class="img-thumbnail"></div>
+                    <div class="col-9"><p>Name: Mr/Ms. {{appointment.patient.firstName}} {{appointment.patient.lastName}}</p></div>
+                </div>
+                <p>Request : {{appointment.appointment_request}}</p>
+                <p>Phone number: {{appointment.patient.phone}}</p>
+                <p>NIC: {{appointment.patient.nic}}</p>
+            </div>
+            <hr>
+            <div class="doctor-section">
+                <h5>Doctor</h5>
+                <div class="row">
+                    <div class="col-3"><img width="60" height="60" src="{{appointment.doctor.image}}" class="img-thumbnail"></div>
+                    <div class="col-9"><p>Name: {{appointment.doctor.name}}</p></div>
+                </div>
+                <p>Phone number: {{appointment.doctor.number}}</p>
+                <p>Speciality: {{appointment.doctor.specialization.name}}</p>
+            </div>
+            <div class="action-area d-flex flex-row-reverse">
+               <button class="btn btn-danger m-1">Cancel Appointment</button>
+               <button class="btn btn-info m-1">Contact Patient</button>
+               <button (click)="generateAppointment()" class="btn btn-primary m-1">Print Appointment</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -19,6 +19,10 @@ export interface DoctorDTO {
     description: string
 }
 
+export interface SingleDoctor {
+    results: Doctor
+}
+
 export class DoctorModel {
     constructor(
         public name: string,

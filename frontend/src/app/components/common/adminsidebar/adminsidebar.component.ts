@@ -19,6 +19,10 @@ export class AdminsidebarComponent implements OnInit {
       name: "Doctors",
       path: "doctors"
     },
+    {
+      name: "Appointments",
+      path: "appointments"
+    }
   ];
 
   constructor(private router: Router, private route: ActivatedRoute) { }

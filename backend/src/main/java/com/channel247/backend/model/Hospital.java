@@ -2,7 +2,7 @@ package com.channel247.backend.model;
 
 import javax.persistence.*;
 import java.util.List;
-
+//pramitha IT19056326
 @Entity
 public class Hospital {
     @Id

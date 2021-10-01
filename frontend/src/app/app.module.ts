@@ -72,13 +72,17 @@ import { SpecializationServiceService } from './services/specialization-service.
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+import jsPdf from 'jspdf'
+import html2canvas from 'html2canvas';
+
 import { CommonModule } from '@angular/common';
-
-import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
-import { NgxTypeaheadModule } from 'ngx-typeahead';
-import { ChartsModule } from 'ng2-charts';
-import { ListDoctorsComponent } from './components/admin/report-generation/list-doctors/list-doctors.component';
-
+import { AppointmentServiceService } from './services/appointment-service.service';
+import { SingleAppointmentComponent } from './components/hospitalmanager/single-appointment/single-appointment.component';
+import { AppointmentsComponent } from './components/hospitalmanager/appointments/appointments.component';
+import {NotifierModule} from 'angular-notifier';
+import { LoginHospitalmanagerComponent } from './components/hospitalmanager/login-hospitalmanager/login-hospitalmanager.component';
+import { HospitalProfileComponent } from './components/hospitalmanager/hospital-profile/hospital-profile.component';
+import { ManagerProfileComponent } from './components/hospitalmanager/manager-profile/manager-profile.component'
 
 @NgModule({
   declarations: [
@@ -128,14 +132,14 @@ import { ListDoctorsComponent } from './components/admin/report-generation/list-
     PatientCheckOutComponent,
     PatientProfileComponent,
     MyAppointmentsComponent,
-<<<<<<<<< Temporary merge branch 1
-    ReportGenerationComponent,
-    ListDoctorsComponent,
-=========
-	TopNavLoggedComponent,
+	  TopNavLoggedComponent,
     HomePgLoggedComponent,
     SearchDocsComponent,
->>>>>>>>> Temporary merge branch 2
+    SingleAppointmentComponent,
+    AppointmentsComponent,
+    LoginHospitalmanagerComponent,
+    HospitalProfileComponent,
+    ManagerProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -151,18 +155,14 @@ import { ListDoctorsComponent } from './components/admin/report-generation/list-
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
     NgxSpinnerModule,
-<<<<<<<<< Temporary merge branch 1
-    NgxTypeaheadModule,
-    ChartsModule,
-=========
-
->>>>>>>>> Temporary merge branch 2
+    NotifierModule
   ],
   providers: [
     DoctorServiceService,
     SheduleServiceService,
     HospitalManagerServiceService,
     SpecializationServiceService,
+    AppointmentServiceService
   ],
   bootstrap: [AppComponent],
 })

@@ -131,7 +131,7 @@ export class RegisterHospitalmanagerComponent implements OnInit {
           const hospitalManager = {
             fname: this.fname,
             lname: this.lname,
-            hospital_id: 102,
+            hospital_id: parseInt(this.hospital),
             user_id: res.results.id
           }
           this.service.saveHospitalManager(hospitalManager).subscribe(res => {

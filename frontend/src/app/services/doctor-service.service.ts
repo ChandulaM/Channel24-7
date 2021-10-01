@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Doctors } from '../models/Doctors';
-import { Doctor, DoctorDTO } from '../models/Doctor';
+import { Doctor, DoctorDTO, SingleDoctor } from '../models/Doctor';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { Doctor, DoctorDTO } from '../models/Doctor';
 export class DoctorServiceService {
 
 
-  private API: string = "http://localhost:8081/api/doctor"
+  private API: string = "http://localhost:8081/api/doctor";
 
   constructor(private http: HttpClient) { }
 
@@ -26,4 +26,11 @@ export class DoctorServiceService {
     return this.http.post<DoctorDTO>(this.API+'/save',doctor);
   }
 
+  public getDoctorById(id: number): Observable<SingleDoctor> {
+    return this.http.get<SingleDoctor>(this.API+'/'+id);
+  }
+
+  public updateDoctor(doctor: DoctorDTO, id: number): Observable<SingleDoctor> {
+    return this.http.post<SingleDoctor>(this.API+'/update/'+id,doctor);
+  }
 }

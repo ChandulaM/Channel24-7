@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+//pramitha IT19056326
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/doctor")
@@ -100,6 +100,65 @@ public class DoctorController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> getDoctorById(
+            @PathVariable Long id
+    ) {
+        try {
+
+            Doctor doctor = service.getDoctorById(id);
+
+            HashMap<String, Object> response = new HashMap<>();
+
+            if(doctor==null) {
+                response.put("results", null);
+            }else {
+                response.put("results", doctor);
+            }
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<Map<String, Object>> updateDoctor(@RequestBody @Autowired DoctorDTO doctor, @PathVariable Long id) {
+        try {
+
+            Doctor getDoctor = service.getDoctorById(id);
+            if(getDoctor==null) {
+                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            }else {
+
+                getDoctor.setName(doctor.getName());
+                getDoctor.setNumber(doctor.getNumber());
+                getDoctor.setImage(doctor.getImage());
+
+                Specialization specialization = specizationService.getSpecializationById(doctor.getSpecialization_id());
+                getDoctor.setSpecialization(specialization);
+                Hospital hospital = hospitalServices.getHospitalById(doctor.getHospital_id());
+                getDoctor.setHospital(hospital);
+                getDoctor.setDescription(doctor.getDescription());
+
+                Doctor updatedDoctor = service.saveOrUpdateDoctor(getDoctor);
+
+                HashMap<String, Object> response = new HashMap<>();
+                response.put("results", updatedDoctor);
+
+                return new ResponseEntity<>(response, HttpStatus.OK);
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserDTO, UserRsults } from '../models/User';
 import { Observable } from 'rxjs';
-import { HospitalManagerDTO } from '../models/HosptalManager';
+import { HospitalManagerDTO, HospitalManagerResult } from '../models/HosptalManager';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,14 @@ export class HospitalManagerServiceService {
 
   checkUsernameAvailability(username: string): Observable<any> {
     return this.http.get<any>(this.userAPI+'/check?username='+username);
+  }
+
+  loginUser(username: string, password: string): Observable<UserRsults> {
+    return this.http.get<UserRsults>(this.userAPI+'/login?username='+username+'&password='+password);
+  }
+
+  getLoggedUser(id: number): Observable<HospitalManagerResult> {
+    return this.http.get<HospitalManagerResult>(this.hospitalManagerApi+'/user?id='+id);
   }
 
 }

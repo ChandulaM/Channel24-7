@@ -29,7 +29,7 @@ public class SheduleController {
     DoctorService doctorService;
 
     @PostMapping("/save")
-    public ResponseEntity<Map<String,Object>> saveShedule(@RequestBody @Autowired SheduleDTO sheduleDTO) {
+    public ResponseEntity<Map<String,Object>> saveShedule(@RequestBody @Autowired SheduleDTO sheduleDTO, @RequestParam(defaultValue = "false") Boolean status) {
 
         try{
 
@@ -39,6 +39,8 @@ public class SheduleController {
             Doctor doctor = doctorService.getDoctorById(sheduleDTO.getDoctor_id());
 
             shedule.setDoctor(doctor);
+
+            shedule.setStatus(status);
 
             Shedule savedShedule =  sheduleService.saveOrUpdateShedule(shedule);
 

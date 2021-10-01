@@ -32,13 +32,15 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
-<<<<<<<<< Temporary merge branch 1
-import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
-=========
+
 import { HomePgLoggedComponent } from './components/patient/home-pg-logged/home-pg-logged.component';
 import { SearchDocsComponent } from './components/patient/search-docs/search-docs.component';
+import { AppointmentsComponent } from './components/hospitalmanager/appointments/appointments.component';
+import { SingleAppointmentComponent } from './components/hospitalmanager/single-appointment/single-appointment.component';
+import { LoginHospitalmanagerComponent } from './components/hospitalmanager/login-hospitalmanager/login-hospitalmanager.component';
+import { HospitalProfileComponent } from './components/hospitalmanager/hospital-profile/hospital-profile.component';
+import { ManagerProfileComponent } from './components/hospitalmanager/manager-profile/manager-profile.component';
 
-import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
 
 
 const routerOptions: ExtraOptions = {
@@ -51,6 +53,10 @@ const routes: Routes = [
   {
     path: 'registerhospitalmanager',
     component: RegisterHospitalmanagerComponent,
+  },
+  {
+    path: 'loginhospitalmanager',
+    component: LoginHospitalmanagerComponent
   },
   {
     path: 'hospitalmanager',
@@ -77,6 +83,22 @@ const routes: Routes = [
         path: 'doctors/:id',
         component: SingleDoctorComponent,
       },
+      {
+        path: 'appointments',
+        component: AppointmentsComponent
+      },
+      {
+        path: 'appointments/:id',
+        component: SingleAppointmentComponent
+      },
+      {
+        path: 'hospitalprofile',
+        component: HospitalProfileComponent
+      },
+      {
+        path: 'managerprofile',
+        component: ManagerProfileComponent
+      }
     ],
   },
   {
@@ -90,10 +112,6 @@ const routes: Routes = [
   {
     path: 'admin/lab-assistants',
     component: LabAssistantRegistrationComponent,
-  },
-  {
-    path: 'admin/reports',
-    component: ReportGenerationComponent,
   },
   {
     path: 'patient/home',
