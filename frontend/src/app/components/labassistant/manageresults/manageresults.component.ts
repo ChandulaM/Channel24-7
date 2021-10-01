@@ -22,6 +22,15 @@ export class ManageresultsComponent implements OnInit {
   }
 
   delete($event: any): void {
+
+    axios
+    .post('http://localhost:8081/result/delete')
+    .then((res) => {
+      this.results = res.data;
+      console.log(res.data);
+    })
+    .catch((err) => console.log(err));
+
     let id: Number = $event.target.parentNode.previousSibling.innerHTML;
     let newResults: any = [];
     this.results.forEach((data: any) => {
@@ -41,5 +50,9 @@ export class ManageresultsComponent implements OnInit {
       }
     });
     this.results = newResults;
+  }
+
+  sendEmail($email: any){
+    console.log($email);
   }
 }

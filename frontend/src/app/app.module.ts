@@ -66,6 +66,7 @@ import { HospitalManagerServiceService } from './services/hospital-manager-servi
 import { SpecializationServiceService } from './services/specialization-service.service';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, "cloud"),
     NgxSpinnerModule,
+   ChartsModule
   ],
   providers: [DoctorServiceService,SheduleServiceService, HospitalManagerServiceService, SpecializationServiceService],
   bootstrap: [AppComponent]
