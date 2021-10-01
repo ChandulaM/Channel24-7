@@ -1,0 +1,92 @@
+<app-topnav></app-topnav>
+
+<div  class="container-md py-4 mt-5" style="background-color: rgb(26, 21, 71); border-radius: 20px;max-width:500px">
+    <h2 class = "text-center" style="color: azure;">BOOK NOW</h2>
+    <div class="card mx-auto">
+        <form class="reg-form text-center border border-light"  [formGroup] = "searchForm" (ngSubmit) = "search()">
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="searchDocName" placeholder="Doctor's Name">
+                <label for="floatingInput">Doctor's Name</label>
+            </div>
+            
+            <div class="form-floating mb-2">
+                <select class="form-select" id="searchDocSpecial" aria-label="Floating label select example" >
+                <option selected>Any</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Dental">Dentist</option>
+                <option value="3">ENT</option>
+                <option value="3">Gynocologist</option>
+                <option value="3">Surgeon</option>
+                </select>
+                <label for="floatingSelect">Select Specialization</label>
+            </div>
+            
+            <div class="form-floating mb-2">
+                <select class="form-select" id="searchDocHos" aria-label="Floating label select example" >
+                <option selected>Any</option>
+                <option value="Asiri-Colombo">Asiri-Colombo</option>
+                <option value="Asiri-Kandy">Asiri-Kandy</option>
+                <option value="Asiri-Kurunagala">Asiri-Kurunagala</option>
+                <option value="Kumudu-Matale">CCC-Kandy</option>
+                <option value="Kumudu-Matale3">Kumudu-Matale</option>
+                <option value="KMC-Colombo">KMC-Colombo</option>
+                <option value="KDP-Mountlavania">KDP-Mountlavania</option>
+                </select>
+                <label for="floatingSelect">Select Hospital</label>
+            </div>
+            
+            <div class="form-floating mb-2">
+                <input type="date" class="form-control" id="apDate" placeholder="Appointment Date" >
+                <label for="floatingInput">Appointment Date</label>
+            </div>
+            <!-- Sign in button -->
+            <button mdbBtn color="green" class="my-2" type="submit" style="border-radius: 40px;">Search</button>
+            </form>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="card-deck py-3 mt-5 mb-5">
+        <div class="card bg-primary">
+          <div class="card-body text-center">
+            <div class="card-body" style="color: aliceblue ;">
+                <h4 class="card-title">Support Service</h4>
+                <p class="card-text">Need and help with the system? Please call us any time.</p>
+                <h5 class="card-title font-weight-bold">+94(0)112 123 121 </h5>
+              </div>
+          </div>
+        </div>
+        <div class="card bg-danger">
+          <div class="card-body text-center">
+            <div class="card-body" style="color: aliceblue ;">
+                <h4 class="card-title">Ambulance Services</h4>
+                <p class="card-text">Efficieant service 24/7</p>
+                <h5 class="card-title font-weight-bold">+94(0)112 123 121 </h5>
+                <h5 class="card-title font-weight-bold">+94(0)112 123 121 </h5>
+                <h5 class="card-title font-weight-bold">+94(0)112 123 121 </h5>
+          </div>
+          </div>
+        </div>
+        <div class="card bg-success">
+          <div class="card-body text-center">
+            <div class="card-body" style="color: aliceblue ;">
+                <h4 class="card-title">Covid-Vaccination</h4>
+                <p class="card-text">Lear more about this</p>
+                <h5 class="card-title font-weight-bold">+94(0)112 123 121 </h5>
+              </div>
+          </div>
+        </div>
+        <div class="card bg-danger">
+          <div class="card-body text-center">
+            <div class="card-body" style="color: aliceblue ;">
+                <h4 class="card-title">Covide-19 Information</h4>
+                <p class="card-text">Sanatize your hands, Wear masks, Avoid gatherings and Stay safe</p>
+                <a href=" https://hpb.health.gov.lk/covid19-dashboard/" target="_blank" class="btn btn-primary" style="border-radius: 20px; height: 36px; font-size: 10px;">More Info</a>
+          </div>
+          </div>
+        </div>
+      </div>
+     
+</div>
+<app-footer></app-footer>

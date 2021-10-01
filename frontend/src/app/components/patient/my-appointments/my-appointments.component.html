@@ -1,7 +1,9 @@
 
 <app-topnav></app-topnav>
-<div class="container my-3" style="max-height: 110px; background-color: green; border-radius: 20px;">
-    <h5 style="text-align: center; color: aliceblue;">Filter By</h5>
+
+<div class="containe">
+  <app-search-aapointments></app-search-aapointments>
+    <!-- <h5 style="text-align: center; color: aliceblue;">Filter By</h5>
     <table class="d-flex justify-content-around">
       <tr>
       <td style="padding-bottom: 18px;"> <input type="text" id="docNm" onkeyup="myFunction()" placeholder="Doctor Name"></td>
@@ -18,8 +20,8 @@
             <option >Completed</option>
           </select></td>
         </tr>
-    </table>
-    <button style="float: right; margin: 10px 0 ; font-size: smaller; border-radius: 30px; background-color: rgb(124, 218, 18);">Print Monthly Appointments</button>
+    </table> -->
+    <button style="float: right; margin: 10px 0 ; font-size: smaller; border-radius: 30px; background-color: rgb(124, 218, 18);">Print Appointment</button>
 </div>
 
 <div class="panel panel-primary">
@@ -29,25 +31,29 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Referece No.</th>
             <th>Doctor</th>
+            <th>Specialization</th>
             <th>Hospital</th>
-            <th>Date-time</th>
+            <th>Date</th>
+            <th>Time</th>
             <th>Payment</th>
-            <th>Ref. No.</th>
             <th>Ticket No.</th>
-            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let employee of employees | async">
-            <td>{{patient.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.emailId}}</td>
-            <td><button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-                <button (click)="updateEmployee(employee.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
-                <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td>
-          </tr> -->
+           <tr>
+              <td>{{appointments.ref}}</td>
+              <td>{{appointments.doc}}</td>
+              <td>{{appointments.spec}}</td>
+              <td>{{appointments.hospital}}</td>
+              <td>{{appointments.date}}</td>
+              <td>{{appointments.time}}</td>
+              <td>Rs.{{appointments.total}}</td>
+              <td>{{appointments.ap}}</td>
+              <td><button (click)="deleteAppointment(appointments.appointment_id)" class="btn btn-danger btn-sm">Cancel</button>
+          </td>
+          </tr>
         </tbody>
       </table>
     </div>

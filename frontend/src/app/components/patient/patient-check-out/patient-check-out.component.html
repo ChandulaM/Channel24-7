@@ -3,38 +3,53 @@
 <div class="card-deck my-3" style="margin-right: auto; margin-left: auto;">
     <div class="card" style="background: rgba(76, 175, 80, 0.7)">
       <div class="card-body" >
-        <h4>Doctor's Details</h4>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
-        <h6>Doctor's Details</h6>
+        <h4 style="color: aliceblue;border-style:dotted">Patient Details</h4>
+        <h5>Name&nbsp; : {{checkoutInfo.title}}. {{checkoutInfo.name}}</h5>
+        <h5>NIC &nbsp; &nbsp; : {{checkoutInfo.nic}}</h5>
+        <h5>Phone : {{checkoutInfo.phone}} </h5>
         <br>
-        <h4>Apponitment Details</h4>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
-        <h6>Apponitment Details</h6>
+        <h4 style="color: aliceblue;border-style:dotted">Appointment Details</h4>
+        <h5>Doctor &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;: {{checkoutInfo.doc}}</h5>
+        <h5>Hospital &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {{checkoutInfo.hospital}}</h5>
+        <h5>Specialization &nbsp; &nbsp; &nbsp;: {{checkoutInfo.spec}}</h5>
+        <h5>Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {{checkoutInfo.date}}</h5>
+        <h5>Time &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {{checkoutInfo.time}}</h5>
+        <h5>Queue No &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: {{checkoutInfo.ap}}</h5>
+        <br>
+        <h5 style="color: brown;">* Important</h5>
+        <p>1.You can cancel the appointmants in My Appointments tab.</p>
+        <p>2.For refunds Please use the Claim Refund tab.</p>
+        <p>3.For further information contact 111.</p>
       </div>
     </div>
     <div class="card">
         <h4>Payment Details</h4>
         <table style="border: 1px;">
             <tr>
-                <td>Doctor fee</td><td>Rs.2000</td>
+                <td>Doctor fee</td><td>Rs.{{checkoutInfo.pay}}</td>
             </tr>
             <tr>
-                <td>Doctor fee</td><td>Rs.2000</td>
+                <td>Hospital fee</td><td>Rs.{{checkoutInfo.hosFee}}</td>
             </tr>
             <tr>
-                <td>Doctor fee</td><td>Rs.2000</td>
+                <td>Online Service fee</td><td>Rs.{{checkoutInfo.onlineFee}}</td>
             </tr>
             <tr>
-                <td>Toatal Payment</td><td>Rs.6000</td>
+                <td style="font-size:larger; color: brown;">Toatal Payment</td><td style="font-size:larger; color: brown;">Rs.{{checkoutInfo.total}}</td>
             </tr>
             <tr>
-                <td></td><td><button style="border-radius: 20px;color: aliceblue; font-size: smaller; background-color: rgb(216, 19, 101);">PAY AT HOSPITAL</button></td>
+                <td></td>
+                <td>
+                    <button (click) = "pay()" style="border-radius: 20px;color: aliceblue; font-size: smaller; background-color: rgb(216, 19, 101);">PAY AT HOSPITAL</button> &nbsp; 
+                    <button (click) = "payOnline()" style="border-radius: 20px;color: aliceblue; font-size: smaller; background-color: rgb(216, 19, 101);">PAY ONLINE</button>
+                </td>
+            </tr>
+            <tr *ngIf = "success == true">
+            <td colspan="2">
+               <h5 style="color: green;">Successfully Booked the Appointment</h5>
+               <h5 style="color: rgb(109, 3, 56);">Your Reference Number : {{checkoutInfo.ref}}</h5>
+               <h5 style="color: rgb(11, 5, 59);">Please Check your mobile for Appointment Details</h5>
+            </td>
             </tr>
             
         </table>
@@ -43,3 +58,4 @@
 </div>
           
 <app-footer></app-footer>
+

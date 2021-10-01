@@ -1,0 +1,100 @@
+    <app-topnav></app-topnav>
+    <div class="card-deck my-3"style="margin-right: auto; margin-left: auto;">
+        <div class="card bg-success">
+        <div class="card-body" >
+            <h3 style="border-style:double;">Enter Patient's details</h3><br>
+            <h4 style="color: aliceblue;border-style:ridge">Lab/Checkup Details</h4>
+            <h5 >Test Name : {{labObj.name}}</h5>
+            <h5>Hospital &nbsp;&nbsp;&nbsp;&nbsp;: {{labObj.hospital}}</h5>
+            <h5>Amount &nbsp;&nbsp;&nbsp;&nbsp; : Rs.{{labObj.price}}/=</h5>
+        </div>
+        </div>
+        <div class="card">
+                
+    <div class="container">
+        
+    <div class="register-form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+            <label>Title</label>
+            <select
+                type="text"
+                formControlName="title"
+                class="form-select"
+                [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
+            >
+            <option value="Mr.">Mr.</option>
+            <option value="Mrs.">Mrs.</option>
+            <option value="Miss">Miss</option>
+            <option value="Ven.">Ven.</option>
+            </select>
+            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required">Tilte is required</div>
+            </div>
+            </div>
+
+            <div class="form-group">
+            <label> Name</label>
+            <input
+                type="text"
+                formControlName="firstName"
+                class="form-control"
+                [ngClass]="{'is-invalid': submitted && f.firstName.errors}"
+            />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">First name is required</div>
+                <div *ngIf="f.firstName.errors.maxlength">
+                Last name must not exceed 20 characters
+                </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+                <label>NIC</label>
+                <input
+                type="text"
+                formControlName="nic"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.nic.errors }"
+                />
+                <div *ngIf="submitted && f.nic.errors" class="invalid-feedback">
+                <div *ngIf="f.nic.errors.required">Nic is required</div>
+                <div *ngIf="f.nic.errors.minlength">Nic must have atleast 10 characters</div>
+                <div *ngIf="f.nic.errors.maxlength">Nic can not exeed 12 characters</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile</label>
+                <input
+                type="text"
+                formControlName="phone"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                />
+                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Mobile number is required</div>
+                <div *ngIf="f.phone.errors.minlength">Mobile must have atleast 10 numbers</div>
+                <div *ngIf="f.phone.errors.maxlength">Mobile can not exeed 12 numbers</div>
+                <div *ngIf="f.phone.errors.pattern">Enter a valid number</div>
+                </div>
+            </div>
+
+            <div class="form-group ">   
+            <button
+                type="button"
+                (click)="onReset()"
+                class="btn btn-warning"
+                style="border-radius: 20px;"
+            >
+                Reset
+            </button>
+            <button type="submit" [disabled]="form.invalid" class="btn btn-primary float-right" style="border-radius: 20px;">Proceed</button>
+            </div>
+        </form>
+        </div>
+    </div>
+        
+    </div>
+    </div>
+    <app-footer></app-footer>

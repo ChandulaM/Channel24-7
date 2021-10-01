@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SessionStorageService } from 'ngx-webstorage';
 import { Patient } from 'src/app/models/Patient';
 import { PatientSearvicesService } from 'src/app/services/patient-searvices.service';
 
@@ -14,11 +15,11 @@ export class PatientDetailsComponent implements OnInit {
   
   form: FormGroup|any;
   message: string = '';
-
+  session: any;
    patient : Patient = new Patient();
    submitted = false;
 
-  constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder) { 
+  constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder,  private sessionSt : SessionStorageService) { 
 
   }
 
@@ -38,7 +39,7 @@ export class PatientDetailsComponent implements OnInit {
 
   ngOnInit(){
 
-
+    this.session = this.sessionSt.retrieve("logged");
     this.form = this.fb.group(
       {
         member: ['', Validators.required],

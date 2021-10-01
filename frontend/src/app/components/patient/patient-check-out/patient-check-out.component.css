@@ -3,3 +3,7 @@ td, th {
     text-align: left;
     padding: 8px;
   }
+
+  p{
+    font-size: smaller;
+  }

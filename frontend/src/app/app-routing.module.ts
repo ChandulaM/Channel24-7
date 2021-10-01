@@ -150,11 +150,11 @@ const routes: Routes = [
     component: UploadresultenquryComponent,
   },
   {
-    path: 'patient/sa',
+    path: 'patient/select-doctor',
     component: SelectAppointmentComponent,
   },
   {
-    path: 'patient/bk',
+    path: 'patient/time-slots',
     component: BookAppointmentComponent,
   },
   {
@@ -162,8 +162,12 @@ const routes: Routes = [
     component: PatientDetailsComponent,
   },
   {
-    path: 'patient/pc',
+    path: 'patient/checkout',
     component: PatientCheckOutComponent,
+  },
+  {
+    path: 'patient/lab-checkout',
+    component: LabCheckoutComponent,
   },
   {
     path: 'patient/my-appointments',
@@ -172,6 +176,26 @@ const routes: Routes = [
   {
     path: 'patient/my-profile',
     component: PatientProfileComponent,
+  },
+  {
+    path: 'patient/my',
+    component: HomePgLoggedComponent,
+  },
+  {
+    path: 'patient/search',
+    component: SearchDocsComponent,
+  },
+  {
+    path: 'patient/book-labs',
+    component: LabBookingComponent,
+  },
+  {
+    path: 'patient/enter-details',
+    component: EnterPatientDetailsComponent,
+  },
+  {
+    path: 'patient/enter-details-for-appointment',
+    component: PatientDetailsForAppointmentComponent,
   },
 ];
 
