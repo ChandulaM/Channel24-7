@@ -15,7 +15,7 @@ export class ReportdeliveryComponent implements OnInit {
     responsive: true,
   };
   public pieChartLabels: Label[] = [['Delivered'], ['On Pending']];
-  public pieChartData: SingleDataSet = [300, 500];
+  public pieChartData: SingleDataSet = [0, 0];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
@@ -38,9 +38,51 @@ export class ReportdeliveryComponent implements OnInit {
           }else{
             onPending++;
           }
+          [delivered, onPending]
         });
       })
       .catch((err) => console.log(err));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,20 +1,54 @@
 <div class="wrapper">
     <app-dashboard></app-dashboard>
     <div class="main_content">
-        <div class="header">
-            <ul class="nav justify-content-end">
-                <li class="nav-item active">
-                    <a href="#" class="nav-link">Settings</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Profile</a>
-                </li>
-            </ul>
-        </div>  
-        <div class="info" style="margin-left: 250px;">
-            <h3>Manage tests</h3>
-            <router-outlet></router-outlet>
+      <div class="header">
+        <ul class="nav justify-content-end" style="margin-top: 20px;">
+        </ul>
+      </div>
+      <div class="info" style="margin-left: 250px;">
+        <div style="padding: 20px;">
+            <h1>Lab tests needs to be re run</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Reference Number</th>
+                <th scope="col">Test Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Update</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let result of results">
+                <td>
+                  {{ result.refNumber }}
+                </td>
+                <td>
+                  {{ result.refNumber }}
+  
+                </td>
+                <td>
+                  {{ result.refNumber }}
+  
+                </td>
+                <td>
+                  {{ result.refNumber }}
+  
+                </td>
+                <td style="display: none;">
+                  {{ result.id }}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary">Update </button>
+                  <button type="button" class="btn btn-success" style="margin-left: 5px;margin-right: 5px;" (click)="sendEmail('result.email')">Notify </button>
+                  <button type="button" class="btn btn-danger" (click)="delete($event)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
       </div>
     </div>
-</div>
-
+  </div>
+  
