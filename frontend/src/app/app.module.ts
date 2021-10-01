@@ -23,7 +23,7 @@ import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalm
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
-import {NgxWebstorageModule} from 'ngx-webstorage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DoctorServiceService } from './services/doctor-service.service';
@@ -132,8 +132,8 @@ import { SearchAapointmentsComponent } from './components/patient/search-aapoint
     ReportGenerationComponent,
     ListDoctorsComponent,
     AdminLoginComponent,
-	
-	TopNavLoggedComponent,
+
+    TopNavLoggedComponent,
     HomePgLoggedComponent,
     SearchDocsComponent,
     LabBookingComponent,
@@ -151,13 +151,14 @@ import { SearchAapointmentsComponent } from './components/patient/search-aapoint
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
-	CommonModule,
+    CommonModule,
     NgbModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
     NgxSpinnerModule,
     NgxTypeaheadModule,
     ChartsModule,
+    NgxWebstorageModule,
   ],
   providers: [
     DoctorServiceService,

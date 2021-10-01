@@ -34,6 +34,12 @@ import { MyAppointmentsComponent } from './components/patient/my-appointments/my
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { ReportGenerationComponent } from './components/admin/report-generation/report-generation.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { EnterPatientDetailsComponent } from './components/patient/enter-patient-details/enter-patient-details.component';
+import { HomePgLoggedComponent } from './components/patient/home-pg-logged/home-pg-logged.component';
+import { LabBookingComponent } from './components/patient/lab-booking/lab-booking.component';
+import { LabCheckoutComponent } from './components/patient/lab-checkout/lab-checkout.component';
+import { PatientDetailsForAppointmentComponent } from './components/patient/patient-details-for-appointment/patient-details-for-appointment.component';
+import { SearchDocsComponent } from './components/patient/search-docs/search-docs.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
