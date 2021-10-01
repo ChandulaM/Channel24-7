@@ -1,0 +1,21 @@
+<br><div class="card bg-success" style="width: 40rem; padding: 0 20px 0 20px; text-align: center; ">
+<div class="register-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()"> 
+        <div class="form-group">
+            <label><h5>Search by Referece Number</h5></label>
+            <input
+                type="number"
+                formControlName="refNo"
+                class="form-control"
+            />
+        </div>
+        <div [hidden]="!loginError1">
+            <h4 style="text-align: center; color: rgb(247, 17, 17); font-size:large;">Invalid Reference Number!</h4>
+          </div> 
+        <div class="form-group ">   
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-sm float-right" style="border-radius: 20px;">Search</button>
+        </div>
+    </form>
+   
+</div>
+</div>

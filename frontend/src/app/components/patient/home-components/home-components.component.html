@@ -1,34 +1,41 @@
 <div  class="container-md py-4 mt-5" style="background-color: rgb(26, 21, 71); border-radius: 20px;max-width:500px">
     <h2 class = "text-center" style="color: azure;">BOOK NOW</h2>
     <div class="card mx-auto">
-        <form class="reg-form text-center border border-light">
+        <form class="reg-form text-center border border-light" [formGroup] = "searchForm" (ngSubmit) = "search()">
             <div class="form-floating mb-2">
-                <input type="text" class="form-control" id="searchDocName" placeholder="Doctor's Name">
-                <label for="floatingInput">Doctor's Name</label>
+                <input type="text" class="form-control" formControlName = "searchDocName" id="searchDocName" placeholder="Doctor's Name">
+                <label for="floatingInput">Doctor's Last Name</label>
             </div>
             
             <div class="form-floating mb-2">
-                <select class="form-select" id="searchDocSpecial" aria-label="Floating label select example" >
+                <select class="form-select" formControlName = "searchDocSpecial" id="searchDocSpecial" aria-label="Floating label select example" >
                 <option selected>Any</option>
-                <option value="1">Cardiologist</option>
-                <option value="2">Dental</option>
-                <option value="3">Gynocologist</option>
+                <option *ngFor="let s of special" [value]="s.name">
+                  {{s.name}}
+                </option>
                 </select>
                 <label for="floatingSelect">Select Specialization</label>
             </div>
             
             <div class="form-floating mb-2">
-                <select class="form-select" id="searchDocHos" aria-label="Floating label select example" >
+                <select class="form-select" formControlName = "searchDocHospital" id="searchDocHos" aria-label="Floating label select example" >
                 <option selected>Any</option>
-                <option value="1">Asiri</option>
-                <option value="2">CCC</option>
-                <option value="3">Kumudu</option>
+                <option *ngFor="let hos of hospitals" [value]="hos.hospitalName">
+                  {{hos.hospitalName}}
+                </option>
+                <!-- <option value="Asiri-Colombo">Asiri-Colombo</option>
+                <option value="Asiri-Kandy">Asiri-Kandy</option>
+                <option value="Asiri-Kurunagala">Asiri-Kurunagala</option>
+                <option value="Kumudu-Matale">CCC-Kandy</option>
+                <option value="Kumudu-Matale3">Kumudu-Matale</option>
+                <option value="KMC-Colombo">KMC-Colombo</option>
+                <option value="KDP-Mountlavania">KDP-Mountlavania</option> -->
                 </select>
                 <label for="floatingSelect">Select Hospital</label>
             </div>
             
             <div class="form-floating mb-2">
-                <input type="date" class="form-control" id="apDate" placeholder="Appointment Date" >
+                <input type="date" formControlName = "apDate" class="form-control" id="apDate"  [min]="getToday()" placeholder="Appointment Date" >
                 <label for="floatingInput">Appointment Date</label>
             </div>
             <!-- Sign in button -->

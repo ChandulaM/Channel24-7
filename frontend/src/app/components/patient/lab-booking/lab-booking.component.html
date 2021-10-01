@@ -1,0 +1,65 @@
+<app-topnav></app-topnav>
+<div class="container my-3" style="max-height: 110px; background-color: green; border-radius: 20px;">
+    <h5 style="text-align: center; color: aliceblue;">Filter By</h5>
+    <table class="d-flex justify-content-around">
+      <tr>
+
+      <td> 
+        <p style="text-align: center; color: aliceblue;">Test Name</p>
+        <select class="form-select form-select-sm mb-3" id="docSpe" (ngModelChange) = "searchSpe($event)" [(ngModel)] = "docSpe"  >
+          <option value="Full Blood Count">Full Blood Count</option>
+          <option value="Lipid Test">Lipid Test</option>
+          <option value="Liver Test">Liver Test</option>
+          <option value="Urinalysis">Urinalysis</option>
+          <option value="Full body checkup">Full body checkup</option>
+          <option value="X-Rays">X-Rays</option>
+          <option value="CT-Scan">CT-Scan</option>
+        </select></td>
+        <td> 
+          <p style="text-align: center; color: aliceblue;">Hospital</p>
+          <select class="form-select form-select-sm mb-3" id="docSpe" (ngModelChange) = "searchHos($event)" [(ngModel)] = "docHos"  >
+            <option value="Asiri-Colombo">Asiri-Colombo</option>
+            <option value="Asiri-Kandy">Asiri-Kandy</option>
+            <option value="Asiri-Kurunagala">Asiri-Kurunagala</option>
+            <option value="CCC-Kandy">CCC-Kandy</option>
+            <option value="Kumudu-Matale">Kumudu-Matale</option>
+            <option value="KMC-Colombo">KMC-Colombo</option>
+            <option value="KDP-Mountlavania">KDP-Mountlavania</option>
+          </select></td>
+          <!-- <td style="padding-bottom: 18px;"> <p style="text-align: center; color: aliceblue;">Max Price</p> <input type="number" id="docNm" (ngModelChange) = "filterPrice($event)" [(ngModel)] = "price"  placeholder="Price"></td>  -->
+          <td><button class = "btn btn-primary btn-sm" style="border-radius: 20px; margin-top: 28px;" (click)="refresh()">Reset</button></td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body" style="text-align: center;">
+      <table class="table table-striped;">
+        <thead >
+          <tr >
+            <th>Test Name</th>
+            <th>Hospital</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody style="font-size: medium;">
+           <tr *ngFor="let lab of labs">
+            <td>{{lab.name}}</td>
+            <td>{{lab.hospital}}</td>
+            <td>Rs.{{lab.price}}</td>
+            <td><button class="btn btn-success btn-sm" (click) = "callBook(lab.id)" style="border-radius: 20px;">Select</button>
+            </td>
+          </tr>
+
+         <!-- <tr>
+           <td>A.M. Kumar</td> 
+           <td>A.M. Kumar</td>
+         </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+<app-footer></app-footer>

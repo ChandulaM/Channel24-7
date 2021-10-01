@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators,FormBuilder, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Patient } from 'src/app/models/Patient';
 import { PatientSearvicesService } from 'src/app/services/patient-searvices.service';
 import Validation from './confirmed.validator';
@@ -15,14 +17,25 @@ export class TopnavComponent implements OnInit {
   form: FormGroup|any;
   signUpForm : FormGroup|any;
   message: string = '';
+  loginErro: string = '';
+  session : any;
+
 
    patient : Patient = new Patient();
+   LoggedInPatient : Patient = new Patient();
    submitted = false;
+   loggedIn = false;
+   loginError1 = false;
+   
+  //  localStor : LocalStorageService|any;
+  //  sessionSt : SessionStorageService|any;
+   
 
-  constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder) { 
-
+  constructor(private patientService : PatientSearvicesService, private router: Router, private fb : FormBuilder, private localStor : LocalStorageService, private sessionSt : SessionStorageService) { 
+    
   }
 
+  
   newPatient(): void{
     this.submitted =false;
     this.patient = new Patient();
@@ -37,10 +50,41 @@ export class TopnavComponent implements OnInit {
       (error: any) => console.log(error));
   }
 
+
+  logOut(){
+    setTimeout(()=>{
+    this.loggedIn = false;
+    this.sessionSt.clear("logged");
+    this.session = this.sessionSt.clear("logged");
+    this.router.navigate(['patient/home']); 
+    },1500);
+  }
+
+  login() {
+     this.loginError1 = false;
+    this.patientService
+    .login(this.exform.value).subscribe((val: any) => {
+      console.log(val);
+      this.sessionSt.store("logged", val);
+      this.session = this.sessionSt.store("logged", val);
+      
+      //this.router.navigate(['patient/my'], {"state": val});
+      this.router.navigate(['patient/home']);
+    }, 
+      (error: any) => this.loginError1 = true ) ;
+  }
+
+
   ngOnInit(){
+   
+   const isLogged = this.sessionSt.retrieve("logged");
+
+   if(isLogged){ 
+      this.session = isLogged; 
+   }
 
     this.exform = new FormGroup({
-      logEmail : new FormControl(null, [Validators.required, Validators.email]),
+      email : new FormControl(null, [Validators.required, Validators.email]),
       password :new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
 
@@ -96,12 +140,20 @@ export class TopnavComponent implements OnInit {
     console.log(JSON.stringify(this.form.value, null, 2));
   }
 
+  
+
+  loginSubmit(){
+    this.submitted = true;
+    console.log("login called");
+    if (this.exform.invalid) {
+      return;
+    }
+    this.login();
+  }
+
   onReset(): void {
     this.submitted = false;
     this.form.reset();
   }
-
-  
-
 }
 

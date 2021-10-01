@@ -23,7 +23,7 @@ import { HospitalmanagerComponent } from './components/hospitalmanager/hospitalm
 import { DoctorsComponent } from './components/hospitalmanager/doctors/doctors.component';
 import { AdminsidebarComponent } from './components/common/adminsidebar/adminsidebar.component';
 import { AddDoctorComponent } from './components/hospitalmanager/add-doctor/add-doctor.component';
-
+import {NgxWebstorageModule} from 'ngx-webstorage';
 import { SingleDoctorComponent } from './components/hospitalmanager/single-doctor/single-doctor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DoctorServiceService } from './services/doctor-service.service';
@@ -62,6 +62,9 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientCheckOutComponent } from './components/patient/patient-check-out/patient-check-out.component';
 import { PatientProfileComponent } from './components/patient/patient-profile/patient-profile.component';
 import { MyAppointmentsComponent } from './components/patient/my-appointments/my-appointments.component';
+import { TopNavLoggedComponent } from './components/patient/commons/top-nav-logged/top-nav-logged.component';
+import { HomePgLoggedComponent } from './components/patient/home-pg-logged/home-pg-logged.component';
+import { SearchDocsComponent } from './components/patient/search-docs/search-docs.component';
 import { HospitalManagerServiceService } from './services/hospital-manager-service.service';
 import { SpecializationServiceService } from './services/specialization-service.service';
 
@@ -71,6 +74,12 @@ import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { ChartsModule } from 'ng2-charts';
 import { ListDoctorsComponent } from './components/admin/report-generation/list-doctors/list-doctors.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { CommonModule } from '@angular/common';
+import { LabBookingComponent } from './components/patient/lab-booking/lab-booking.component';
+import { EnterPatientDetailsComponent } from './components/patient/enter-patient-details/enter-patient-details.component';
+import { LabCheckoutComponent } from './components/patient/lab-checkout/lab-checkout.component';
+import { PatientDetailsForAppointmentComponent } from './components/patient/patient-details-for-appointment/patient-details-for-appointment.component';
+import { SearchAapointmentsComponent } from './components/patient/search-aapointments/search-aapointments.component';
 
 @NgModule({
   declarations: [
@@ -123,6 +132,15 @@ import { AdminLoginComponent } from './components/admin/admin-login/admin-login.
     ReportGenerationComponent,
     ListDoctorsComponent,
     AdminLoginComponent,
+	
+	TopNavLoggedComponent,
+    HomePgLoggedComponent,
+    SearchDocsComponent,
+    LabBookingComponent,
+    EnterPatientDetailsComponent,
+    LabCheckoutComponent,
+    PatientDetailsForAppointmentComponent,
+    SearchAapointmentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -133,6 +151,7 @@ import { AdminLoginComponent } from './components/admin/admin-login/admin-login.
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
+	CommonModule,
     NgbModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.fireBaseConfig, 'cloud'),
